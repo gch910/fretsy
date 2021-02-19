@@ -1,0 +1,20 @@
+.form-errors {
+    font-size: 25px;
+    color: red;
+    list-style: none;
+}
+
+.login-input {
+    display: block;
+    margin: 10px;
+}
+
+/* #login-input-div {
+    display: flex;
+    justify-content: center;
+} */
+
+.login-button {
+    display: block;
+}
+

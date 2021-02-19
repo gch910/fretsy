@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { login } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
+import "./LoginForm.css";
 
 const LoginFormPage = () => {
   const dispatch = useDispatch();
@@ -14,44 +15,54 @@ const LoginFormPage = () => {
   if (sessionUser) return <Redirect to="/" />;
 
   const handleSubmit = (e) => {
-      e.preventDefault();
-      setErrors([]);
+    e.preventDefault();
+    setErrors([]);
 
-      const user = {
-          credential,
-          password
-      }
-      
-      return dispatch(login(user))
-        .catch(async (res) => {
-            const data = await res.json();
-            if (data && data.errors) setErrors(data.errors);
-        });
+    const user = {
+      credential,
+      password,
+    };
 
+    return dispatch(login(user)).catch(async (res) => {
+      const data = await res.json();
+      if (data && data.errors) setErrors(data.errors);
+    });
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <ul className="form-errors"></ul>
-      <label>
+      <ul className="form-errors">
+        {errors.map((error, idx) => (
+          <li key={idx}>{error}</li>
+        ))}
+      </ul>
+      <div id="login-input-div">
+        <label className="login-label">
           Username or Email
           <input
+            className="login-input"
             type="text"
             value={credential}
             onChange={(e) => setCredential(e.target.value)}
             required
           />
-      </label>
-      <label>
+        </label>
+        <label className="login-label">
           Password
           <input
+            className="login-input"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-      </label>
-      <button type="submit">Log in</button>
+        </label>
+        <div className="login-button">
+          <button type="submit">
+            Log in
+          </button>
+        </div>
+      </div>
     </form>
   );
 };

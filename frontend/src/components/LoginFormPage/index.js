@@ -37,27 +37,27 @@ const LoginFormPage = () => {
         ))}
       </ul>
       <div id="login-input-div">
-        <label className="login-label">
+        <label className="form-label">
           Username or Email
           <input
-            className="login-input"
+            className="form-input"
             type="text"
             value={credential}
             onChange={(e) => setCredential(e.target.value)}
             required
           />
         </label>
-        <label className="login-label">
+        <label className="form-label">
           Password
           <input
-            className="login-input"
+            className="form-input"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
         </label>
-        <div className="login-button">
+        <div className="form-button">
           <button type="submit">
             Log in
           </button>

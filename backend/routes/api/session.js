@@ -44,7 +44,7 @@ router.post(
 //not async
 router.delete("/", (_req, res) => {
   res.clearCookie("token");
-  return res.json({ message: "sucess" });
+  return res.json({ message: "success" });
 });
 
 router.get("/", restoreUser, (req, res) => {

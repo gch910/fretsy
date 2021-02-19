@@ -34,9 +34,9 @@ router.use('/users', usersRouter);
 //   return res.json(req.user);
 // });
 
-// router.post("/test", (req, res) => {
-//   res.json({ requestBody: req.body });
-// });
+router.post("/test", (req, res) => {
+  res.json({ requestBody: req.body });
+});
 
 // router.get("/require-auth", requireAuth, (req, res) => {
 //   return res.json(req.user);

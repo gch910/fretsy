@@ -51,7 +51,8 @@ module.exports = (sequelize, DataTypes) => {
       },
     }
   );
-
+  
+  //this allows us not to have to query database every time
   User.prototype.toSafeObject = function () {
     const { id, username, email } = this;
     return { id, username, email };

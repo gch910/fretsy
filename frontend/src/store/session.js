@@ -32,7 +32,6 @@ export const login = (user) => async (dispatch) => {
   });
 
   const data = await res.json();
-  console.log(data)
   dispatch(setUser(data.user));
   return res;
 };

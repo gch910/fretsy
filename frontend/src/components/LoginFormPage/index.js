@@ -29,6 +29,10 @@ const LoginFormPage = () => {
     });
   };
 
+  const handleDemoSubmit = () => {
+    return dispatch(login({credential: "Demo-lition", password: "password"}));
+  }
+
   return (
     <form onSubmit={handleSubmit}>
       <ul className="form-errors">
@@ -60,6 +64,7 @@ const LoginFormPage = () => {
           </label>
           <div className="form-button">
             <button type="submit">Log in</button>
+            <button type="button" onClick={handleDemoSubmit}>Demo</button>
           </div>
         </div>
       </div>

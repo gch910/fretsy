@@ -5,14 +5,20 @@
 }
 
 .form-input {
+    height: 40px;
+    width: 200px;
     display: block;
     margin: 10px;
 }
 
-/* #login-input-div {
+#login-input-div {
+    margin-top: 100px;
+}
+
+.form-div {
     display: flex;
     justify-content: center;
-} */
+}
 
 .form-button {
     display: block;

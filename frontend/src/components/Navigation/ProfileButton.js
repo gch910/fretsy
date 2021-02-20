@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/session";
+import "./Navigation.css"
 
 const ProfileButton = ({ user }) => {
   const dispatch = useDispatch();
@@ -31,8 +32,8 @@ const ProfileButton = ({ user }) => {
   return (
     <>
       <button onClick={openMenu}>
-        <i className="far fa-id-card"></i>
-      </button>
+        <i className="far fa-user fa-3x"></i>
+      
       {showMenu && (
         <ul className="profile-dropdown">
           <li>{user.username}</li>
@@ -42,6 +43,8 @@ const ProfileButton = ({ user }) => {
           </li>
         </ul>
       )}
+      </button>
+    
     </>
   );
 };

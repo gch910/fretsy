@@ -1,4 +1,11 @@
-.form-errors {
+.login-page {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 2fr 2fr 2fr;
+}
+
+
+/* .form-errors {
     font-size: 25px;
     color: red;
     list-style: none;
@@ -22,5 +29,5 @@
 
 .form-button {
     display: block;
-}
+} */
 

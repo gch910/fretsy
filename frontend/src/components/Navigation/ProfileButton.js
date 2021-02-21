@@ -31,7 +31,7 @@ const ProfileButton = ({ user }) => {
 
   return (
     <>
-      <button onClick={openMenu}>
+      <button id="profile-button" onClick={openMenu}>
         <i className="far fa-user fa-3x"></i>
       
       {showMenu && (

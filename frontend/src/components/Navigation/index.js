@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 // import './Navigation.css';
 
-const Navigation = ({ isLoaded }) => {
+const Navigation = ({ isLoaded, navId }) => {
   const sessionUser = useSelector((state) => state.session.user);
 
   let sessionLinks;
@@ -12,29 +12,31 @@ const Navigation = ({ isLoaded }) => {
   if (sessionUser) {
     sessionLinks = (
       <>
-        <ProfileButton user={sessionUser} />;
-        <NavLink className="nav-link" exact to="/">
+        <ProfileButton user={sessionUser} />
+        <input id="searchbar" type="text" placeholder="Search.."/>
+        <NavLink className="nav-link" id="home-link" exact to="/">
           Home
         </NavLink>
-        <NavLink className="nav-link" exact to="/test">
-          Other
-        </NavLink>
       </>
-    );
+    )
   } else {
     sessionLinks = (
       <>
-        <NavLink className="nav-link" to="/login">
+        <NavLink className="nav-link" id="home-link" exact to="/">
+          Home
+        </NavLink>
+        <input id="searchbar" type="text" placeholder="Search.."/>
+        <NavLink className="nav-link" id="login-button" to="/login">
           Log In
         </NavLink>
-        <NavLink className="nav-link" to="/signup">
+        <NavLink className="nav-link" id="signup-button" to="/signup">
           Sign Up
         </NavLink>
       </>
-    );
+    )
   }
 
-  return <nav className="nav-ul">{isLoaded && sessionLinks}</nav>;
+  return <nav id={navId}>{isLoaded && sessionLinks}</nav>;
 };
 
 export default Navigation;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
 import SignUpFormPage from "./components/SignupFormPage";
@@ -16,9 +16,20 @@ const App = () => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
+  const sessionUser = useSelector(state => state.session.user)
+
+  let navId;
+
+  if(sessionUser) {
+    navId = "logged-in-nav"
+  } else {
+    navId = "logged-out-nav"
+  }
+  console.log(sessionUser)
+
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
+      <Navigation navId={navId} isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
           <Route exact path="/">

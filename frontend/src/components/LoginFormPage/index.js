@@ -34,45 +34,66 @@ const LoginFormPage = () => {
   };
 
   return (
-    <div className="login-page">
-      <form onSubmit={handleSubmit}>
+    <>
+      <form className="login-page banner-1" onSubmit={handleSubmit}>
         <ul className="form-errors">
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        <div className="form-div">
-          <div id="login-input-div">
-            <label className="form-label">
-              Username or Email
-              <input
-                className="form-input"
-                type="text"
-                value={credential}
-                onChange={(e) => setCredential(e.target.value)}
-                required
-              />
-            </label>
-            <label className="form-label">
-              Password
-              <input
-                className="form-input"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </label>
-            <div className="form-button">
-              <button type="submit">Log in</button>
-              <button type="button" onClick={handleDemoSubmit}>
-                Demo
-              </button>
-            </div>
-          </div>
+        <h1 id="form-h1">Log In</h1>
+        <input
+          className="form-input no-outline"
+          id="form-credential"
+          type="text"
+          value={credential}
+          onChange={(e) => setCredential(e.target.value)}
+          placeholder="Username or Email"
+          required
+        />
+        <input
+          className="form-input no-outline"
+          id="form-password"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Username or Email"
+          required
+        />
+        <div className="form-button-div">
+          <button id="login-submit-button" type="submit">
+            Log in
+          </button>
+          <button id="demo-button" type="button" onClick={handleDemoSubmit}>
+            Demo
+          </button>
         </div>
       </form>
-    </div>
+      <div className="banner-2">
+        <h1>2</h1>
+      </div>
+      <div className="banner-3">
+        <h1>3</h1>
+      </div>
+      <div className="banner-4">
+        <h1>4</h1>
+      </div>
+      <div className="banner-5">
+        <h1>5</h1>
+      </div>
+      <div className="banner-6">
+        <h1>6</h1>
+      </div>
+      <div className="banner-7">
+        <h1>7</h1>
+      </div>
+      <div className="banner-8">
+        <h1>8</h1>
+      </div>
+      <div className="banner-9">
+        <h1>9</h1>
+      </div>
+    </>
   );
 };
 

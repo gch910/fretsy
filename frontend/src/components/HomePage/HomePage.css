@@ -1,14 +1,62 @@
 #app-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 300px;
+    grid-template-rows: 400px 200px 259px 259px 400px 650px 550px 300px 700px;
     grid-template-areas: 
-    "banner banner banner banner banner";
-
+    "banner banner banner banner banner"
+    "banner2 banner2 banner2 banner2 banner2"
+    "banner3 banner3 banner3 banner3 banner3"
+    "banner4 banner4 banner4 banner4 banner4"
+    "banner5 banner5 banner5 banner5 banner5"
+    "banner6 banner6 banner6 banner6 banner6"
+    "banner7 banner7 banner7 banner7 banner7"
+    "banner8 banner8 banner8 banner8 banner8"
+    "banner9 banner9 banner9 banner9 banner9"
 }
 
 .banner-1 {
     grid-area: banner;
     background-color: #d0f3f0;
+   
+}
+.banner-2 {
+    grid-area: banner2;
+   
+   
+}
+.banner-3 {
+    grid-area: banner3;
+   
+   
+}
+.banner-4 {
+    grid-area: banner4;
+    
+   
+}
+.banner-5 {
+    grid-area: banner5;
+    background-color: #d0f3f0;
+   
+}
+.banner-6 {
+    grid-area: banner6;
+  
+   
+}
+.banner-7 {
+    grid-area: banner7;
+
+   
+}
+.banner-8 {
+    grid-area: banner8;
+
+   
+}
+.banner-9 {
+    grid-area: banner9;
+    background-color: rgb(230, 177, 171);
+
    
 }

@@ -60,16 +60,20 @@
 
 
 .nav-link {
-  width: 40px;
+  width: 50px;
   height: 40px;
   display: flex;
   text-decoration: none;
-  background-color: rgb(240, 235, 235);
+  background-color: rgb(241, 239, 239);
   color: black;
   padding: 2px 6px 2px 6px;
   border: 1px solid #333333;
-  border-radius: 0.5em;
+  border-radius: 1em;
 
+}
+
+.nav-link:hover {
+  background-color: rgb(252, 233, 230);
 }
 
 #home-link {
@@ -78,11 +82,13 @@
   align-self: center;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
  #login-button {
   grid-area: login;
-  margin: 20px;
+  margin-left: 50px;
+  margin-right: 20px;
   align-self: center;
   display: flex;
   align-items: center;
@@ -91,6 +97,7 @@
   grid-area: signup;
   align-self: center;
   display: flex;
+  text-align: center;
   align-items: center;
 } 
 
@@ -100,6 +107,9 @@
   margin: 30px;
   align-self: center;
   grid-area: profile-button;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #searchbar {
@@ -107,18 +117,84 @@
   height: 40px;
   width: 100%;
   border-radius: 1.7em;
-  background-color: rgb(240, 235, 235);
+  background-color: rgb(241, 239, 239);
   background-repeat: no-repeat;
   align-self: center;
+  font-size: 30px;
+  padding-left: 20px;
+  border: none;
 
-  
 }
 
 .no-outline:focus {
   outline: none;
 }
 
+#logout-button {
+  position: relative;
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  text-decoration: none;
+  background-color: rgb(240, 235, 235);
+  color: black;
+  padding: 2px 6px 2px 6px;
+  border: 1px solid #333333;
+  border-radius: 0.5em;
+  margin-top: 20px;
+}
+
+
+.profile-dropdown {
+  /* list-style: none; */
+  /* visibility: visible;
+  opacity: 1;
+  display: block; */
+}
+
+.profile-li {
+  position: relative;
+  left: 150px;
+}
+
+.profile-dropdown li:hover {
+  color: blue;
+  background-color: blue;
+}
+
+/* .profile-dropdown {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+} */
+
+/* #dropdown-container {
+  display: flex;
+  
+} */
+
+
 /* #nav-container {
   background-color: lightblue;
 }  */
+
+i {
+  border: none;
+}
+
+#profile-dropdown-div {
+  /* position: absolute;
+  right: 200px;
+  top: 10px; */
+  width: 1000px;
+  height: 300px;
+  border: none;
+  padding-top: 250px;
+  z-index: 2;
+  display: flex;
+  justify-content: right;
+
+  
+}
 

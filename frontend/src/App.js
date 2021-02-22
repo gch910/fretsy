@@ -16,32 +16,34 @@ const App = () => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
-  const sessionUser = useSelector(state => state.session.user)
+  const sessionUser = useSelector((state) => state.session.user);
 
   let navId;
 
-  if(sessionUser) {
-    navId = "logged-in-nav"
+  if (sessionUser) {
+    navId = "logged-in-nav";
   } else {
-    navId = "logged-out-nav"
+    navId = "logged-out-nav";
   }
-  console.log(sessionUser)
+  console.log(sessionUser);
 
   return (
     <>
       <Navigation navId={navId} isLoaded={isLoaded} />
       {isLoaded && (
-        <Switch>
-          <Route exact path="/">
-            <HomePage/>
-          </Route>
-          <Route path="/login">
-            <LoginFormPage />
-          </Route>
-          <Route path="/signup">
-            <SignUpFormPage />
-          </Route>
-        </Switch>
+        <div id="app-grid">
+          <Switch>
+            <Route exact path="/">
+              <HomePage />
+            </Route>
+            <Route path="/login">
+              <LoginFormPage />
+            </Route>
+            <Route path="/signup">
+              <SignUpFormPage />
+            </Route>
+          </Switch>
+        </div>
       )}
     </>
   );

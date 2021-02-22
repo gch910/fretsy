@@ -1,0 +1,13 @@
+#app-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 300px;
+    grid-template-areas: 
+    "banner banner banner banner banner";
+
+}
+
+.banner-1 {
+    grid-area: banner;
+    background-color: #d0f3f0;
+}

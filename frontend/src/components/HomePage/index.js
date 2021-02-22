@@ -1,17 +1,19 @@
 import { useSelector } from "react-redux";
-import { Redirect } from "react-router-dom"
+import { Redirect } from "react-router-dom";
+import "./HomePage.css";
 
 const HomePage = () => {
-    const sessionUser = useSelector((state) => state.session.user)
-    
+  const sessionUser = useSelector((state) => state.session.user);
 
-    if(!sessionUser) return <Redirect to="/login" />
+  if (!sessionUser) return <Redirect to="/login" />;
 
-    return (
-        <>
-          <h1>Home Page</h1>
-        </>
-    )
-}
+  return (
+    <>
+      <div className="banner-1">
+        <h1>Home Page</h1>
+      </div>
+    </>
+  );
+};
 
 export default HomePage;

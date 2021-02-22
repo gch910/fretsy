@@ -1,27 +1,70 @@
 #logged-in-nav {
     display: grid;
-    grid-template-columns: 2fr 0.1fr 3fr 0.1fr 2fr;
-    grid-template-rows: 1fr;
-    height: 72px;
+    grid-template-columns: 2fr 0.1fr 5fr 0.1fr 2fr;
+    grid-template-rows: 72px;
+    /* background-color: lightblue; */
     grid-template-areas: 
-    ". home search profile-button ."
+    ". home search profile-button .";
+    align-items: stretch;
+    
 }
 
 #logged-out-nav {
-    display: grid;
-    grid-template-columns: 2fr 0.1fr 3fr 0.1fr 0.1fr 2fr;
-    grid-template-rows: 1fr;
-    height: 72px;
-    grid-template-areas: 
-    ". home search login signup ."
+  display: grid;
+  grid-template-columns: 2fr 0.1fr 4fr 0.1fr 0.1fr 2fr;
+  grid-template-rows: 72px;
+  grid-template-areas: 
+  ". home search login signup .";
+  align-items: stretch;
 }
+
+#sub-nav {
+  /* width: 1400px; */
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr;
+  grid-template-rows: 34px;
+  grid-template-areas: 
+  ". sub1 sub2 sub3 sub4 sub5 sub6 .";
+  
+  width: 100%;
+}
+
+/* #sub-nav-container {
+  justify-content: center;
+} */
+
+#sublink-1 {
+  grid-area: sub1;
+}
+#sublink-2 {
+  grid-area: sub2;
+}
+#sublink-3 {
+  grid-area: sub3;
+}
+#sublink-4 {
+  grid-area: sub4;
+}
+#sublink-5 {
+  grid-area: sub5;
+}
+#sublink-6 {
+  grid-area: sub6;
+}
+
+.sub-link {
+  text-decoration: none;
+  color: black;
+}
+
+
 
 .nav-link {
   width: 40px;
   height: 40px;
   display: flex;
   text-decoration: none;
-  background-color: lightgray;
+  background-color: rgb(240, 235, 235);
   color: black;
   padding: 2px 6px 2px 6px;
   border: 1px solid #333333;
@@ -31,31 +74,51 @@
 
 #home-link {
   grid-area: home;
-  align-self: center;
   margin: 20px;
+  align-self: center;
   display: flex;
   align-items: center;
 }
+
  #login-button {
   grid-area: login;
-  align-self: center;
   margin: 20px;
+  align-self: center;
+  display: flex;
+  align-items: center;
 }
 #signup-button {
   grid-area: signup;
   align-self: center;
-  
+  display: flex;
+  align-items: center;
 } 
 
 #profile-button {
   width: 50px;
   height: 50px;
-  justify-self: center;
-  align-self: center;
   margin: 30px;
+  align-self: center;
   grid-area: profile-button;
 }
 
 #searchbar {
-  grid-area: search
+  grid-area: search;
+  height: 40px;
+  width: 100%;
+  border-radius: 1.7em;
+  background-color: rgb(240, 235, 235);
+  background-repeat: no-repeat;
+  align-self: center;
+
+  
 }
+
+.no-outline:focus {
+  outline: none;
+}
+
+/* #nav-container {
+  background-color: lightblue;
+}  */
+

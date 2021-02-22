@@ -8,24 +8,57 @@ const Navigation = ({ isLoaded, navId }) => {
   const sessionUser = useSelector((state) => state.session.user);
 
   let sessionLinks;
+  let subLinks = (
+    <>
+      <NavLink className="sub-link" id="sublink-1" to="/test">
+        Something
+      </NavLink>
+      <NavLink className="sub-link" id="sublink-2" to="/test">
+        Something
+      </NavLink>
+      <NavLink className="sub-link" id="sublink-3" to="/test">
+        Something
+      </NavLink>
+      <NavLink className="sub-link" id="sublink-4" to="/test">
+        Something
+      </NavLink>
+      <NavLink className="sub-link" id="sublink-5" to="/test">
+        Something
+      </NavLink>
+      <NavLink className="sub-link" id="sublink-6" to="/test">
+        Something
+      </NavLink>
+    </>
+  );
 
   if (sessionUser) {
     sessionLinks = (
       <>
         <ProfileButton user={sessionUser} />
-        <input id="searchbar" type="text" placeholder="Search.."/>
+        <input
+          id="searchbar"
+          className="no-outline"
+          type="text"
+          placeholder="Search..."
+        />
         <NavLink className="nav-link" id="home-link" exact to="/">
           Home
         </NavLink>
       </>
-    )
+    );
+   
   } else {
     sessionLinks = (
       <>
         <NavLink className="nav-link" id="home-link" exact to="/">
           Home
         </NavLink>
-        <input id="searchbar" type="text" placeholder="Search.."/>
+        <input
+          id="searchbar"
+          className="no-outline"
+          type="text"
+          placeholder="Search..."
+        />
         <NavLink className="nav-link" id="login-button" to="/login">
           Log In
         </NavLink>
@@ -33,10 +66,17 @@ const Navigation = ({ isLoaded, navId }) => {
           Sign Up
         </NavLink>
       </>
-    )
+    );
   }
 
-  return <nav id={navId}>{isLoaded && sessionLinks}</nav>;
+  return (
+    <div id="nav-container">
+      <nav id={navId}>{isLoaded && sessionLinks}</nav>
+      <div id="sub-nav-container">
+        <nav id="sub-nav">{subLinks}</nav>
+      </div>
+    </div>
+  );
 };
 
 export default Navigation;

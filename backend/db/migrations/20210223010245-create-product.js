@@ -13,27 +13,40 @@ module.exports = {
         allowNull: false
       },
       description: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
+        allowNull: false
       },
       price: {
-        type: Sequelize.NUMERIC(8, 2)
+        type: Sequelize.NUMERIC(8, 2),
+        allowNull: false
+      },
+      year: {
+        type: Sequelize.INTEGER,
+      },
+      color: {
+        type: Sequelize.STRING,
       },
       amount: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false
       },
       available: {
         type: Sequelize.BOOLEAN,
-        defaultValue: false
+        defaultValue: false,
+        allowNull: false
       },
       img: {
-        type: Sequelize.STRING(400)
+        type: Sequelize.STRING(400),
+        allowNull: false
       },
       categoryId: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: { model: "Categories"}
       },
       shopId: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: { model: "Shops" }
 
       },

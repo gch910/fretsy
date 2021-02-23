@@ -5,6 +5,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Shop.associate = function(models) {
     // associations can be defined here
+    Shop.hasMany(models.Product, { foreignKey: "shopId"})
   };
   return Shop;
 };

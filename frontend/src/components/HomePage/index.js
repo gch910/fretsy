@@ -12,12 +12,12 @@ const HomePage = () => {
     <>
       <div className="banner-1">
         <div className="banner1-img-div">
-          {/* <Link to={`/categories/${id}`}> */}
+          <Link to={`/categories/1`}>
             <img
               className="banner1-img"
               src="https://images.reverb.com/image/upload/s--ji_-4M-n--/f_auto,t_supersize/v1552861911/jwvuegzmrim71w639rol.jpg"
             ></img>
-          {/* </Link> */}
+          </Link>
         </div>
         <div className="banner1-img-div" id="banner1-img2">
           <img

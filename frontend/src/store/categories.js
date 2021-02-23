@@ -5,16 +5,16 @@ const SET_PRODUCTS = "/category/setCategory";
 const setProducts = (products) => {
   return {
     type: SET_PRODUCTS,
-    payload: category,
+    payload: products,
   };
 };
 
-export const category = (category) => async (dispatch) => {
-    const res = await csrfFetch(`/api/categories/`);
+export const products = (categoryId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/categories/${categoryId}`);
 
     const data = await res.json();
 
-    // dispatch(setCategory(data.products))
+    dispatch(setCategory(data.products))
     return res;
 }
 

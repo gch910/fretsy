@@ -7,20 +7,16 @@ const { Product } = require('../../db/models');
 const asyncHandler = require("express-async-handler");
 
 router.get('/:categoryId', asyncHandler(async(req, res) => {
-    // const parsedId = parseInt(req.params.categoryId);
-    // const category = await Category.findOne({
-    //     where: {
-    //         name: 
-    //     }
-    // });
+    const parsedId = parseInt(req.params.categoryId);
+    // const category = await Category.findByPk(parsedId);
 
-    // const products = await Product.findAll({ where: {
-       
-    // }})
+    const products = await Product.findAll({ where: {
+       categoryId: parsedId
+    }})
 
    
-    // products.forEach(product => console.log(product.name))
-    // res.json({ products })
+    products.forEach(product => console.log(product.name))
+    res.json({ products })
 }));
 
 module.exports = router;

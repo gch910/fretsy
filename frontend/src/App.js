@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
-import SignUpFormPage from "./components/SignupFormPage";
+// import SignupFormPage from "./components/SignupFormPage";
 import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
+import CategoryItems from "./components/CategoryItems";
 
 import * as sessionActions from "./store/session";
 
@@ -25,25 +26,29 @@ const App = () => {
   } else {
     navId = "logged-out-nav";
   }
-  console.log(sessionUser);
 
   return (
     <>
       <Navigation navId={navId} isLoaded={isLoaded} />
       {isLoaded && (
-        <div id="app-grid">
-          <Switch>
-            <Route exact path="/">
-              <HomePage />
-            </Route>
-            <Route path="/login">
-              <LoginFormPage />
-            </Route>
-            <Route path="/signup">
-              <SignUpFormPage />
-            </Route>
-          </Switch>
-        </div>
+        <>
+          <div id="app-grid">
+            <Switch>
+              <Route exact path="/">
+                <HomePage />
+              </Route>
+              <Route path="/login">
+                <LoginFormPage />
+              </Route>
+              {/* <Route path="/signup">
+              <SignupFormPage />
+            </Route> */}
+              <Route path="/categories/:id">
+                <CategoryItems />
+              </Route>
+            </Switch>
+          </div>
+        </>
       )}
     </>
   );

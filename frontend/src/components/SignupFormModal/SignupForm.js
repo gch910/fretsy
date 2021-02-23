@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { signup } from "../../store/session";
-import "../SignupFormPage/SignupForm.css"
+import "./SignupForm.css";
 
 
 
@@ -40,16 +40,16 @@ const SignupForm = () => {
     };
   
     return (
-      <form className="signup-page banner-1" onSubmit={handleSubmit}>
+      <form className="signup-page" onSubmit={handleSubmit}>
         <ul className="form-errors">
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
-          <h1 id="form-h1">Sign Up</h1>
+          <h1 id="signup-form-h1">Sign Up</h1>
           <input
             className="form-input no-outline"
-            id="form-email"
+            id="signup-form-email"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -58,7 +58,7 @@ const SignupForm = () => {
           />
             <input
               className="form-input no-outline"
-              id="form-username"
+              id="signup-form-username"
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
@@ -67,7 +67,7 @@ const SignupForm = () => {
             />
             <input
               className="form-input no-outline"
-              id="form-password"
+              id="signup-form-password"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -76,7 +76,7 @@ const SignupForm = () => {
             />
             <input
               className="form-input no-outline"
-              id="form-confirm-password"
+              id="signup-form-confirm-password"
               type="password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}

@@ -15,10 +15,10 @@
     align-items: stretch;
 } */
 
-.banner-1 {
+/* .banner-1 {
     grid-area: banner;
     background-color: #d0f3f0;
-}
+} */
 
 .signup-page {
     display: grid;
@@ -31,8 +31,9 @@
     ". password password ."
     ". confirm confirm ."
     ". button button ."; 
+    background-color: #DDEBE3;
 }
-.banner-2 {
+/* .banner-2 {
     grid-area: banner2;
    
    
@@ -72,20 +73,20 @@
     background-color: rgb(230, 177, 171);
 
    
-}
+} */
 
 .no-outline:focus {
     outline: none;
   }
 
-#form-h1 {
+#signup-form-h1 {
     grid-area: h1;
     display: flex;
     justify-content: center;
 
 }
 
-#form-email {
+#signup-form-email {
     grid-area: email;
     height: 50px;
     border-radius: 1.5em;
@@ -93,7 +94,7 @@
     background-repeat: no-repeat;
 
 }
-#form-username {
+#signup-form-username {
     grid-area: username;
     height: 50px;
     border-radius: 1.5em;
@@ -102,7 +103,7 @@
 
 }
 
-#form-password {
+#signup-form-password {
     grid-area: password;
     height: 50px;
     border-radius: 1.5em;
@@ -110,7 +111,7 @@
     background-repeat: no-repeat;
 }
     
-#form-confirm-password {
+#signup-form-confirm-password {
     grid-area: confirm;
     height: 50px;
     border-radius: 1.5em;

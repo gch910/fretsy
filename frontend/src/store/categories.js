@@ -1,36 +1,38 @@
 import { csrfFetch } from "./csrf";
 
-const SET_PRODUCTS = "/category/setCategory";
+const SET_CATEGORIES = "/category/setCategories";
 
-const setProducts = (products) => {
+const setCategories = (categories) => {
   return {
-    type: SET_PRODUCTS,
-    payload: products,
+    type: SET_CATEGORIES,
+    payload: categories,
   };
 };
 
-export const products = (categoryId) => async (dispatch) => {
-    const res = await csrfFetch(`/api/categories/${categoryId}`);
+export const categories = () => async (dispatch) => {
+    const res = await csrfFetch(`/api/categories`);
 
     const data = await res.json();
-
-    dispatch(setCategory(data.products))
+    // console.log("data:", data);
+    dispatch(setCategories(data.categories));
     return res;
 }
 
 const initialState = {
-  products: null,
-  category: null,
+  categories: null,
 };
 
-const productsReducer = (state = initialState, action) => {
+const categoriesReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {
-    case SET_PRODUCTS: {
+    case SET_CATEGORIES: {
       newState = {};
-      action.payload.forEach(product => {
-          newState[product.id] = product
+      action.payload.forEach(category => {
+          newState[category.id] = category 
       })
+    // newState = Object.assign({}, state);
+    // newState.categories = action.payload;
+      
       return newState;
     }
     default:
@@ -38,4 +40,4 @@ const productsReducer = (state = initialState, action) => {
   }
 };
 
-export default productsReducer;
+export default categoriesReducer;

@@ -18,13 +18,10 @@
     grid-area: banner;
     background-color: #DDEBE3;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    /* grid-template-rows: 5fr 1fr; */
     grid-template-areas: 
-    ". . h1 h1 . ."
-    "banner-img banner-img2 credential credential . ."
-    "banner-img banner-img2 password password . ."
-    "text1 text2 button button . .";
+    "banner-img0 banner-img1 banner-img2 banner-img3";
    
 }
 .banner-2 {
@@ -91,9 +88,21 @@
     
 }
 
-#banner1-img2 {
-    grid-area: banner-img2;
+#banner1-img0 {
+    grid-area: banner-img0;
+}
+
+#banner1-img1 {
+    grid-area: banner-img1;
     
+}
+
+#banner1-img2 {
+    grid-area: banner-img2
+}
+
+#banner1-img3 {
+    grid-area: banner-img3;
 }
 
 
@@ -101,13 +110,12 @@
     display: flex;
     justify-content: center;
     margin-top: 0px;
-    
 }
 
 #banner-text-1 {
     grid-area: text1;
-
 }
+
 #banner-text-2 {
     grid-area: text2;
 

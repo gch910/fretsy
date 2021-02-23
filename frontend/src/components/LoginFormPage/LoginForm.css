@@ -47,6 +47,20 @@
     align-items: stretch;
 } */
 
+.login-page-banner-1 {
+    grid-area: banner;
+    background-color: #DDEBE3;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+    ". . h1 h1 . ."
+    "banner-img banner-img2 credential credential . ."
+    "banner-img banner-img2 password password . ."
+    "text1 text2 button button . .";
+   
+}
+
 .banner-1 {
     grid-area: banner;
     background-color: #DDEBE3;

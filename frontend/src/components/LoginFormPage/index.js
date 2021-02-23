@@ -41,6 +41,10 @@ const LoginFormPage = () => {
             <li key={idx}>{error}</li>
           ))}
         </ul>
+        <div className="banner1-img-div"><img className="banner1-img" src="https://images.reverb.com/image/upload/s--ji_-4M-n--/f_auto,t_supersize/v1552861911/jwvuegzmrim71w639rol.jpg"></img></div>
+        <div className="banner-img-text" id="banner-text-1">Hello</div>
+        <div className="banner1-img-div" id="banner1-img2"><img className="banner1-img" src="https://images.reverb.com/image/upload/s--ji_-4M-n--/f_auto,t_supersize/v1552861911/jwvuegzmrim71w639rol.jpg"></img></div>
+        <div className="banner-img-text" id="banner-text-2">Goodbye</div>
         <h1 id="form-h1">Log In</h1>
         <input
           className="form-input no-outline"

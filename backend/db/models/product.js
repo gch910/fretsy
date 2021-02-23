@@ -21,6 +21,9 @@ module.exports = (sequelize, DataTypes) => {
       color: {
         type: DataTypes.STRING,
       },
+      model: {
+        type: DataTypes.STRING,
+      },
       amount: {
         type: DataTypes.INTEGER,
         validate: {

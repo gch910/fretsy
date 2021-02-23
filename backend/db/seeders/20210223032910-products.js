@@ -11,6 +11,7 @@ module.exports = {
           price: 40000.00,
           year: 1965,
           color: "black",
+          model: "WGL84809",
           amount: 1,
           available: true,
           img: "https://cdn.shopify.com/s/files/1/0255/8659/7968/products/JH-364.jpg?v=1594261163",
@@ -29,18 +30,40 @@ module.exports = {
           categoryId: 1,
           shopId: 2,
         },
+        {
+          name: "Martin Acoustic OMC-28E",
+          description: "The Martin Standard Series OMC-28E Orchestra Model Acoustic-Electric Guitar blends model-specific sound images using a Martin Gold Plus under-the-saddle transducer to achieve optimum acoustic reproduction. The OM-28 was the first guitar Martin offered with a 14-fret neck. Produced from 1929-1933, the OM-28 is widely considered the original modern flat top steel-string guitar. Differing only in body size from the Martin DC-28E, this Standard Series OMC-28E Orchestra Model is equipped with a cutaway and factory installed Aura VT Enhance electronics. Includes hardshell case.",
+          price: 2499.99,
+          year: 2018,
+          color: "wood",
+          model: "OMC-28E",
+          amount: 1,
+          available: true,
+          img: "https://images.reverb.com/image/upload/s--ji_-4M-n--/f_auto,t_supersize/v1552861911/jwvuegzmrim71w639rol.jpg",
+          categoryId: 2,
+          shopId: 7,
+        },
+        {
+          name: "D'Angelico NYL-5 2003 Honey",
+          description: "This 2003 D'Angelico NYL-5 is a stellar instrument.  It is flawless from tip to tale. Played in home environment only.  Always treated with TLC.  It plays, feels, and sounds so jazzy sweet.  German spruce top, maple backs and sides, Kent Armstrong Floating Mini Humbucker, 10 radius neck, 17 lower bout",
+          price: 2500.00,
+          year: 2003,
+          color: "honey",
+          model: "NYL-5",
+          amount: 1,
+          available: true,
+          img: "https://images.reverb.com/image/upload/s--9-1yed6E--/f_auto,t_supersize/v1613703718/keful7cupjajw9vmkfpg.jpg",
+          categoryId: 3,
+          shopId: 3,
+        },
       ],
       {}
     );
   },
 
   down: (queryInterface, Sequelize) => {
-    /*
-      Add reverting commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
-      return queryInterface.bulkDelete('People', null, {});
-    */
+    
+      return queryInterface.bulkDelete('Products', null, {});
+  
   },
 };

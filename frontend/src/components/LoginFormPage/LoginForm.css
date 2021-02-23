@@ -96,14 +96,59 @@
 
 .login-page {
     display: grid;
-    grid-template-columns: 3fr 1fr 1fr 3fr;
+    grid-template-columns: 1.5fr 1.5fr 1fr 1fr 1.5fr 1.5fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
     grid-template-areas: 
-    ". h1 h1 ."
-    ". credential credential ."
-    ". password password ."
-    ". button button .";
+    ". . h1 h1 . ."
+    "banner-img banner-img2 credential credential . ."
+    "banner-img banner-img2 password password . ."
+    "text1 text2 button button . .";
 }
+
+.banner1-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 7em;
+    display: block;
+    
+}
+
+.banner1-img-div {
+    grid-area: banner-img;
+     /* width: 350px; */
+     /* height: 500px;  */
+    /* height: 300px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1.5em;
+    /* margin-right: 50px; */
+    text-align: center;
+    
+}
+
+#banner1-img2 {
+    grid-area: banner-img2;
+    
+}
+
+
+.banner-img-text {
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;
+    
+}
+
+#banner-text-1 {
+    grid-area: text1;
+
+}
+#banner-text-2 {
+    grid-area: text2;
+
+}
+
 
 .no-outline:focus {
     outline: none;

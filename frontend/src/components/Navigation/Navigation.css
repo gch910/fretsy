@@ -99,6 +99,7 @@
   display: flex;
   text-align: center;
   align-items: center;
+  margin-left: 30px;
 } 
 
 #profile-button {
@@ -110,6 +111,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }
 
 #searchbar {
@@ -143,6 +145,7 @@
   border: 1px solid #333333;
   border-radius: 0.5em;
   margin-top: 20px;
+  list-style: none;
 }
 
 
@@ -154,8 +157,8 @@
 }
 
 .profile-li {
-  position: relative;
-  left: 150px;
+  display: flex;
+  padding: 20px;
 }
 
 .profile-dropdown li:hover {
@@ -187,6 +190,8 @@ i {
   /* position: absolute;
   right: 200px;
   top: 10px; */
+  /* background-color: blue; */
+  margin-top: 10em;
   width: 1000px;
   height: 300px;
   border: none;

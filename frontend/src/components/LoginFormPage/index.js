@@ -61,10 +61,10 @@ const LoginFormPage = () => {
           required
         />
         <div className="form-button-div">
-          <button id="login-submit-button" type="submit">
+          <button className="no-outline" id="login-submit-button" type="submit">
             Log in
           </button>
-          <button id="demo-button" type="button" onClick={handleDemoSubmit}>
+          <button className="no-outline" id="demo-button" type="button" onClick={handleDemoSubmit}>
             Demo
           </button>
         </div>

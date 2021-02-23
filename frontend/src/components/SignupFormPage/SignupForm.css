@@ -26,8 +26,8 @@
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-areas: 
     ". h1 h1 ."
-    ". email email ."
     ". username username ."
+    ". email email ."
     ". password password ."
     ". confirm confirm ."
     ". button button ."; 
@@ -118,7 +118,6 @@
     background-repeat: no-repeat;
     
 }
-
 
 
 #signup-submit-button {

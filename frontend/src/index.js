@@ -4,9 +4,10 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./App";
+import { ModalProvider } from "./context/Modal";
 
-import * as sessionActions from './store/session'
-import { restoreCSRF, csrfFetch } from './store/csrf';
+import * as sessionActions from "./store/session";
+import { restoreCSRF, csrfFetch } from "./store/csrf";
 import configureStore from "./store";
 
 const store = configureStore();
@@ -22,9 +23,11 @@ if (process.env.NODE_ENV !== "production") {
 function Root() {
   return (
     <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <ModalProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ModalProvider>
     </Provider>
   );
 }

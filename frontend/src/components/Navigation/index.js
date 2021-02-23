@@ -2,7 +2,8 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
-// import './Navigation.css';
+import SignupFormModal from '../SignupFormModal'; //modal
+import './Navigation.css';
 
 const Navigation = ({ isLoaded, navId }) => {
   const sessionUser = useSelector((state) => state.session.user);
@@ -59,12 +60,14 @@ const Navigation = ({ isLoaded, navId }) => {
           type="text"
           placeholder="Search..."
         />
-        <NavLink className="nav-link" id="login-button" to="/login">
+        {/* <NavLink className="nav-link" id="login-button" to="/login">
           Log In
-        </NavLink>
-        <NavLink className="nav-link" id="signup-button" to="/signup">
+        </NavLink> */}
+        {/* <NavLink className="nav-link" id="signup-button" to="/signup">
           Sign Up
-        </NavLink>
+        </NavLink> */}
+        <SignupFormModal />
+        {/* <NavLink to="/signup">Sign Up</NavLink> */}
       </>
     );
   }

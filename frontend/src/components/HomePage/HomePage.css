@@ -16,7 +16,7 @@
 
 .banner-1 {
     grid-area: banner;
-    background-color: #d0f3f0;
+    background-color: #DDEBE3;
    
 }
 .banner-2 {
@@ -36,7 +36,7 @@
 }
 .banner-5 {
     grid-area: banner5;
-    background-color: #d0f3f0;
+    background-color: #DDEBE3;
    
 }
 .banner-6 {
@@ -56,7 +56,7 @@
 }
 .banner-9 {
     grid-area: banner9;
-    background-color: rgb(230, 177, 171);
+    background-color: #FAA077
 
    
 }

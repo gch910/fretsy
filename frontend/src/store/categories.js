@@ -1,6 +1,6 @@
 import { csrfFetch } from "./csrf";
 
-const SET_CATEGORIES = "/category/setCategories";
+const SET_CATEGORIES = "/categories/setCategories";
 
 const setCategories = (categories) => {
   return {

@@ -55,9 +55,11 @@ const HomePage = () => {
                 <img className="banner1-img" src={category.img}></img>
               </Link>
             </div>
-            <h3 className="banner-img-text" id={`banner-text-${idx}`}>
-              {category.name}
-            </h3>
+            <Link className="banner-img-text" id={`banner-text-${idx}`} to={`/categories/${category.id}`}>
+              <h3 >
+                {category.name}
+              </h3>
+            </Link>
           </div>
         ))}
       </div>

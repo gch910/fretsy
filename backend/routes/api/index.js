@@ -3,7 +3,8 @@ const asyncHandler = require("express-async-handler");
 
 const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
-const categoryRouter = require('./categories.js')
+const categoriesRouter = require('./categories.js')
+const productsRouter = require('./products.js')
 
 const { setTokenCookie } = require("../../utils/auth.js");
 const { User } = require("../../db/models");
@@ -14,7 +15,9 @@ router.use('/session', sessionRouter);
 
 router.use('/users', usersRouter);
 
-router.use('/categories', categoryRouter);
+router.use('/categories', categoriesRouter);
+
+router.use('/products', productsRouter);
 
 //test
 // router.get(

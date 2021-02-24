@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { categories } from "../../store/categories";
+import { getProductsByCategory } from "../../store/products";
 import { Redirect, Link, useParams } from "react-router-dom";
 import "./HomePage.css";
 import LoginFormPage from "../LoginFormPage";
@@ -11,25 +12,26 @@ const HomePage = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const categoryObject = useSelector((state) => state.categories);
+  const productsByCategory = useSelector((state) => state.products);
 
   let categoryValues = Object.values(categoryObject);
 
-  console.log("string 1", categoryValues);
+  let random = Math.floor(Math.random() * categoryValues.length);
+  const randomIndex = Math.floor(Math.random() * categoryValues.length);
 
-  let random = Math.floor(Math.random() * categoryValues.length)
- 
-
-  // const difference = random 
+  // const difference = random
 
   if (categoryValues.length > 3) {
     if (random >= categoryValues.length - 3) {
-      random -= 3
+      random -= 3;
     }
 
-    categoryValues = categoryValues.slice(random, (random + 4));
+    categoryValues = categoryValues.slice(random, random + 4);
   }
 
-  console.log(categoryValues);
+  // console.log(categoryValues);
+
+  const randomCategory = categoryValues[randomIndex];
 
   // const categoryList = [];
 
@@ -38,9 +40,10 @@ const HomePage = () => {
 
   //   categoryList.push(val)
   // }
-
+  console.log(productsByCategory);
   useEffect(() => {
     dispatch(categories());
+    dispatch(getProductsByCategory(1));
   }, [dispatch]);
 
   if (!sessionUser) return <Redirect to="/login" />;
@@ -55,10 +58,12 @@ const HomePage = () => {
                 <img className="banner1-img" src={category.img}></img>
               </Link>
             </div>
-            <Link className="banner-img-text" id={`banner-text-${idx}`} to={`/categories/${category.id}`}>
-              <h3 >
-                {category.name}
-              </h3>
+            <Link
+              className="banner-img-text"
+              id={`banner-text-${idx}`}
+              to={`/categories/${category.id}`}
+            >
+              <h3>{category.name}</h3>
             </Link>
           </div>
         ))}
@@ -74,11 +79,15 @@ const HomePage = () => {
           Goodbye
         </h3>
       </div> */}
-      <div className="banner-2">
-        <h1>2</h1>
-      </div>
+      <div className="banner-2"><h1>Hello</h1></div>
       <div className="banner-3">
-        <h1>3</h1>
+        {productsByCategory.map((product, idx) => (
+          <div className="banner3-img-div" id={`banner3-img${idx}`}>
+            <Link to={`/products/${product.id}`}>
+              <img className="banner3-img" src={product.img}></img>
+            </Link>
+          </div>
+        ))}
       </div>
       <div className="banner-4">
         <h1>4</h1>

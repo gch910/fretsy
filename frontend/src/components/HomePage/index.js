@@ -93,7 +93,7 @@ const HomePage = () => {
         <h1>Check out some items from our {thisShoulNotChange}</h1>
       </div>
       <div className="banner-3">
-        {productsByCategory.map((product, idx) => (
+        {Array.isArray(productsByCategory)?productsByCategory.map((product, idx) => (
           <div className="banner3-img-div" id={`banner3-img${idx}`}>
             <Link to={`/products/${product.id}`}>
               <img className="banner3-img" src={product.img}></img>
@@ -106,7 +106,7 @@ const HomePage = () => {
               <h3>{product.name}</h3>
             </Link>
           </div>
-        ))}
+        )): null}
       </div>
       <div className="banner-4">
         <h1>4</h1>

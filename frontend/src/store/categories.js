@@ -1,6 +1,7 @@
 import { csrfFetch } from "./csrf";
 
 const SET_CATEGORIES = "/categories/setCategories";
+const RANDOM_CATEGORY = "categories/randomCategory"
 
 const setCategories = (categories) => {
   return {
@@ -8,6 +9,13 @@ const setCategories = (categories) => {
     payload: categories,
   };
 };
+
+//  const randomCategory = () => {
+//    return {
+//      type: RANDOM_CATEGORY,
+     
+//    }
+//  }
 
 export const categories = () => async (dispatch) => {
     const res = await csrfFetch(`/api/categories`);
@@ -17,6 +25,8 @@ export const categories = () => async (dispatch) => {
     dispatch(setCategories(data.categories));
     return res;
 }
+
+
 
 const initialState = {};
 

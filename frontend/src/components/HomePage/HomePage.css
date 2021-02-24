@@ -1,7 +1,7 @@
-#app-grid {
+#home-page-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 380px 150px 259px 259px 400px 650px 550px 300px 700px;
+    grid-template-rows: 380px 100px 350px 259px 400px 650px 550px 300px 700px;
     grid-template-areas: 
     "banner banner banner banner banner"
     "banner2 banner2 banner2 banner2 banner2"
@@ -102,16 +102,18 @@
     text-align: center;  
 }
 .banner3-img-div {
-    grid-area: banner-img;
-     /* width: 350px; */
-     /* height: 500px;  */
+     width: 350px;
+     height: 300px; 
     /* height: 300px; */
+    align-self: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 1.5em;
+    border: 1px solid gray;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
     /* margin-right: 50px; */
+    margin-left: 10px;
     text-align: center;  
 }
 

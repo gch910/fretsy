@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getProduct } from "../../store/products";
 import  ProductImage  from "./ProductImage";
+import ProductDescription from "./ProductDescription";
 import "./Product.css";
 
 
@@ -11,15 +12,16 @@ const Product = () => {
 
   const dispatch = useDispatch();
   const product = useSelector((state) => state.products);
-  console.log(product.name);
+//   console.log(product.name);
 
   useEffect(() => {
     dispatch(getProduct(productId));
   }, [dispatch]);
 
   return (
-    <div>
+    <div id="product-grid">
       <ProductImage product={product}/>
+      <ProductDescription product={product}/>
     </div>
   );
 };

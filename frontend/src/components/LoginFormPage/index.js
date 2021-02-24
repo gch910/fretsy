@@ -34,7 +34,7 @@ const LoginFormPage = () => {
   };
 
   return (
-    <>
+    <div id="login-page-grid">
       <form className="login-page-banner-1" onSubmit={handleSubmit}>
         <ul className="form-errors">
           {errors.map((error, idx) => (
@@ -97,7 +97,7 @@ const LoginFormPage = () => {
       <div className="banner-9">
         <h1>9</h1>
       </div>
-    </>
+    </div>
   );
 };
 

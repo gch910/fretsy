@@ -33,7 +33,7 @@ const App = () => {
       <Navigation navId={navId} isLoaded={isLoaded} />
       {isLoaded && (
         <>
-          <div id="app-grid">
+          {/* <div id="app-grid"> */}
             <Switch>
               <Route exact path="/">
                 <HomePage />
@@ -51,7 +51,7 @@ const App = () => {
                 <Product />
               </Route>
             </Switch>
-          </div>
+          {/* </div> */}
         </>
       )}
     </>

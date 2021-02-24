@@ -3,6 +3,7 @@ import { csrfFetch } from "./csrf";
 const SET_PRODUCTS = "/products/setProducts";
 const PRODUCTS_CATEGORY = "/products/productsCategory"
 const SET_PRODUCT = "/products/setProduct"
+const PRODUCT_SHOP = "/products/productShop"
 
 const setProducts = (products) => {
   return {
@@ -18,19 +19,28 @@ const setProduct = (product) => {
   }
 }
 
-export const productsByCategory = (products) => {
+ const productsByCategory = (products, categoryName) => {
   return {
     type: PRODUCTS_CATEGORY,
     payload: products,
   };
 };
 
+// const productShop = (shop) => {
+//   return {
+//     type: PRODUCT_SHOP,
+//     payload: shop,
+//   }
+// }
+
+
+
 export const getProductsByCategory = (categoryId) => async (dispatch) => {
   const res = await csrfFetch(`/api/products/categories/${categoryId}`)
 
   const data = await res.json();
 
-  dispatch(productsByCategory(data.productsByCategory))
+  dispatch(productsByCategory(data.productsByCategory, data.categoryName))
   return data;
 }
 
@@ -38,10 +48,19 @@ export const getProduct = (productId) => async (dispatch) => {
   const res = await csrfFetch(`/api/products/${productId}`);
 
   const data = await res.json();
-  console.log("this is the data", data)
+ 
 
   dispatch(setProduct(data.product));
   return data;
+}
+
+export const getProductShop = (shopId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/products/shops/${shopId}`)
+
+    const data = await res.json();
+    console.log("this is the data", data)
+
+    dispatch()
 }
 
 // export const products = () => async (dispatch) => {
@@ -53,7 +72,7 @@ export const getProduct = (productId) => async (dispatch) => {
 //     return res;
 // }
 
-const initialState = [];
+const initialState = []
 
 const productsReducer = (state = initialState, action) => {
   let newState;
@@ -67,11 +86,14 @@ const productsReducer = (state = initialState, action) => {
     //   return newState;
     // }
     case PRODUCTS_CATEGORY: {
-      newState = [...action.payload];
+      newState = {};
+      action.payload.forEach(product => {
+        newState[product.id] = product
+    })
       return newState
     }
     case SET_PRODUCT: {
-      newState = action.payload
+      newState = [{...action.payload}]
       return newState;
     }
     default:

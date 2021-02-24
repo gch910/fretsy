@@ -30,10 +30,10 @@
     display: block;
 } */
 
-/* #app-grid {
+#login-page-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 300px 200px 259px 259px 400px 650px 550px 300px 700px;
+    grid-template-rows: 380px 150px 259px 259px 400px 650px 550px 300px 700px;
     grid-template-areas: 
     "banner banner banner banner banner"
     "banner2 banner2 banner2 banner2 banner2"
@@ -43,9 +43,8 @@
     "banner6 banner6 banner6 banner6 banner6"
     "banner7 banner7 banner7 banner7 banner7"
     "banner8 banner8 banner8 banner8 banner8"
-    "banner9 banner9 banner9 banner9 banner9";
-    align-items: stretch;
-} */
+    "banner9 banner9 banner9 banner9 banner9"
+}
 
 .login-page-banner-1 {
     grid-area: banner;

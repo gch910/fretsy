@@ -6,6 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
 import CategoryItems from "./components/CategoryItems";
+import Product from "./components/Product";
 
 import * as sessionActions from "./store/session";
 
@@ -45,6 +46,9 @@ const App = () => {
             </Route> */}
               <Route path="/categories/:id">
                 <CategoryItems />
+              </Route>
+              <Route path="/products/:productId">
+                <Product />
               </Route>
             </Switch>
           </div>

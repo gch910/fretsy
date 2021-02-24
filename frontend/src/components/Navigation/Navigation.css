@@ -1,13 +1,18 @@
 #logged-in-nav {
     display: grid;
-    grid-template-columns: 2fr 0.1fr 6fr 0.1fr 2fr;
+    grid-template-columns: 2fr 0.1fr 6fr 0.5fr 0.5fr 2fr;
     grid-template-rows: 55px;
     /* background-color: lightblue; */
     grid-template-areas: 
-    ". home search profile-button .";
+    ". home search profile-button cart-button .";
     align-items: stretch;
     margin-top: 5px;
     
+}
+
+#cart-button {
+  grid-area: cart-button;
+  align-self: center;
 }
 
 #logged-out-nav {
@@ -122,7 +127,8 @@
 #profile-button {
   width: 50px;
   height: 50px;
-  margin: 45px;
+  margin-left: 45px;
+  margin-right: 30px;
   align-self: center;
   grid-area: profile-button;
   display: flex;

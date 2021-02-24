@@ -17,21 +17,31 @@ const HomePage = () => {
   let categoryValues = Object.values(categoryObject);
 
   let random = Math.floor(Math.random() * categoryValues.length);
-  const randomIndex = Math.floor(Math.random() * categoryValues.length);
 
   // const difference = random
 
-  if (categoryValues.length > 3) {
-    if (random >= categoryValues.length - 3) {
-      random -= 3;
+  // const productCategory = productsByCategory[0].categoryId;
+  // const currentCategory = productCategory
+
+  if (categoryValues.length > 4) {
+    if (random >= categoryValues.length - 4) {
+      random -= 4;
     }
 
-    categoryValues = categoryValues.slice(random, random + 4);
+    categoryValues = categoryValues.slice(random, random + 5);
   }
 
-  // console.log(categoryValues);
+  
 
-  const randomCategory = categoryValues[randomIndex];
+  const randomCategory = () => {
+    const number = Math.floor(Math.random() * 4);
+    return number
+  } 
+  const thisShoulNotChange = randomCategory();
+  console.log(thisShoulNotChange);
+
+
+  // const randomCategory = categoryValues[randomIndex];
 
   // const categoryList = [];
 
@@ -40,10 +50,10 @@ const HomePage = () => {
 
   //   categoryList.push(val)
   // }
-  console.log(productsByCategory);
+  // console.log(productsByCategory);
   useEffect(() => {
     dispatch(categories());
-    dispatch(getProductsByCategory(1));
+    dispatch(getProductsByCategory(thisShoulNotChange));
   }, [dispatch]);
 
   if (!sessionUser) return <Redirect to="/login" />;
@@ -79,12 +89,21 @@ const HomePage = () => {
           Goodbye
         </h3>
       </div> */}
-      <div className="banner-2"><h1>Hello</h1></div>
+      <div className="banner-2">
+        <h1>Check out some items from our {thisShoulNotChange}</h1>
+      </div>
       <div className="banner-3">
         {productsByCategory.map((product, idx) => (
           <div className="banner3-img-div" id={`banner3-img${idx}`}>
             <Link to={`/products/${product.id}`}>
               <img className="banner3-img" src={product.img}></img>
+            </Link>
+            <Link
+              className="banner-img-text"
+              id={`banner-text-${idx}`}
+              to={`/products/${product.id}`}
+            >
+              <h3>{product.name}</h3>
             </Link>
           </div>
         ))}

@@ -1,0 +1,16 @@
+/* #app-grid {
+    display: grid;
+    grid-template-columns: 2fr 3fr 3fr;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    ". image .";
+} */
+
+#product-div {
+    grid-area: image;
+}
+
+#product-image {
+    width: 400px;
+    height: 500px;
+}

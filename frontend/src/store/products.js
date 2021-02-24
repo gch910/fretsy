@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const SET_PRODUCTS = "/products/setProducts";
 const PRODUCTS_CATEGORY = "/products/productsCategory"
+const SET_PRODUCT = "/products/setProduct"
 
 const setProducts = (products) => {
   return {
@@ -9,6 +10,14 @@ const setProducts = (products) => {
     payload: products,
   };
 };
+
+const setProduct = (product) => {
+  return {
+    type: SET_PRODUCT,
+    payload: product
+  }
+}
+
 export const productsByCategory = (products) => {
   return {
     type: PRODUCTS_CATEGORY,
@@ -22,6 +31,16 @@ export const getProductsByCategory = (categoryId) => async (dispatch) => {
   const data = await res.json();
 
   dispatch(productsByCategory(data.productsByCategory))
+  return data;
+}
+
+export const getProduct = (productId) => async (dispatch) => {
+  const res = await csrfFetch(`/api/products/${productId}`);
+
+  const data = await res.json();
+  console.log("this is the data", data)
+
+  dispatch(setProduct(data.product));
   return data;
 }
 
@@ -50,6 +69,10 @@ const productsReducer = (state = initialState, action) => {
     case PRODUCTS_CATEGORY: {
       newState = [...action.payload];
       return newState
+    }
+    case SET_PRODUCT: {
+      newState = action.payload
+      return newState;
     }
     default:
       return state;

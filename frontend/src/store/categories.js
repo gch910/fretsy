@@ -13,14 +13,12 @@ export const categories = () => async (dispatch) => {
     const res = await csrfFetch(`/api/categories`);
 
     const data = await res.json();
-    // console.log("data:", data);
+    console.log("data:", data);
     dispatch(setCategories(data.categories));
     return res;
 }
 
-const initialState = {
-  categories: null,
-};
+const initialState = {};
 
 const categoriesReducer = (state = initialState, action) => {
   let newState;

@@ -4,6 +4,7 @@ import { categories } from "../../store/categories";
 import { Redirect, Link, useParams } from "react-router-dom";
 import "./HomePage.css";
 import LoginFormPage from "../LoginFormPage";
+// import category from "../../backend/db/models/category";
 
 const HomePage = () => {
   // const id = useParams();
@@ -11,17 +12,32 @@ const HomePage = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const categoryObject = useSelector((state) => state.categories);
 
-  const categoryValues = Object.values(categoryObject)
+  let categoryValues = Object.values(categoryObject);
 
-  const categoryList = [];
+  console.log("string 1", categoryValues);
 
-  for(let i = 0; i < 4; i++) {
-    const val = categoryValues[i];
+  let random = Math.floor(Math.random() * categoryValues.length)
+ 
 
-    categoryList.push(val)
+  // const difference = random 
+
+  if (categoryValues.length > 3) {
+    if (random >= categoryValues.length - 3) {
+      random -= 3
+    }
+
+    categoryValues = categoryValues.slice(random, (random + 4));
   }
 
-  console.log(categoryList)
+  console.log(categoryValues);
+
+  // const categoryList = [];
+
+  // for(let i = 0; i < 4; i++) {
+  //   const val = categoryValues[i];
+
+  //   categoryList.push(val)
+  // }
 
   useEffect(() => {
     dispatch(categories());
@@ -32,20 +48,21 @@ const HomePage = () => {
   return (
     <>
       <div className="banner-1">
-        {categoryList?.map((category, idx) => (
+        {categoryValues.map((category, idx) => (
           <div className="banner1-img-div" id={`banner1-img${idx}`}>
-            <Link to={`/categories/${category.id}`}>
-              <img
-                className="banner1-img"
-                src="https://images.reverb.com/image/upload/s--ji_-4M-n--/f_auto,t_supersize/v1552861911/jwvuegzmrim71w639rol.jpg"
-              ></img>
-            </Link>
-            <h3 className="banner-img-text" id={`banner-text-${idx}`}>{category.name}</h3>
+            <div>
+              <Link to={`/categories/${category.id}`}>
+                <img className="banner1-img" src={category.img}></img>
+              </Link>
+            </div>
+            <h3 className="banner-img-text" id={`banner-text-${idx}`}>
+              {category.name}
+            </h3>
           </div>
         ))}
       </div>
 
-        {/* <div className="banner1-img-div" id="banner1-img2">
+      {/* <div className="banner1-img-div" id="banner1-img2">
           <img
             className="banner1-img"
             src="https://images.reverb.com/image/upload/s--ji_-4M-n--/f_auto,t_supersize/v1552861911/jwvuegzmrim71w639rol.jpg"

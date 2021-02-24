@@ -51,7 +51,7 @@
     grid-area: banner;
     background-color: #DDEBE3;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 0.5fr 0.5fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
     grid-template-areas: 
     ". . h1 h1 . ."

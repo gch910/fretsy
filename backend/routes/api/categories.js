@@ -12,7 +12,7 @@ router.get('/', asyncHandler(async(req, res) => {
 
     const categories = await Category.findAll();
 
-   
+   console.log(categories)
   
     res.json({ categories })
 }));

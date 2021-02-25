@@ -46,7 +46,7 @@ const Navigation = ({ isLoaded, navId }) => {
         <NavLink className="nav-link" id="home-link" exact to="/">
           Home
         </NavLink>
-        <NavLink to="/shopping-cart" id="cart-button">
+        <NavLink to={`/shopping-cart/${sessionUser.id}`} id="cart-button">
           <i class="fas fa-shopping-cart fa-3x"></i>
         </NavLink>
       </>

@@ -61,6 +61,7 @@ module.exports = (sequelize, DataTypes) => {
     Product.belongsTo(models.Shop, { foreignKey: "shopId"})
     Product.hasMany(models.Review, { foreignKey: "productId"})
     Product.belongsToMany(models.ShoppingCart, columnMapping)
+    Product.hasMany(models.CartItem, { foreignKey: "productId" })
   };
   return Product;
 };

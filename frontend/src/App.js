@@ -32,7 +32,7 @@ const App = () => {
 
   return (
     <>
-      <Navigation navId={navId} isLoaded={isLoaded} />
+      <Navigation navId={navId} isLoaded={isLoaded} sessionUser={sessionUser} />
       {isLoaded && (
         <>
           {/* <div id="app-grid"> */}

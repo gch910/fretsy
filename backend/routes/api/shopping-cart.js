@@ -24,9 +24,16 @@ router.post(
     // console.log("cartId", cartId)
     
 
-    const cartItem = await CartItem.create({ cartId: cart.id, productId })
-    console.log(cart, cartItem)
-    res.json({ cart, cartItem });
+    const newCartItem = await CartItem.create({ cartId: cart.id, productId })
+
+    const cartItems = await CartItem.findAll({
+      where: {
+        cartId: cart.id
+      }
+    })
+
+    console.log(cartItems)
+    res.json({ cart, cartItems });
   })
 );
 

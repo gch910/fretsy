@@ -20,7 +20,7 @@ export const addToCart = (userId, productId) => async (dispatch) => {
   const data = await res.json();
   console.log("data", data)
 
-  dispatch(cartAdd(data.cart, data.cartItem));
+  dispatch(cartAdd(data.cart, data.cartItems));
 };
 
 const initialState = {};
@@ -29,7 +29,7 @@ const cartsReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {
     case CART_ADD:
-      newState = {...state, ...action.payload}
+      newState = {...action.payload}
     //   action.payload.forEach((item) => {
     //     newState[item.id] = item;
     //   });

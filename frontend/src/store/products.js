@@ -12,10 +12,10 @@ const setProducts = (products) => {
   };
 };
 
-const setProduct = (product) => {
+const setProduct = (product, shop) => {
   return {
     type: SET_PRODUCT,
-    payload: product
+    payload: product,
   }
 }
 
@@ -26,12 +26,12 @@ const setProduct = (product) => {
   };
 };
 
-// const productShop = (shop) => {
-//   return {
-//     type: PRODUCT_SHOP,
-//     payload: shop,
-//   }
-// }
+const productShop = (shop) => {
+  return {
+    type: PRODUCT_SHOP,
+    payload: shop,
+  }
+}
 
 
 
@@ -46,6 +46,7 @@ export const getProductsByCategory = (categoryId) => async (dispatch) => {
 
 export const getProduct = (productId) => async (dispatch) => {
   const res = await csrfFetch(`/api/products/${productId}`);
+ 
 
   const data = await res.json();
  
@@ -55,12 +56,13 @@ export const getProduct = (productId) => async (dispatch) => {
 }
 
 export const getProductShop = (shopId) => async (dispatch) => {
-    const res = await csrfFetch(`/api/products/shops/${shopId}`)
+  const res = await csrfFetch(`/api/products/shops/${shopId}`)
 
     const data = await res.json();
     console.log("this is the data", data)
 
-    dispatch()
+    dispatch(productShop(data.shop))
+    return data;
 }
 
 // export const products = () => async (dispatch) => {
@@ -72,7 +74,7 @@ export const getProductShop = (shopId) => async (dispatch) => {
 //     return res;
 // }
 
-const initialState = []
+const initialState = {}
 
 const productsReducer = (state = initialState, action) => {
   let newState;
@@ -95,6 +97,9 @@ const productsReducer = (state = initialState, action) => {
     case SET_PRODUCT: {
       newState = [{...action.payload}]
       return newState;
+    }
+    case PRODUCT_SHOP: {
+      newState = [{...state}, ...action.payload]
     }
     default:
       return state;

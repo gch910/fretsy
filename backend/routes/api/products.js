@@ -43,6 +43,7 @@ router.get("/:productId", asyncHandler(async (req, res) => {
 
   const product = await Product.findByPk(productId);
 
+
   console.log(product)
 
   res.json({ product })

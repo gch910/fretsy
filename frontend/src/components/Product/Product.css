@@ -2,9 +2,11 @@
     margin-top: 50px;
     display: grid;
     grid-template-columns: 2fr 3fr 3fr;
-    grid-template-rows: auto;
+    grid-template-rows: 2fr 3fr;
     grid-template-areas: 
-    ". image description";
+    ". image description"
+    ". reviews .";
+
 }
 
 #product-div {

@@ -7,6 +7,7 @@ import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
 import CategoryItems from "./components/CategoryItems";
 import Product from "./components/Product";
+import ShoppingCart from "./components/ShoppingCart";
 
 import * as sessionActions from "./store/session";
 
@@ -16,6 +17,7 @@ const App = () => {
 
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+  
   }, [dispatch]);
 
   const sessionUser = useSelector((state) => state.session.user);
@@ -49,6 +51,9 @@ const App = () => {
               </Route>
               <Route path="/products/:productId">
                 <Product />
+              </Route>
+              <Route path="/shopping-cart/:userId">
+                <ShoppingCart sessionUser={sessionUser}/>
               </Route>
             </Switch>
           {/* </div> */}

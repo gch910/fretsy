@@ -15,7 +15,7 @@ const setProducts = (products) => {
 const setProduct = (product, shop) => {
   return {
     type: SET_PRODUCT,
-    payload: product,
+    payload: { product, shop }
   }
 }
 
@@ -26,12 +26,12 @@ const setProduct = (product, shop) => {
   };
 };
 
-const productShop = (shop) => {
-  return {
-    type: PRODUCT_SHOP,
-    payload: shop,
-  }
-}
+// const productShop = (shop) => {
+//   return {
+//     type: PRODUCT_SHOP,
+//     payload: shop,
+//   }
+// }
 
 
 
@@ -46,24 +46,25 @@ export const getProductsByCategory = (categoryId) => async (dispatch) => {
 
 export const getProduct = (productId) => async (dispatch) => {
   const res = await csrfFetch(`/api/products/${productId}`);
- 
+  
 
   const data = await res.json();
- 
+  
+  console.log("produict and shop data", data)
 
-  dispatch(setProduct(data.product));
+  dispatch(setProduct(data.product, data.shop));
   return data;
 }
 
-export const getProductShop = (shopId) => async (dispatch) => {
-  const res = await csrfFetch(`/api/products/shops/${shopId}`)
+// export const getProductShop = (shopId) => async (dispatch) => {
+//   const res = await csrfFetch(`/api/products/shops/${shopId}`)
 
-    const data = await res.json();
-    console.log("this is the data", data)
+//     const data = await res.json();
+//     console.log("this is the data", data)
 
-    dispatch(productShop(data.shop))
-    return data;
-}
+//     dispatch(productShop(data.shop))
+//     return data;
+// }
 
 // export const products = () => async (dispatch) => {
 //     const res = await csrfFetch(`/api/products`);

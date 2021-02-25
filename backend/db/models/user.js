@@ -104,7 +104,10 @@ module.exports = (sequelize, DataTypes) => {
     //   foreignKey: "userId"
     // };
 
-    // Product.belongsToMany(models.User, columnMapping)
+    // User.belongsToMany(models.Product, columnMapping2)
+    User.hasMany(models.Review, { foreignKey: "userId" })
+    User.hasOne(models.ShoppingCart, { foreignKey: "userId" })
+    
   };
   return User;
 };

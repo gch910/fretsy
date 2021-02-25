@@ -3,6 +3,7 @@ const router = express.Router();
 
 const { Category } = require("../../db/models");
 const { Product } = require("../../db/models");
+const { Shop } = require("../../db/models");
 
 
 const asyncHandler = require("express-async-handler");
@@ -47,7 +48,14 @@ router.get(
 
     console.log(product);
 
-    res.json({ product });
+    const shopId = product.shopId
+  
+    const shop = await Shop.findByPk(shopId);
+
+    console.log(shop);
+
+
+    res.json({ product, shop });
   })
 );
 

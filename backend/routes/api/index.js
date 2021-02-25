@@ -6,6 +6,7 @@ const usersRouter = require('./users.js');
 const categoriesRouter = require('./categories.js')
 const productsRouter = require('./products.js')
 const shopsRouter = require('./shops.js')
+const shoppingCartRouter = require('./shopping-cart.js')
 
 const { setTokenCookie } = require("../../utils/auth.js");
 const { User } = require("../../db/models");
@@ -21,6 +22,8 @@ router.use('/categories', categoriesRouter);
 router.use('/products', productsRouter);
 
 router.use('/shops', shopsRouter);
+
+router.use('/shopping-cart', shoppingCartRouter)
 
 //test
 // router.get(

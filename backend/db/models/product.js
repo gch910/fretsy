@@ -50,15 +50,17 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   Product.associate = function (models) {
-    // const columnMapping = {
-    //   through: "CartItem",
-    //   otherKey: "userId",
-    //   foreignKey: "productId",
-    // };
+    const columnMapping = {
+      through: "CartItem",
+      otherKey: "cartId",
+      foreighKey: "productId"
+    }
 
     // Product.belongsToMany(models.User, columnMapping)
     Product.belongsTo(models.Category, { foreignKey: "categoryId"})
     Product.belongsTo(models.Shop, { foreignKey: "shopId"})
+    Product.hasMany(models.Review, { foreignKey: "productId"})
+    Product.belongsToMany(models.ShoppingCart, columnMapping)
   };
   return Product;
 };

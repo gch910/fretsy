@@ -3,7 +3,7 @@ const router = express.Router();
 
 const { Category } = require("../../db/models");
 const { Product } = require("../../db/models");
-const { Shop } = require("../../db/models");
+
 
 const asyncHandler = require("express-async-handler");
 // const { productsCategory } = require('../../../frontend/src/store/products');
@@ -32,31 +32,25 @@ router.get(
       },
     });
 
-    const categoryName = await Category.findByPk(id)
+    const categoryName = await Category.findByPk(id);
     // console.log(productsByCategory[0]);
     res.json({ productsByCategory, categoryName });
   })
 );
 
-router.get("/:productId", asyncHandler(async (req, res) => {
-  const productId = parseInt(req.params.productId);
+router.get(
+  "/:productId",
+  asyncHandler(async (req, res) => {
+    const productId = parseInt(req.params.productId);
 
-  const product = await Product.findByPk(productId);
+    const product = await Product.findByPk(productId);
+
+    console.log(product);
+
+    res.json({ product });
+  })
+);
 
 
-  console.log(product)
-
-  res.json({ product })
-}))
-
-router.get("/shops/:shopId", asyncHandler(async(req, res) => {
-  const shopId = parseInt(req.params.shopId);
-
-  const shop = await Shop.findByPk(shopId);
-
-  console.log(shop)
-
-  res.json({ shop });
-}))
 
 module.exports = router;

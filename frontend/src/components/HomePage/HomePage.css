@@ -58,6 +58,7 @@
     background-color: #FAA077;
     display: flex;
     align-items: flex-start;
+    justify-content: center;
 }
 
 #banner2-h1-container {
@@ -69,6 +70,7 @@
     background-color: #FDEBD2;
     display: flex;
     align-items: flex-start;
+    justify-content: center;
    
 }
 

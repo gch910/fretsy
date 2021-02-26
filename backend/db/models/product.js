@@ -56,12 +56,19 @@ module.exports = (sequelize, DataTypes) => {
       foreighKey: "productId"
     }
 
+    const columnMapping2 = {
+      through: "Purchase",
+      otherKey: "userId",
+      foreignKey: "productId"
+    }
+
     // Product.belongsToMany(models.User, columnMapping)
     Product.belongsTo(models.Category, { foreignKey: "categoryId"})
     Product.belongsTo(models.Shop, { foreignKey: "shopId"})
     Product.hasMany(models.Review, { foreignKey: "productId"})
     Product.belongsToMany(models.ShoppingCart, columnMapping)
     Product.hasMany(models.CartItem, { foreignKey: "productId" })
+    Product.belongsToMany(models.User, columnMapping2)
   };
   return Product;
 };

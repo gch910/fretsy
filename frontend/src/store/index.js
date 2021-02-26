@@ -5,12 +5,14 @@ import sessionReducer from "./session";
 import categoriesReducer from "./categories";
 import productsReducer from "./products";
 import cartsReducer from './shoppingCart';
+import purchasesReducer from './purchases';
 
 const rootReducer = combineReducers({
     session: sessionReducer,
     categories: categoriesReducer,
     products: productsReducer,
     carts: cartsReducer,
+    purchases: purchasesReducer,
 });
 
 let enhancer;

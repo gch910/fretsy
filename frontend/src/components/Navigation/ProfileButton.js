@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/session";
+import { Link } from "react-router-dom";
 import "./Navigation.css";
 
 const ProfileButton = ({ user }) => {
@@ -36,7 +37,7 @@ const ProfileButton = ({ user }) => {
         {showMenu && (
           <div id="profile-dropdown-div">
             <ul style={{listStyle: "none"}}>
-              <li className="profile-li">{user.username}</li>
+              <Link to={`/purchase-history/${user.id}`} className="profile-li">{user.username}</Link>
               <li className="profile-li">{user.email}</li>
               <li>
                 <button id="logout-button" onClick={userLogout}>

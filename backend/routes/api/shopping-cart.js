@@ -134,6 +134,8 @@ router.delete("/checkout/:userId", asyncHandler(async(req, res) => {
 router.post("/add-purchase-history/:userId", asyncHandler(async(req, res) => {
    const { productIds } = req.body;
    const userId = parseInt(req.params.userId);
+   
+   
 
    productIds.forEach(async (id) => {
      await Purchase.create({ userId, productId: id })

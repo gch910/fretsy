@@ -1,13 +1,16 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
-import { getCartItems, deleteCartItem } from "../../store/shoppingCart";
+import { useParams, Link, useHistory } from "react-router-dom";
+import { getCartItems, deleteCartItem, deleteUserCart } from "../../store/shoppingCart";
+
 
 const CheckoutPage = () => {
   const { userId } = useParams();
   const sessionUser = useSelector((state) => state.session.user);
   const sessionCart = useSelector((state) => state.carts);
   const dispatch = useDispatch();
+
+  const history = useHistory();
 
   var formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -31,7 +34,10 @@ const CheckoutPage = () => {
   };
 
 
-  const makePurchase = () => {};
+  const makePurchase = (e) => {
+    dispatch(deleteUserCart(userId));
+    history.push("/")
+  };
 
   cartArray?.forEach((item) => {
     const number = parseInt(item.Product?.price);
@@ -52,7 +58,7 @@ const CheckoutPage = () => {
         <h1>Checkout</h1>
         <h1>Your Total: {formatter.format(totalPrice)}</h1>
         <div>
-          <button>Complete Purchase</button>
+          <button onClick={makePurchase}>Complete Purchase</button>
         </div>
 
         <Link to={`/shopping-cart/${userId}`}>

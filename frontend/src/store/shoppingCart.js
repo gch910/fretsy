@@ -3,6 +3,7 @@ import { csrfFetch } from "./csrf";
 const CART_ADD = "/carts/cartAdd";
 const GET_CART = "carts/getCart";
 const DELETE_ITEM = "carts/deleteItem";
+const DELETE_CART = "carts/deleteCart"
 
 const cartAdd = (cart, cartItems) => {
   return {
@@ -22,6 +23,12 @@ const deleteItem = (cartItems) => {
   return {
     type: DELETE_ITEM,
     payload: cartItems,
+    
+  }
+}
+const deleteCart = () => {
+  return {
+    type: DELETE_CART,
     
   }
 }
@@ -63,6 +70,18 @@ export const deleteCartItem = (userId, productId) => async(dispatch) => {
   dispatch(deleteItem(data.cartItems))
 }
 
+export const deleteUserCart = (userId) => async (dispatch) => {
+  console.log("inside delete user cart")
+  const res = await csrfFetch(`/api/shopping-cart/checkout/${userId}`, { method: "DELETE" });
+
+
+  const data = await res.json();
+
+  console.log("this is after data", data)
+
+  dispatch(deleteCart())
+}
+
 const initialState = {};
 
 const cartsReducer = (state = initialState, action) => {
@@ -79,6 +98,9 @@ const cartsReducer = (state = initialState, action) => {
         return newState;
     case DELETE_ITEM:
       newState = {...action.payload}
+      return newState;
+    case DELETE_CART: 
+      newState = {};
       return newState;
     default:
       return state;

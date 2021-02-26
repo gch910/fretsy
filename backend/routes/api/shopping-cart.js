@@ -103,4 +103,31 @@ console.log(itemToDelete)
   
 }))
 
+router.delete("/checkout/:userId", asyncHandler(async(req, res) => {
+  const userId = parseInt(req.params.userId);
+ 
+  const shoppingCart = await ShoppingCart.findOne({where: {
+    userId,
+  }})
+
+  const itemId = shoppingCart.id;
+  
+  const itemToDelete = await CartItem.destroy({ where: {
+    cartId: itemId
+  }})
+  
+    await ShoppingCart.destroy({where: {
+    userId,
+  }})
+
+  // const cartItems = await CartItem.findAll({
+  //   where: {
+  //     cartId: shoppingCart.id,
+  //   },
+  // });
+
+  res.json({ shoppingCart })
+
+}))
+
 module.exports = router;

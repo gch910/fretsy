@@ -1,7 +1,7 @@
 #home-page-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 380px 80px 350px 80px 340px 700px;
+    grid-template-rows: 380px 80px 350px 80px 340px 500px;
     grid-template-areas: 
     "banner banner banner banner banner"
     "banner2 banner2 banner2 banner2 banner2"

@@ -18,6 +18,7 @@
     height: 500px;
     border: 1px solid gray;
     box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.5);
+    margin-right: 50px;
 }
 
 #description-div {

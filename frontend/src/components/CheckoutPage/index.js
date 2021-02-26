@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getCartItems, deleteCartItem } from "../../store/shoppingCart";
 
-
 const CheckoutPage = () => {
   const { userId } = useParams();
   const sessionUser = useSelector((state) => state.session.user);
@@ -12,25 +11,77 @@ const CheckoutPage = () => {
 
   const cartArray = Object.values(sessionCart);
 
-  let totalPrice;
+  let totalPrice = 0;
 
-  cartArray?.forEach(item => {
-    totalPrice += item?.Product?.price
-  })
+  const deleteItemClick = (e) => {
+    // e.preventDefault();
+    console.log("inside delete function", e);
+    
+    dispatch(deleteCartItem(userId, e.target?.id));
+    
+  };
 
-  console.log(totalPrice)
+
+  const makePurchase = () => {};
+
+  cartArray?.forEach((item) => {
+    const number = parseInt(item.Product?.price);
+    totalPrice += number;
+  });
+
+  // console.log(parseInt(cartArray[0]?.Product.price) + 1000)
+  //   console.log(cartArray[0].Product?.price)
+  console.log(totalPrice);
 
   useEffect(() => {
     dispatch(getCartItems(userId));
-  }, [dispatch, sessionCart]);
+  }, [dispatch, cartArray?.length]);
 
   return (
-    <div id="checkout-page-grid">
-      <h1>Checkout</h1>
-      <Link to={`/shopping-cart/${userId}`}>
-        <button>Back To Cart</button>
-      </Link>
-    </div>
+    <>
+      <div id="checkout-page-grid">
+        <h1>Checkout</h1>
+        <h1>Your Total: {totalPrice}</h1>
+        <div>
+          <button>Complete Purchase</button>
+        </div>
+
+        <Link to={`/shopping-cart/${userId}`}>
+          <button>Back To Cart</button>
+        </Link>
+      </div>
+      <div id="cart-h1-div">
+        <h1 id="cart-h1">
+          {cartArray.length
+            ? "Here is your shopping cart"
+            : "You have no items in your cart"}
+        </h1>
+      </div>
+      <div id="shopping-cart-grid">
+        {cartArray?.map((item, idx) => (
+          <div className="cart-item" id={`cart-item-${item?.idx}`}>
+            <div className="cart-item-name">
+              <h1>{item?.Product?.name}</h1>
+            </div>
+            <div className="cart-item-image-div">
+              <img className="cart-item-image" src={item?.Product?.img}></img>
+            </div>
+            <div className="cart-item-price">
+              <h3>{item?.Product?.price}</h3>
+            </div>
+            <div className="delete-button-div">
+              <button
+                onClick={deleteItemClick}
+                id={item?.Product?.id}
+                className="cart-item-delete"
+              >
+                Delete Item
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </>
   );
 };
 

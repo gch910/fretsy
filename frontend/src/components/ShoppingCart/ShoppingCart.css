@@ -1,4 +1,47 @@
 #shopping-cart-grid {
     display: grid;
+    /* grid-template-columns: 1fr 1fr 1fr 1fr; */
+    grid-template-rows: auto;
     
+    /* grid-template-areas: 
+    "name image price delete"; */
+}
+
+.cart-item {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 300px;
+    grid-template-areas: 
+    "name image price delete"
+}
+
+
+
+#cart-h1 {
+    grid-area: h1;
+}
+
+.cart-item-name {
+    grid-area: name;
+    align-self: center;
+}
+
+.cart-item-image-div {
+    grid-area: image;
+    align-self: center;
+}
+
+.cart-item-image {
+    width: 200px;
+    height: 200px;
+
+}
+.cart-item-price {
+    grid-area: price;  
+    align-self: center;
+}
+
+.delete-button-div {
+    grid-area: delete;
+    align-self:center;
 }

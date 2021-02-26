@@ -59,9 +59,43 @@ router.post(
       },
     });
 
-    console.log(cartItems);
+   
     res.json({ cart, cartItems });
   })
 );
+
+router.delete("/delete/:userId/:productId", asyncHandler(async(req, res) => {
+  const productId = parseInt(req.params.productId);
+  const userId = parseInt(req.params.userId);
+ 
+  const shoppingCart = await ShoppingCart.findOne({where: {
+    userId,
+  }})
+
+  
+
+  // console.log(shoppingCart)
+
+  const itemId = shoppingCart.id;
+  
+
+  const itemToDelete = await CartItem.findOne({ where: {
+    cartId: itemId
+  }})
+
+
+console.log(itemToDelete)
+ 
+
+  const deleteItem = await CartItem.destroy({ where: {
+    cartId: itemToDelete.cartId,
+    productId: itemToDelete.productId
+  }})
+
+  console.log("hello")
+
+  // res.json({ deleteItem: "hello" })
+  
+}))
 
 module.exports = router;

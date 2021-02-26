@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const { ShoppingCart, CartItem, Product } = require("../../db/models");
+const { ShoppingCart, CartItem, Product, Purchase } = require("../../db/models");
+
 
 const asyncHandler = require("express-async-handler");
 
@@ -127,6 +128,18 @@ router.delete("/checkout/:userId", asyncHandler(async(req, res) => {
   // });
 
   res.json({ shoppingCart })
+
+}))
+
+router.post("/add-purchase-history/:userId", asyncHandler(async(req, res) => {
+   const { productIds } = req.body;
+   const userId = parseInt(req.params.userId);
+
+   productIds.forEach(async (id) => {
+     await Purchase.create({ userId, productId: id })
+   })
+
+   console.log("product ids", productIds)
 
 }))
 

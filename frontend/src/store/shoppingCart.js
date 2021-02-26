@@ -82,6 +82,15 @@ export const deleteUserCart = (userId) => async (dispatch) => {
   dispatch(deleteCart())
 }
 
+export const addPurchaseHistory = async (userId, productIdArray) => {
+  const res = await csrfFetch(`/api/shopping-cart/add-purchase-history/${userId}`, {
+  method: "POST",
+  body: JSON.stringify({productIds: productIdArray})
+  })
+
+  const data = res.json()
+}
+
 const initialState = {};
 
 const cartsReducer = (state = initialState, action) => {

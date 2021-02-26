@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useParams, Link, useHistory } from "react-router-dom";
-import { getCartItems, deleteCartItem, deleteUserCart } from "../../store/shoppingCart";
+import { getCartItems, deleteCartItem, deleteUserCart, addPurchaseHistory } from "../../store/shoppingCart";
 
 
 const CheckoutPage = () => {
@@ -33,9 +33,11 @@ const CheckoutPage = () => {
     
   };
 
+  const itemIdArray = cartArray?.map(item => item?.Product?.id);
 
   const makePurchase = (e) => {
     dispatch(deleteUserCart(userId));
+    addPurchaseHistory(userId, itemIdArray)
     history.push("/complete")
   };
 

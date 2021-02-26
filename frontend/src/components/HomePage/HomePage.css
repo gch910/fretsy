@@ -1,16 +1,16 @@
 #home-page-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 380px 100px 350px 259px 400px 650px 550px 300px 700px;
+    grid-template-rows: 380px 80px 350px 80px 340px 700px;
     grid-template-areas: 
     "banner banner banner banner banner"
     "banner2 banner2 banner2 banner2 banner2"
     "banner3 banner3 banner3 banner3 banner3"
     "banner4 banner4 banner4 banner4 banner4"
     "banner5 banner5 banner5 banner5 banner5"
-    "banner6 banner6 banner6 banner6 banner6"
+    /* "banner6 banner6 banner6 banner6 banner6"
     "banner7 banner7 banner7 banner7 banner7"
-    "banner8 banner8 banner8 banner8 banner8"
+    "banner8 banner8 banner8 banner8 banner8" */
     "banner9 banner9 banner9 banner9 banner9"
 }
 
@@ -34,23 +34,42 @@
     "banner3-img0 banner3-img1 banner3-img2 banner3-img3 banner3-img4";
 }
 
-
-.banner-2 {
-    grid-area: banner2;
-   
-   
-}
-.banner-4 {
-    grid-area: banner4;
-    background-color: #FDEBD2;
-    
-   
-}
 .banner-5 {
     grid-area: banner5;
     background-color: #DDEBE3;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    /* grid-template-rows: 5fr 1fr; */
+    grid-template-areas: 
+    "banner5-img0 banner5-img1 banner5-img2 banner5-img3 banner5-img4";
    
 }
+
+
+.banner-2 {
+    grid-area: banner2;
+    background-color: #FAA077;
+    display: flex;
+    align-items: flex-start;
+}
+
+#banner2-h1-container {
+    align-self: center;
+}
+
+.banner-4 {
+    grid-area: banner4;
+    background-color: #FDEBD2;
+    display: flex;
+    align-items: flex-start;
+   
+}
+
+#banner4-text {
+    align-self: center;
+    
+}
+
 .banner-6 {
     grid-area: banner6;
   
@@ -88,6 +107,13 @@
     /* margin-top: 40px; */
     
 }
+.banner5-img {
+    width: 200px;
+    height: 200px;
+    /* border-radius: 7em; */
+    /* margin-top: 40px; */
+    
+}
 
 .banner1-img-div {
     grid-area: banner-img;
@@ -102,6 +128,21 @@
     text-align: center;  
 }
 .banner3-img-div {
+     width: 350px;
+     height: 300px; 
+    /* height: 300px; */
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid gray;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+    /* margin-right: 50px; */
+    margin-left: 10px;
+    text-align: center;  
+}
+.banner5-img-div {
      width: 350px;
      height: 300px; 
     /* height: 300px; */
@@ -155,6 +196,25 @@
 }
 #banner3-img4 {
     grid-area: banner3-img4;
+}
+#banner5-img0 {
+    grid-area: banner5-img0;
+}
+
+#banner5-img1 {
+    grid-area: banner5-img1;
+    
+}
+
+#banner5-img2 {
+    grid-area: banner5-img2
+}
+
+#banner5-img3 {
+    grid-area: banner5-img3;
+}
+#banner5-img4 {
+    grid-area: banner5-img4;
 }
 
 

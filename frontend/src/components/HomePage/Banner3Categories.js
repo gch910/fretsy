@@ -1,20 +1,20 @@
 import { Link } from "react-router-dom";
 
-const Banner3Categories = ({ productCategoryValues, allCategories }) => {
+const Banner3Categories = ({ randomCategory1 }) => {
   
   return (
     <div className="banner-3">
-      {productCategoryValues?.map((product, idx) => (
+      {randomCategory1?.map((product, idx) => (
         <div className="banner3-img-div" id={`banner3-img${idx}`}>
-          <Link to={`/products/${product.id}`}>
-            <img className="banner3-img" src={product.img}></img>
+          <Link to={`/products/${product?.id}`}>
+            <img className="banner3-img" src={product?.img}></img>
           </Link>
           <Link
             className="banner-img-text"
             id={`banner-text-${idx}`}
-            to={`/products/${product.id}`}
+            to={`/products/${product?.id}`}
           >
-            <h3>{product.name}</h3>
+            <h3>{product?.name}</h3>
           </Link>
         </div>
       ))}

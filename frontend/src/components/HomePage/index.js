@@ -2,11 +2,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { categories } from "../../store/categories";
 import { getProductsByCategory } from "../../store/products";
+import { getProductsByCategory2 } from "../../store/products";
 import { Redirect, Link, useParams } from "react-router-dom";
 import "./HomePage.css";
 import LoginFormPage from "../LoginFormPage";
 import Banner1Categories from "./Banner1Categories";
 import Banner3Categories from "./Banner3Categories";
+import Banner5Categories from "./Banner5Categories";
 // import category from "../../backend/db/models/category";
 
 const HomePage = () => {
@@ -16,7 +18,12 @@ const HomePage = () => {
   const productsByCategory = useSelector((state) => state.products);
 
   let categoryValues = Object.values(categoryObject);
-  let productCategoryValues = Object.values(productsByCategory);
+  // let productCategoryValues = Object.values(productsByCategory);
+
+  const randomCategory1 = productsByCategory?.category1;
+  const randomCategory2 = productsByCategory?.category2;
+  // const test2 = productsByCategory.category1?.name
+  console.log(randomCategory1, randomCategory2);
 
   const allCategories = categoryValues;
 
@@ -30,18 +37,44 @@ const HomePage = () => {
     categoryValues = categoryValues.slice(random, random + 5);
   }
 
-  const categoryName = allCategories.find(value => value?.id == productCategoryValues[0]?.categoryId)
+  let categoryName1;
 
-  const randomCategory = () => {
+  if (randomCategory1) {
+    categoryName1 = allCategories.find(
+      (value) => value?.id == randomCategory1[0]?.categoryId
+    );
+  }
+  let categoryName2;
+
+  if (randomCategory2) {
+    categoryName2 = allCategories.find(
+      (value) => value?.id == randomCategory2[0]?.categoryId
+    );
+  }
+
+  const randomGenerator2 = () => {
     const number = Math.floor(Math.random() * 4);
-    return number
-  } 
-  const random2 = randomCategory();
+    return number;
+  };
+  let random2 = randomGenerator2();
+  const randomGenerator3 = () => {
+    const number = Math.floor(Math.random() * 4);
+    return number;
+  };
+  let random3 = randomGenerator3();
   // console.log(thisShoulNotChange);
+  if (random2 === random3) {
+    if (random3 >= 1) {
+      random3 -= 1;
+    } else {
+      random3 += 1;
+    }
+  }
 
   useEffect(() => {
     dispatch(categories());
     dispatch(getProductsByCategory(random2));
+    dispatch(getProductsByCategory2(random3));
   }, [dispatch]);
 
   if (!sessionUser) return <Redirect to="/login" />;
@@ -49,19 +82,22 @@ const HomePage = () => {
   return (
     <div id="home-page-grid">
       <Banner1Categories categoryValues={categoryValues} />
-      <Banner3Categories productCategoryValues={productCategoryValues} />
+      <Banner3Categories randomCategory1={randomCategory1} />
+      <Banner5Categories randomCategory2={randomCategory2} />
 
       <div className="banner-2">
-        <h1>Check out some of our {categoryName?.name}</h1>
+        <div id="banner2-h1-container">
+          <h1>Check out some of our {categoryName1?.name}</h1>
+        </div>
       </div>
-      
+
       <div className="banner-4">
-        <h1>4</h1>
+        <h1 id="banner4-text">How about some {categoryName2?.name}</h1>
       </div>
-      <div className="banner-5">
+      {/* <div className="banner-5">
         <h1>5</h1>
-      </div>
-      <div className="banner-6">
+      </div> */}
+      {/* <div className="banner-6">
         <h1>6</h1>
       </div>
       <div className="banner-7">
@@ -69,7 +105,7 @@ const HomePage = () => {
       </div>
       <div className="banner-8">
         <h1>8</h1>
-      </div>
+      </div> */}
       <div className="banner-9">
         <h1>9</h1>
       </div>

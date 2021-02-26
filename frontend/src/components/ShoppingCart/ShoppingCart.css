@@ -7,6 +7,11 @@
     "name image price delete"; */
 }
 
+#cart-h1-div {
+    display: flex;
+    justify-content: center;
+}
+
 .cart-item {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -44,4 +49,15 @@
 .delete-button-div {
     grid-area: delete;
     align-self:center;
+}
+
+#outer-button-div {
+    display: flex;
+    justify-content: center;
+}
+
+#checkout-button {
+    width: 100px;
+    display: flex;
+    justify-content: center;
 }

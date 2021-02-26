@@ -18,9 +18,11 @@ const getCart = (cartItems) => {
   }
 }
 
-const deleteItem = () => {
+const deleteItem = (cartItems) => {
   return {
-    type: DELETE_ITEM
+    type: DELETE_ITEM,
+    payload: cartItems,
+    
   }
 }
 
@@ -58,7 +60,7 @@ export const deleteCartItem = (userId, productId) => async(dispatch) => {
 
   console.log("deleted item", data)
 
-  // dispatch(deleteItem())
+  dispatch(deleteItem(data.cartItems))
 }
 
 const initialState = {};
@@ -76,7 +78,8 @@ const cartsReducer = (state = initialState, action) => {
         newState = {...action.payload }
         return newState;
     case DELETE_ITEM:
-      return state;
+      newState = {...action.payload}
+      return newState;
     default:
       return state;
   }

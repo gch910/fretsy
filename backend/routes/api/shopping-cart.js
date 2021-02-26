@@ -92,9 +92,14 @@ console.log(itemToDelete)
     productId: itemToDelete.productId
   }})
 
-  console.log("hello")
 
-  // res.json({ deleteItem: "hello" })
+  const cartItems = await CartItem.findAll({
+    where: {
+      cartId: shoppingCart.id,
+    },
+  });
+
+  res.json({ cartItems })
   
 }))
 

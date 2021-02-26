@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
 import { getCartItems, deleteCartItem } from "../../store/shoppingCart";
 import "./ShoppingCart.css";
 
@@ -10,20 +10,25 @@ const ShoppingCart = () => {
   const sessionCart = useSelector((state) => state.carts);
   const dispatch = useDispatch();
 
+ 
+
   const cartArray = Object.values(sessionCart);
 
-  console.log("session cart", cartArray[0]?.Product);
+  // console.log("session cart", cartArray[0]?.Product);
 
   const deleteItemClick = (e) => {
     // e.preventDefault();
     console.log("inside delete function", e);
+    
     dispatch(deleteCartItem(userId, e.target?.id));
+    
   };
 
   useEffect(() => {
     dispatch(getCartItems(userId));
-  }, [dispatch, sessionCart]);
-
+    
+  }, [dispatch, cartArray?.length]);
+ 
   return (
     <>
       <div id="cart-h1-div">
@@ -47,7 +52,7 @@ const ShoppingCart = () => {
             </div>
             <div className="delete-button-div">
               <button
-                onClick={(e) => deleteItemClick(e)}
+                onClick={deleteItemClick}
                 id={item?.Product?.id}
                 className="cart-item-delete"
               >
@@ -57,9 +62,13 @@ const ShoppingCart = () => {
           </div>
         ))}
         <div id="outer-button-div">
-          <div id="checkout-button">
-            <button>Check Out</button>
-          </div>
+          {cartArray.length ? (
+            <div id="checkout-button">
+              <Link to={`/checkout/${userId}`}>
+                <button>Check Out</button>
+              </Link>
+            </div>
+          ) : "" }
         </div>
       </div>
     </>

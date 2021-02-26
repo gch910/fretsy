@@ -36,7 +36,7 @@ const CheckoutPage = () => {
 
   const makePurchase = (e) => {
     dispatch(deleteUserCart(userId));
-    history.push("/")
+    history.push("/complete")
   };
 
   cartArray?.forEach((item) => {

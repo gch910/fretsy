@@ -1,7 +1,7 @@
 #home-page-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 380px 80px 350px 80px 340px 500px;
+    grid-template-rows: 360px 80px 350px 80px 340px 500px;
     grid-template-areas: 
     "banner banner banner banner banner"
     "banner2 banner2 banner2 banner2 banner2"
@@ -19,11 +19,18 @@
     background-color: #DDEBE3;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    /* grid-template-rows: 5fr 1fr; */
-    grid-template-areas: 
+    grid-template-rows: 5fr;
+    grid-template-areas:
     "banner-img0 banner-img1 banner-img2 banner-img3 banner-img4";
    
+   
 }
+
+/* #banner1-h1 {
+    grid-area: h1;
+    width: 1000px;
+    height: 20px;
+} */
 .banner-3 {
     grid-area: banner3;
     /* grid-template-columns: auto; */

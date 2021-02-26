@@ -9,6 +9,7 @@ import CategoryItems from "./components/CategoryItems";
 import Product from "./components/Product";
 import ShoppingCart from "./components/ShoppingCart";
 import CheckoutPage from "./components/CheckoutPage";
+import CheckoutComplete from "./components/CheckoutComplete";
 
 import * as sessionActions from "./store/session";
 
@@ -58,6 +59,9 @@ const App = () => {
               </Route>
               <Route path="/checkout/:userId">
                 <CheckoutPage sessionUser={sessionUser}/>
+              </Route>
+              <Route exact path="/complete">
+                <CheckoutComplete sessionUser={sessionUser}/>
               </Route>
             </Switch>
           {/* </div> */}

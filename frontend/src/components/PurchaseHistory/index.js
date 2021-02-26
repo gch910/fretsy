@@ -24,7 +24,7 @@ const PurchaseHistory = () => {
             <h1>{product.name}</h1>
             <img className="purchased-image" src={product.img}></img>
             <div>
-              <Link to={`/review/${product.id}`}>Write a Review!</Link>
+              <Link to={`/review/${userId}/${product.id}`}>Write a Review!</Link>
             </div>
           </div>
         ))}

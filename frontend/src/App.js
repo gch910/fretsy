@@ -11,6 +11,7 @@ import ShoppingCart from "./components/ShoppingCart";
 import CheckoutPage from "./components/CheckoutPage";
 import CheckoutComplete from "./components/CheckoutComplete";
 import PurchaseHistory from "./components/PurchaseHistory";
+import ReviewForm from "./components/ReviewForm";
 
 import * as sessionActions from "./store/session";
 
@@ -61,11 +62,14 @@ const App = () => {
               <Route path="/checkout/:userId">
                 <CheckoutPage sessionUser={sessionUser}/>
               </Route>
-              <Route exact path="/complete">
+              <Route path="/complete">
                 <CheckoutComplete sessionUser={sessionUser}/>
               </Route>
-              <Route exact path="/purchase-history/:userId">
+              <Route path="/purchase-history/:userId">
                 <PurchaseHistory sessionUser={sessionUser}/>
+              </Route>
+              <Route path="/review/:userId/:productId/">
+                <ReviewForm sessionUser={sessionUser}/>
               </Route>
             </Switch>
           {/* </div> */}

@@ -40,7 +40,7 @@ const ProfileButton = ({ user }) => {
               <Link to={`/purchase-history/${user.id}`} className="profile-li">{user.username}</Link>
               <li className="profile-li">{user.email}</li>
               <li>
-                <button id="logout-button" onClick={userLogout}>
+                <button id="logout-button" className="no-outline" onClick={userLogout}>
                   Log Out
                 </button>
               </li>

@@ -9,6 +9,15 @@ const CheckoutPage = () => {
   const sessionCart = useSelector((state) => state.carts);
   const dispatch = useDispatch();
 
+  var formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  
+    // These options are needed to round to whole numbers if that's what you want.
+    //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
+    //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
+  });
+
   const cartArray = Object.values(sessionCart);
 
   let totalPrice = 0;
@@ -41,7 +50,7 @@ const CheckoutPage = () => {
     <>
       <div id="checkout-page-grid">
         <h1>Checkout</h1>
-        <h1>Your Total: {totalPrice}</h1>
+        <h1>Your Total: {formatter.format(totalPrice)}</h1>
         <div>
           <button>Complete Purchase</button>
         </div>

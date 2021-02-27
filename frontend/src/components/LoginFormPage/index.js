@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { login } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
+import Banner1Categories from "../HomePage/Banner1Categories";
+import Banner3Categories from "../HomePage/Banner1Categories";
+import Banner5Categories from "../HomePage/Banner1Categories";
 import "./LoginForm.css";
 
 const LoginFormPage = () => {
@@ -10,6 +13,7 @@ const LoginFormPage = () => {
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
+
 
   //redirect if they are trying to access login page
   if (sessionUser) return <Redirect to="/" />;

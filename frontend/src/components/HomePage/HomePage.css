@@ -245,3 +245,121 @@
 
 } */
 
+.login-page-banner-1 {
+    grid-area: banner;
+    background-color: #DDEBE3;
+    display: grid;
+    grid-template-columns: 1fr 1fr 0.7fr 0.7fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+    ". . h1 h1 . ."
+    "login-img0 login-img1 credential credential login-img2 login-img3"
+    "login-img0 login-img1 password password login-img2 login-img3"
+    ". . button button . .";
+   
+}
+
+
+
+.banner-img-div {
+     /* width: 350px; */
+     height: 250px; 
+    /* height: 300px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border-radius: 1.5em; */
+    flex-direction: column;
+    /* margin-right: 50px; */
+    text-align: center;
+    margin-top: 20px;
+    
+}
+
+#login-banner-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 7em;
+    margin-top: 0px; 
+}
+
+
+
+#login-img0 {
+    grid-area: login-img0;
+    align-self: center;
+  
+}
+
+#login-img1 {
+    grid-area: login-img1;
+    align-self: center;
+    
+}
+#login-img2 {
+    grid-area: login-img2;
+    align-self: center;
+    
+}
+#login-img3 {
+    grid-area: login-img3;
+    align-self: center;
+    
+}
+
+
+.banner-img-text {
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;
+    
+}
+
+#form-h1 {
+    grid-area: h1;
+    display: flex;
+    justify-content: center;
+
+}
+
+#form-credential {
+    grid-area: credential;
+    height: 50px;
+    border-radius: 1.5em;
+    border: none;
+    background-repeat: no-repeat;
+
+}
+
+#form-password {
+    grid-area: password;
+    height: 50px;
+    border-radius: 1.5em;
+    border: none;
+    background-repeat: no-repeat;
+    
+}
+
+ #demo-button {
+    width: 200px;
+    height: 60px;
+    border-radius: 1.5em;
+    border: none;
+    margin-bottom: 20px;
+    
+}
+
+#login-submit-button {
+    width: 200px;
+    height: 60px;
+    border-radius: 1.5em;
+    border: none;
+    margin-right: 20px;
+} 
+
+.form-button-div {
+    grid-area: button;
+    display: flex;
+    justify-content: center;
+    
+}

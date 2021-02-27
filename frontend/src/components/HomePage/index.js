@@ -9,6 +9,7 @@ import LoginFormPage from "../LoginFormPage";
 import Banner1Categories from "./Banner1Categories";
 import Banner3Categories from "./Banner3Categories";
 import Banner5Categories from "./Banner5Categories";
+import LoginHome from "./LoginHome";
 // import category from "../../backend/db/models/category";
 
 const HomePage = () => {
@@ -34,7 +35,11 @@ const HomePage = () => {
       random -= 4;
     }
 
-    categoryValues = categoryValues.slice(random, random + 5);
+    if (sessionUser) {
+      categoryValues = categoryValues.slice(random, random + 5);
+    } else {
+      categoryValues = categoryValues.slice(random, random + 4);
+    }
   }
 
   let categoryName1;
@@ -77,7 +82,28 @@ const HomePage = () => {
     dispatch(getProductsByCategory2(random3));
   }, [dispatch]);
 
-  if (!sessionUser) return <Redirect to="/login" />;
+  // if (!sessionUser) return <Redirect to="/login" />;
+  if (!sessionUser)
+    return (
+      <div id="home-page-grid">
+        <LoginHome categoryValues={categoryValues}/>
+        <Banner3Categories randomCategory1={randomCategory1} />
+        <Banner5Categories randomCategory2={randomCategory2} />
+
+        <div className="banner-2">
+          <div id="banner2-h1-container">
+            <h1>Check out some of our {categoryName1?.name}</h1>
+          </div>
+        </div>
+
+        <div className="banner-4">
+          <h1 id="banner4-text">How about some {categoryName2?.name}</h1>
+        </div>
+        <div className="banner-9">
+          <h1>9</h1>
+        </div>
+      </div>
+    );
   //category.map lines 13/14
   return (
     <div id="home-page-grid">
@@ -94,18 +120,6 @@ const HomePage = () => {
       <div className="banner-4">
         <h1 id="banner4-text">How about some {categoryName2?.name}</h1>
       </div>
-      {/* <div className="banner-5">
-        <h1>5</h1>
-      </div> */}
-      {/* <div className="banner-6">
-        <h1>6</h1>
-      </div>
-      <div className="banner-7">
-        <h1>7</h1>
-      </div>
-      <div className="banner-8">
-        <h1>8</h1>
-      </div> */}
       <div className="banner-9">
         <h1>9</h1>
       </div>

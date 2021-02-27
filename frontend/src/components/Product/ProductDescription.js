@@ -9,7 +9,10 @@ const ProductDescription = ({ product }) => {
     const dispatch = useDispatch();
 
     console.log("cart", sessionCart)
-    const userId = sessionUser.id;
+
+    let userId;
+
+    if(sessionUser) userId = sessionUser.id;
     
     const updateCart = () => {
         dispatch(addToCart(userId, productId))
@@ -26,7 +29,7 @@ const ProductDescription = ({ product }) => {
             <p><h3>About This Product:</h3> {product[0]?.product.description}</p>
             <h3>In Stock? {product[0]?.product.available ? "Yes" : "No"}</h3>
             <h3>Price: ${product[0]?.product.price}</h3>
-            <button onClick={updateCart}>Add To Cart</button>
+            {sessionUser ?  <button onClick={updateCart}>Add To Cart</button> : "Sign in to add this to you cart"}
         </div>
     )
 }

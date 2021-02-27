@@ -5,7 +5,7 @@ import { getProduct } from "../../store/products";
 import { addUserReview } from "../../store/reviews";
 import "./ReviewForm.css";
 
-const ReviewForm = () => {
+const ReviewForm = ({ sessionUser }) => {
   const { userId, productId } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -42,6 +42,9 @@ const ReviewForm = () => {
   useEffect(() => {
     dispatch(getProduct(productId));
   }, [dispatch]);
+
+  if (!sessionUser) return <Redirect to="/" />;
+  
   return (
     <div id="review-form-div">
       <h1 id="review-h1">

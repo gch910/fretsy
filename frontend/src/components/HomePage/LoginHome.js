@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { login } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import Banner1Categories from "../HomePage/Banner1Categories";
 import Banner3Categories from "../HomePage/Banner1Categories";
 import Banner5Categories from "../HomePage/Banner1Categories";
@@ -38,18 +38,19 @@ const LoginHome = ({ categoryValues }) => {
   return (
     <form className="login-page-banner-1" onSubmit={handleSubmit}>
       <ul className="form-errors">
-        {errors.map((error, idx) => (
+        {errors && errors.map((error, idx) => (
           <li key={idx}>{error}</li>
         ))}
       </ul>
       {categoryValues.map((category, idx) => (
-          <div className="banner-img-div" id={`login-img${idx}`}>
-            <img
-              id="login-banner-img"
-              src={category.img}
-            ></img>
-            <h3 className="banner-img-text">{category.name}</h3>
-          </div>
+        <div className="banner-img-div" id={`login-img${idx}`}>
+          <Link to={`/categories/${category.id}`}>
+            <img id="login-banner-img" src={category.img}></img>
+          </Link>
+          <Link id="login-banner-text" to={`/categories/${category.id}`}>
+            <h3>{category.name}</h3>
+          </Link>
+        </div>
       ))}
       {/* <div className="banner1-img-div">
         <img

@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getPurchasedItems } from "../../store/purchases";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, Redirect } from "react-router-dom";
 import "./PurchaseHistory.css";
 
-const PurchaseHistory = () => {
+const PurchaseHistory = ({ sessionUser }) => {
   const { userId } = useParams();
   const dispatch = useDispatch();
   const purchasedProducts = useSelector((state) => state.purchases);
@@ -14,6 +14,8 @@ const PurchaseHistory = () => {
   useEffect(() => {
     dispatch(getPurchasedItems(userId));
   }, [dispatch]);
+
+  if (!sessionUser) return <Redirect to="/" />
 
   return (
     <div>

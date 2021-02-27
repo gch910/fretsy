@@ -32,7 +32,7 @@ const Product = () => {
   return (
     <div id="product-grid">
       <ProductImage product={product}/>
-      <ProductDescription product={product}/>
+      <ProductDescription product={product} />
       <Reviews product={product} reviews={reviewsArray} />
     </div>
   );

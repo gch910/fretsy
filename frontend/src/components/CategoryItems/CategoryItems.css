@@ -1,0 +1,23 @@
+#category-grid {
+    margin-left: 100px;
+    margin-right: 100px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* grid-template-rows: auto; */
+   
+}
+
+#category-h1-div {
+    display: flex;
+    justify-content: center;
+}
+
+
+/* .category-product {
+  
+} */
+
+#category-image {
+    width: 300px;
+    height: 300px;
+}

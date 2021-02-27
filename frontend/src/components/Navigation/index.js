@@ -1,37 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import ProfileButton from "./ProfileButton";
+import SubNav from "./SubNav";
 import SignupFormModal from '../SignupFormModal'; //modal
+import { categories } from "../../store/categories";
 import './Navigation.css';
 
 const Navigation = ({ isLoaded, navId }) => {
   const sessionUser = useSelector((state) => state.session.user);
+  const dispatch = useDispatch();
+  const allCategories = useSelector((state) => state.categories);
 
+  const categoryArray = Object.values(allCategories);
+
+
+  console.log("all categories", categoryArray);
+
+  useEffect(() => {
+    dispatch(categories())
+  }, [dispatch])
 
   let sessionLinks;
-  let subLinks = (
-    <>
-      <NavLink className="sub-link" id="sublink-1" to="/test">
-        Something
-      </NavLink>
-      <NavLink className="sub-link" id="sublink-2" to="/test">
-        Something
-      </NavLink>
-      <NavLink className="sub-link" id="sublink-3" to="/test">
-        Something
-      </NavLink>
-      <NavLink className="sub-link" id="sublink-4" to="/test">
-        Something
-      </NavLink>
-      <NavLink className="sub-link" id="sublink-5" to="/test">
-        Something
-      </NavLink>
-      <NavLink className="sub-link" id="sublink-6" to="/test">
-        Something
-      </NavLink>
-    </>
-  );
 
   if (sessionUser) {
     sessionLinks = (
@@ -79,9 +69,10 @@ const Navigation = ({ isLoaded, navId }) => {
   return (
     <div id="nav-container">
       <nav id={navId}>{isLoaded && sessionLinks}</nav>
-      <div id="sub-nav-container">
+      {/* <div id="sub-nav-container">
         <nav id="sub-nav">{subLinks}</nav>
-      </div>
+      </div> */}
+      <SubNav categories={categoryArray}/>
     </div>
   );
 };

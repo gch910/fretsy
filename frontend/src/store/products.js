@@ -3,6 +3,7 @@ import { csrfFetch } from "./csrf";
 const SET_PRODUCTS = "/products/setProducts";
 const PRODUCTS_CATEGORY = "/products/productsCategory"
 const PRODUCTS_CATEGORY2 = "/products/productsCategory2"
+const ALL_PRODUCTS_CATEGORY = "/products/allProductsCategory"
 const SET_PRODUCT = "/products/setProduct"
 const PRODUCT_SHOP = "/products/productShop"
 
@@ -32,6 +33,12 @@ const setProduct = (product, shop) => {
     payload: products,
   };
 };
+ const allProductsByCategory = (products, categoryName) => {
+  return {
+    type: ALL_PRODUCTS_CATEGORY,
+    payload: { products, categoryName }
+  };
+};
 
 // const productShop = (shop) => {
 //   return {
@@ -56,6 +63,15 @@ export const getProductsByCategory2 = (categoryId) => async (dispatch) => {
   const data = await res.json();
 
   dispatch(productsByCategory2(data.productsByCategory))
+  return data;
+}
+export const getAllProductsByCategory = (categoryId) => async (dispatch) => {
+  const res = await csrfFetch(`/api/products/categories/${categoryId}`)
+
+  const data = await res.json();
+
+  dispatch(allProductsByCategory(data.productsByCategory, data.categoryName))
+
   return data;
 }
 
@@ -117,6 +133,12 @@ const productsReducer = (state = initialState, action) => {
       newState = {...state};
       newState.category2 = [...action.payload]
       return newState
+    }
+    case ALL_PRODUCTS_CATEGORY: {
+      newState = {};
+      newState.products = [...action.payload.products]
+      newState.categoryName = {...action.payload.categoryName}
+      return newState;
     }
     case SET_PRODUCT: {
       newState = [{...action.payload}]

@@ -51,7 +51,7 @@ const App = () => {
               {/* <Route path="/signup">
               <SignupFormPage />
             </Route> */}
-              <Route path="/categories/:id">
+              <Route path="/categories/:categoryId">
                 <CategoryItems />
               </Route>
               <Route path="/products/:productId">

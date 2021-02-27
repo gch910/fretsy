@@ -24,3 +24,7 @@
 #description-div {
     grid-area: description
 }
+
+#reviews-div {
+    grid-area: reviews;
+}

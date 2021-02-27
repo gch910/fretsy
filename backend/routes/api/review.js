@@ -20,5 +20,19 @@ router.post("/:userId/:productId", asyncHandler(async(req, res) => {
     console.log(review, rating)
 }))
 
+router.get("/:productId", asyncHandler(async(req, res) => {
+    const productId = parseInt(req.params.productId);
+
+    const productReviews = await Review.findAll({
+        where: {
+            productId,
+        }
+    })
+
+    console.log(productId)
+
+    res.json({ productReviews })
+}))
+
 
 module.exports = router;

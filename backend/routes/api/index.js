@@ -8,6 +8,7 @@ const productsRouter = require('./products.js')
 const shopsRouter = require('./shops.js')
 const shoppingCartRouter = require('./shopping-cart.js')
 const purchaseHistoryRouter = require('./purchase-history.js');
+const reviewRouter = require("./review.js");
 
 const { setTokenCookie } = require("../../utils/auth.js");
 const { User } = require("../../db/models");
@@ -27,6 +28,8 @@ router.use('/shops', shopsRouter);
 router.use('/shopping-cart', shoppingCartRouter)
 
 router.use('/purchase-history', purchaseHistoryRouter)
+
+router.use('/review', reviewRouter)
 
 //test
 // router.get(

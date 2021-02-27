@@ -12,6 +12,7 @@ import CheckoutPage from "./components/CheckoutPage";
 import CheckoutComplete from "./components/CheckoutComplete";
 import PurchaseHistory from "./components/PurchaseHistory";
 import ReviewForm from "./components/ReviewForm";
+import ReviewSuccess from "./components/ReviewSuccess"
 
 import * as sessionActions from "./store/session";
 
@@ -70,6 +71,9 @@ const App = () => {
               </Route>
               <Route path="/review/:userId/:productId/">
                 <ReviewForm sessionUser={sessionUser}/>
+              </Route>
+              <Route path="/review-success">
+                <ReviewSuccess sessionUser={sessionUser}/>
               </Route>
             </Switch>
           {/* </div> */}

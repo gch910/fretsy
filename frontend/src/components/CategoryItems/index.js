@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getAllProductsByCategory } from "../../store/products";
 import "./CategoryItems.css";
 
@@ -9,11 +9,13 @@ const CategoryItems = () => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products);
 
-  console.log(products.products);
+  const [params, setParams] = useState();
+  
+  // console.log(products.products);
 
   useEffect(() => {
     dispatch(getAllProductsByCategory(categoryId));
-  }, [dispatch]);
+  }, [dispatch, categoryId]);
 
   return (
     <div>

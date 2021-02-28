@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { useState, useEffect } from "react";
 import "./Navigation.css";
 
 const SubNav = ({ categories }) => {

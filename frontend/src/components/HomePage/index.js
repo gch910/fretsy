@@ -6,6 +6,7 @@ import { getProductsByCategory2 } from "../../store/products";
 import { getProductsByShop } from "../../store/products";
 import { getProductsByShop2 } from "../../store/products";
 import { getProductsByShop3 } from "../../store/products";
+import { getAllShops} from "../../store/shops";
 import { Redirect, Link, useParams } from "react-router-dom";
 import "./HomePage.css";
 import Banner1Categories from "./Banner1Categories";
@@ -20,9 +21,21 @@ const HomePage = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const categoryObject = useSelector((state) => state.categories);
   const productsByCategory = useSelector((state) => state.products);
+  const shops = useSelector(state => state.shops);
+
+  const shopArray = Object.values(shops);
 
   let categoryValues = Object.values(categoryObject);
   // let productCategoryValues = Object.values(productsByCategory);
+  let shopNumber = Number(shopArray.length);
+  const randomShop= () => {
+    const number = Math.floor(Math.random() * 13);
+    return number;
+  };
+  let randomShopNumber1 = randomShop();
+  let randomShopNumber2 = randomShop();
+  let randomShopNumber3 = randomShop();
+  console.log("shop number", shopNumber)
 
   const randomCategory1 = productsByCategory?.category1;
   const randomCategory2 = productsByCategory?.category2;
@@ -81,11 +94,12 @@ const HomePage = () => {
   console.log(productsByCategory)
   useEffect(() => {
     dispatch(categories());
+    dispatch(getAllShops())
     dispatch(getProductsByCategory(random2));
     dispatch(getProductsByCategory2(random3));
-    dispatch(getProductsByShop(1));
-    dispatch(getProductsByShop2(2));
-    dispatch(getProductsByShop3(3));
+    dispatch(getProductsByShop(randomShopNumber1));
+    dispatch(getProductsByShop2(randomShopNumber2));
+    dispatch(getProductsByShop3(randomShopNumber3));
   }, [dispatch]);
 
   // if (!sessionUser) return <Redirect to="/login" />;

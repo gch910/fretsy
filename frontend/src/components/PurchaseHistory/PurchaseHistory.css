@@ -2,3 +2,19 @@
     width: 200px;
     height: 200px;
 }
+
+#purchased-item-div {
+    width: 500px;
+}
+
+#purchase-history-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#purchase-history-h1-div {
+    display: flex;
+    justify-content: center;
+}

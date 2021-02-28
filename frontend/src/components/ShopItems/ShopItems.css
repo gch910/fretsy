@@ -1,20 +1,20 @@
-#category-grid {
-    margin-left: 100px;
-    margin-right: 100px;
+#shop-grid {
+    margin-left: 200px;
+    margin-right: 200px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     /* grid-template-rows: auto; */
    
 }
 
-#category-h1-div {
+#shop-h1-div {
     display: flex;
     justify-content: center;
 }
 
 
 
-#category-image {
+#shop-image {
     width: 300px;
     height: 300px;
 }

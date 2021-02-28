@@ -3,13 +3,16 @@ import { useEffect } from "react";
 import { categories } from "../../store/categories";
 import { getProductsByCategory } from "../../store/products";
 import { getProductsByCategory2 } from "../../store/products";
+import { getProductsByShop } from "../../store/products";
+import { getProductsByShop2 } from "../../store/products";
+import { getProductsByShop3 } from "../../store/products";
 import { Redirect, Link, useParams } from "react-router-dom";
 import "./HomePage.css";
-import LoginFormPage from "../LoginFormPage";
 import Banner1Categories from "./Banner1Categories";
 import Banner3Categories from "./Banner3Categories";
 import Banner5Categories from "./Banner5Categories";
 import LoginHome from "./LoginHome";
+import Banner6Shops from "./Banner6Shops";
 // import category from "../../backend/db/models/category";
 
 const HomePage = () => {
@@ -24,7 +27,7 @@ const HomePage = () => {
   const randomCategory1 = productsByCategory?.category1;
   const randomCategory2 = productsByCategory?.category2;
   // const test2 = productsByCategory.category1?.name
-  console.log(randomCategory1, randomCategory2);
+  // console.log(randomCategory1, randomCategory2);
 
   const allCategories = categoryValues;
 
@@ -75,18 +78,21 @@ const HomePage = () => {
       random3 += 1;
     }
   }
-
+  console.log(productsByCategory)
   useEffect(() => {
     dispatch(categories());
     dispatch(getProductsByCategory(random2));
     dispatch(getProductsByCategory2(random3));
+    dispatch(getProductsByShop(1));
+    dispatch(getProductsByShop2(2));
+    dispatch(getProductsByShop3(3));
   }, [dispatch]);
 
   // if (!sessionUser) return <Redirect to="/login" />;
-  if (!sessionUser)
+  if (!sessionUser) {
     return (
       <div id="home-page-grid">
-        <LoginHome categoryValues={categoryValues}/>
+        <LoginHome categoryValues={categoryValues} />
         <Banner3Categories randomCategory1={randomCategory1} />
         <Banner5Categories randomCategory2={randomCategory2} />
 
@@ -99,11 +105,13 @@ const HomePage = () => {
         <div className="banner-4">
           <h1 id="banner4-text">How about some {categoryName2?.name}</h1>
         </div>
-        <div className="banner-9">
-          <h1>9</h1>
-        </div>
+        {/* <div className="banner-6">
+          <h1>6</h1>
+        </div> */}
+        <Banner6Shops products={productsByCategory}/>
       </div>
     );
+      }
   //category.map lines 13/14
   return (
     <div id="home-page-grid">
@@ -120,9 +128,10 @@ const HomePage = () => {
       <div className="banner-4">
         <h1 id="banner4-text">How about some {categoryName2?.name}</h1>
       </div>
-      <div className="banner-9">
-        <h1>9</h1>
-      </div>
+      {/* <div className="banner-6">
+          <h1>6</h1>
+      </div> */}
+      <Banner6Shops products={productsByCategory}/>
     </div>
   );
 };

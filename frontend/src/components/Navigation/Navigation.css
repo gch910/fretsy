@@ -28,10 +28,10 @@
 #sub-nav {
   /* width: 1400px; */
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr;
   grid-template-rows: 34px;
   grid-template-areas: 
-  ". sub1 sub2 sub3 sub4 sub5 sub6 .";
+  ". sub1 sub2 sub3 sub4 sub5 sub6 sub7 .";
   width: 100%;
   margin-bottom: 5px;
 }
@@ -57,6 +57,10 @@
 }
 #sublink-6 {
   grid-area: sub6;
+}
+#sublink-7 {
+  grid-area: sub7;
+  
 }
 
 .sub-link {
@@ -226,7 +230,7 @@ i {
   right: 200px;
   top: 10px; */
   /* background-color: blue; */
-  margin-top: 7em;
+  margin-top: 10em;
   width: 1000px;
   height: 300px;
   border: none;

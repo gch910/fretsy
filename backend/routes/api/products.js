@@ -38,6 +38,23 @@ router.get(
     res.json({ productsByCategory, categoryName });
   })
 );
+router.get(
+  "/shops/:shopId",
+  asyncHandler(async (req, res) => {
+    const id = parseInt(req.params.shopId);
+    const productsByShop = await Product.findAll({
+      include: Shop,
+      where: {
+        shopId: id,
+      },
+    });
+
+    // const shop = productsByShop[0].Shop;
+    // const shop = await Shop.findByPk(id);
+    
+    res.json({ productsByShop });
+  })
+);
 
 router.get(
   "/:productId",

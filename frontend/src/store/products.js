@@ -1,3 +1,4 @@
+import Banner6Shops from "../components/HomePage/Banner6Shops";
 import { csrfFetch } from "./csrf";
 
 const SET_PRODUCTS = "/products/setProducts";
@@ -5,7 +6,9 @@ const PRODUCTS_CATEGORY = "/products/productsCategory"
 const PRODUCTS_CATEGORY2 = "/products/productsCategory2"
 const ALL_PRODUCTS_CATEGORY = "/products/allProductsCategory"
 const SET_PRODUCT = "/products/setProduct"
-const PRODUCT_SHOP = "/products/productShop"
+const PRODUCTS_SHOP = "/products/productsShop"
+const PRODUCTS_SHOP2 = "/products/productsShop2"
+const PRODUCTS_SHOP3 = "/products/productsShop3"
 
 const setProducts = (products) => {
   return {
@@ -40,12 +43,24 @@ const setProduct = (product, shop) => {
   };
 };
 
-// const productShop = (shop) => {
-//   return {
-//     type: PRODUCT_SHOP,
-//     payload: shop,
-//   }
-// }
+const productsByShop = (products) => {
+  return {
+    type: PRODUCTS_SHOP,
+    payload: products,
+  }
+}
+const productsByShop2 = (products) => {
+  return {
+    type: PRODUCTS_SHOP2,
+    payload: products,
+  }
+}
+const productsByShop3 = (products) => {
+  return {
+    type: PRODUCTS_SHOP3,
+    payload: products,
+  }
+}
 
 
 
@@ -108,6 +123,34 @@ export const getProduct = (productId) => async (dispatch) => {
 //     return res;
 // }
 
+export const getProductsByShop = (shopId) => async (dispatch) => {
+  const res = await csrfFetch(`/api/products/shops/${shopId}`)
+
+  const data = await res.json();
+
+  dispatch(productsByShop(data.productsByShop))
+
+  return data;
+}
+export const getProductsByShop2 = (shopId) => async (dispatch) => {
+  const res = await csrfFetch(`/api/products/shops/${shopId}`)
+
+  const data = await res.json();
+
+  dispatch(productsByShop2(data.productsByShop))
+
+  return data;
+}
+export const getProductsByShop3 = (shopId) => async (dispatch) => {
+  const res = await csrfFetch(`/api/products/shops/${shopId}`)
+
+  const data = await res.json();
+
+  dispatch(productsByShop3(data.productsByShop))
+
+  return data;
+}
+
 const initialState = {}
 
 const productsReducer = (state = initialState, action) => {
@@ -144,8 +187,20 @@ const productsReducer = (state = initialState, action) => {
       newState = [{...action.payload}]
       return newState;
     }
-    case PRODUCT_SHOP: {
-      newState = [{...state}, ...action.payload]
+    case PRODUCTS_SHOP: {
+      newState = {...state};
+      newState.productsByShop = [...action.payload]
+      return newState;
+    }
+    case PRODUCTS_SHOP2: {
+      newState = {...state};
+      newState.productsByShop2 = [...action.payload]
+      return newState;
+    }
+    case PRODUCTS_SHOP3: {
+      newState = {...state};
+      newState.productsByShop3 = [...action.payload]
+      return newState;
     }
     default:
       return state;

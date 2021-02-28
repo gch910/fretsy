@@ -13,6 +13,8 @@ import CheckoutComplete from "./components/CheckoutComplete";
 import PurchaseHistory from "./components/PurchaseHistory";
 import ReviewForm from "./components/ReviewForm";
 import ReviewSuccess from "./components/ReviewSuccess"
+import Shops from "./components/Shops";
+import ShopItems from "./components/ShopItems"
 
 import * as sessionActions from "./store/session";
 
@@ -74,6 +76,12 @@ const App = () => {
               </Route>
               <Route path="/review-success">
                 <ReviewSuccess sessionUser={sessionUser}/>
+              </Route>
+              <Route path="/shops">
+                <Shops sessionUser={sessionUser}/>
+              </Route>
+              <Route exact path="/shop-items/:shopId">
+                <ShopItems sessionUser={sessionUser}/>
               </Route>
             </Switch>
           {/* </div> */}

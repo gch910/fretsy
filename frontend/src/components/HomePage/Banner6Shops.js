@@ -31,12 +31,12 @@ const Banner6Shops = ({ products }) => {
   return (
     <div className="banner-6">
       <div id="banner6-h1-div">
-        <h1 id="banner6-h1">Some of Our Shops</h1>
+        <h1 id="banner6-h1">Explore Our Shops:</h1>
       </div>
       <div id="banner-shop-1">
-        {productsArray?.map((product) => (
-          <div>
-            <h1>{product?.Shop?.name}</h1>
+        {productsArray?.map((product, idx) => (
+          <div id="banner6-item-div">
+            <h1>Shop: {product?.Shop?.name}</h1>
             <div>
               <img id="banner6-image" src={product?.img} />
               <h3>{product?.name}</h3>
@@ -46,7 +46,7 @@ const Banner6Shops = ({ products }) => {
       </div>
       <div id="banner-shop-2">
         {productsArray2?.map((product) => (
-          <div>
+          <div id="banner6-item-div">
             <h1>{productsArray2[0]?.Shop?.name}</h1>
             <div>
               <img id="banner6-image" src={product?.img} />
@@ -57,7 +57,7 @@ const Banner6Shops = ({ products }) => {
       </div>
       <div id="banner-shop-3">
         {productsArray3?.map((product) => (
-          <div>
+          <div id="banner6-item-div">
             <h1>{productsArray3[0]?.Shop?.name}</h1>
             <div>
               <img id="banner6-image" src={product?.img} />

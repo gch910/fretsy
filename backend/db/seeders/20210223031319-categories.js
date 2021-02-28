@@ -24,12 +24,6 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          name: "Handmade Guitars",
-          img: "https://lichtyguitars.com/wp-content/uploads/2016/01/flat-custom-guitar-1024x509.jpg",
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
           name: "Bass Guitars",
           img: "https://www.ibanez.com/common/product_artist_file/file/pc_main_electric_basses_eu_sp.jpg",
           createdAt: new Date(),
@@ -45,12 +39,6 @@ module.exports = {
         {
           name: "Amplifiers",
           img: "https://www.musik-produktiv.com/pic-010057677xxl/fender-super-champ-x2.jpg",
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          name: "Microphones",
-          img: "https://internationalmusician.org/wp-content/uploads/2018/04/Neumann-U-67-Tube-Microphone.jpg",
           createdAt: new Date(),
           updatedAt: new Date(),
         },

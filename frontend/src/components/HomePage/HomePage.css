@@ -33,9 +33,13 @@
     /* grid-template-columns: auto; */
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: auto;
     /* grid-template-rows: 5fr 1fr; */
     grid-template-areas: 
     "banner3-img0 banner3-img1 banner3-img2 banner3-img3 banner3-img4";
+    overflow-y: scroll;
+    overflow-x: hidden;
+   
 }
 
 .banner-5 {
@@ -46,6 +50,8 @@
     /* grid-template-rows: 5fr 1fr; */
     grid-template-areas: 
     "banner5-img0 banner5-img1 banner5-img2 banner5-img3 banner5-img4";
+    overflow-y: scroll;
+    overflow-x: hidden;
    
 }
 
@@ -83,8 +89,11 @@
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 1fr 7fr;
     grid-template-areas: 
-    ". h1 ."
+    "h1 . ."
     "shop1 shop2 shop3";
+    overflow-y: hidden;
+    overflow-x: scroll;
+    /* padding-bottom: 50px; */
    
 }
 
@@ -107,15 +116,20 @@
     text-align: center;
 }
 
+#banner6-item-div {
+   margin-right: 30px;
+}
+
 /* #banner6-h1 {
     
 } */
 
 #banner6-h1-div {
     grid-area: h1;
-    display: flex;
-    justify-content: center;
+    /* display: flex;
+    justify-content: flex-start; */
 }
+
 
 #banner6-image {
     width: 250px;

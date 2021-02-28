@@ -21,11 +21,6 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          name: "Josh's Handmade Guitars",
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
           name: "Bloomberg's Basses",
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -42,32 +37,12 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          name: "Check 123",
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
           name: "Stringify",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: "Jimbob",
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
           name: "Lick's",
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          name: "Relative Pitch",
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          name: "Eighth Note Noodler",
           createdAt: new Date(),
           updatedAt: new Date(),
         },

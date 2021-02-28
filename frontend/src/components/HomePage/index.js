@@ -29,7 +29,7 @@ const HomePage = () => {
   // let productCategoryValues = Object.values(productsByCategory);
   let shopNumber = Number(shopArray.length);
   const randomShop= () => {
-    const number = Math.floor(Math.random() * 13);
+    const number = Math.ceil(Math.random() * 10);
     return number;
   };
   let randomShopNumber1 = randomShop();

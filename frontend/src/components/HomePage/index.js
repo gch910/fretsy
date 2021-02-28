@@ -29,7 +29,7 @@ const HomePage = () => {
   // let productCategoryValues = Object.values(productsByCategory);
   let shopNumber = Number(shopArray.length);
   const randomShop= () => {
-    const number = Math.ceil(Math.random() * 10);
+    const number = Math.ceil(Math.random() * 8);
     return number;
   };
   let randomShopNumber1 = randomShop();
@@ -73,16 +73,19 @@ const HomePage = () => {
     );
   }
 
-  const randomGenerator2 = () => {
-    const number = Math.floor(Math.random() * 4);
-    return number;
+  const randomGenerator = (min, max) => {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min);
   };
-  let random2 = randomGenerator2();
-  const randomGenerator3 = () => {
-    const number = Math.floor(Math.random() * 4);
-    return number;
-  };
-  let random3 = randomGenerator3();
+
+  let random2 = randomGenerator(1, 7);
+
+  // const randomGenerator3 = () => {
+  //   const number = Math.ceil(Math.random() * 4);
+  //   return number;
+  // };
+  let random3 = randomGenerator(1, 7);
   // console.log(thisShoulNotChange);
   if (random2 === random3) {
     if (random3 >= 1) {

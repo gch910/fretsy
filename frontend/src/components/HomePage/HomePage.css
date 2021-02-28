@@ -1,7 +1,7 @@
 #home-page-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 360px 80px 350px 80px 340px 500px;
+    grid-template-rows: 360px 80px 360px 80px 360px 550px;
     grid-template-areas: 
     "banner banner banner banner banner"
     "banner2 banner2 banner2 banner2 banner2"
@@ -28,19 +28,18 @@
     width: 1000px;
     height: 20px;
 } */
+
 .banner-3 {
     grid-area: banner3;
-    /* grid-template-columns: auto; */
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-columns: auto;
-    /* grid-template-rows: 5fr 1fr; */
     grid-template-areas: 
     "banner3-img0 banner3-img1 banner3-img2 banner3-img3 banner3-img4";
     overflow-y: scroll;
     overflow-x: hidden;
-   
 }
+
 
 .banner-5 {
     grid-area: banner5;
@@ -58,7 +57,7 @@
 
 .banner-2 {
     grid-area: banner2;
-    background-color: #FAA077;
+    /* background-color: #FAA077; */
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -93,9 +92,19 @@
     "shop1 shop2 shop3";
     overflow-y: hidden;
     overflow-x: scroll;
-    /* padding-bottom: 50px; */
+    /* padding-bottom: 50px; */     
    
 }
+
+/* #banner-name-1 {
+    grid-area: name1;
+}
+#banner-name-2 {
+    grid-area: name1;
+}
+#banner-name-3 {
+    grid-area: name1;
+} */
 
 #banner-shop-1 {
     grid-area: shop1;
@@ -118,16 +127,20 @@
 
 #banner6-item-div {
    margin-right: 30px;
+   
 }
 
 /* #banner6-h1 {
     
 } */
 
-#banner6-h1-div {
-    grid-area: h1;
-    /* display: flex;
-    justify-content: flex-start; */
+
+#b6-shop-link {
+    color: black;
+}
+
+#b6-product-link {
+    color: black;
 }
 
 
@@ -193,7 +206,7 @@
 }
 .banner3-img-div {
      width: 350px;
-     height: 300px; 
+     height: 350px; 
     /* height: 300px; */
     align-self: center;
     display: flex;
@@ -208,7 +221,7 @@
 }
 .banner5-img-div {
      width: 350px;
-     height: 300px; 
+     height: 350px; 
     /* height: 300px; */
     align-self: center;
     display: flex;

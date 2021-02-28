@@ -36,10 +36,20 @@ const Banner6Shops = ({ products }) => {
       <div id="banner-shop-1">
         {productsArray?.map((product, idx) => (
           <div id="banner6-item-div">
-            <h1>Shop: {product?.Shop?.name}</h1>
+            <div id="banner-name-1">
+              <Link id="b6-shop-link" to={`/shop-items/${product?.Shop?.id}`}>
+                <h1>{product?.Shop?.name}</h1>
+              </Link>
+            </div>
             <div>
-              <img id="banner6-image" src={product?.img} />
-              <h3>{product?.name}</h3>
+              <div>
+                <Link to={`/products/${product?.id}`}>
+                  <img id="banner6-image" src={product?.img} />
+                </Link>
+                <Link id="b6-product-link" to={`/products/${product?.id}`}>
+                  <h3>{product?.name}</h3>
+                </Link>
+              </div>
             </div>
           </div>
         ))}
@@ -47,10 +57,16 @@ const Banner6Shops = ({ products }) => {
       <div id="banner-shop-2">
         {productsArray2?.map((product) => (
           <div id="banner6-item-div">
-            <h1>{productsArray2[0]?.Shop?.name}</h1>
+            <Link id="b6-shop-link" to={`/shop-items/${product?.Shop?.id}`}>
+              <h1 id="banner-name-2">{productsArray2[0]?.Shop?.name}</h1>
+            </Link>
             <div>
-              <img id="banner6-image" src={product?.img} />
-              <h3>{product?.name}</h3>
+              <Link to={`/products/${product?.id}`}>
+                <img id="banner6-image" src={product?.img} />
+              </Link>
+              <Link id="b6-product-link" to={`/products/${product?.id}`}>
+                <h3>{product?.name}</h3>
+              </Link>
             </div>
           </div>
         ))}
@@ -58,10 +74,16 @@ const Banner6Shops = ({ products }) => {
       <div id="banner-shop-3">
         {productsArray3?.map((product) => (
           <div id="banner6-item-div">
-            <h1>{productsArray3[0]?.Shop?.name}</h1>
+            <Link id="b6-shop-link" to={`/shop-items/${product?.Shop?.id}`}>
+              <h1 id="banner-name-3">{productsArray3[0]?.Shop?.name}</h1>
+            </Link>
             <div>
-              <img id="banner6-image" src={product?.img} />
-              <h3>{product?.name}</h3>
+              <Link to={`/products/${product?.id}`}>
+                <img id="banner6-image" src={product?.img} />
+              </Link>
+              <Link id="b6-product-link" to={`/products/${product?.id}`}>
+                <h3>{product?.name}</h3>
+              </Link>
             </div>
           </div>
         ))}

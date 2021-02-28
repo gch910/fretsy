@@ -15,6 +15,7 @@ import ReviewForm from "./components/ReviewForm";
 import ReviewSuccess from "./components/ReviewSuccess"
 import Shops from "./components/Shops";
 import ShopItems from "./components/ShopItems"
+import ScrollToTop from "./components/ScrollToTop";
 
 import * as sessionActions from "./store/session";
 

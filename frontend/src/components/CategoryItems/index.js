@@ -10,7 +10,7 @@ const CategoryItems = () => {
   const products = useSelector((state) => state.products);
 
   const [params, setParams] = useState();
-  
+
   // console.log(products.products);
 
   useEffect(() => {
@@ -25,11 +25,13 @@ const CategoryItems = () => {
       <div id="category-grid">
         {products?.products?.map((product) => (
           <div className="category-product">
-            <Link to={`/products/${product?.id}`}>
-              <h1>{product?.name}</h1>
-            </Link>
-            <Link to={`/products/${product?.id}`}>
-              <img id="category-image" src={product?.img}></img>
+            <div id="category-image-div">
+              <Link to={`/products/${product?.id}`}>
+                <img id="category-image" src={product?.img}></img>
+              </Link>
+            </div>
+             <Link id="category-h3" to={`/products/${product?.id}`}>
+              <h3>{product?.name}</h3>
             </Link>
           </div>
         ))}

@@ -454,7 +454,7 @@
 
 .form-errors {
     color: red;
-    font-size: 30px;
+    font-size: 20px;
     z-index: 3;
     margin-bottom: 50px;
 }

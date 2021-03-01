@@ -11,7 +11,6 @@ const ReviewForm = ({ sessionUser }) => {
   const history = useHistory();
   const product = useSelector((state) => state.products);
 
-
   const [review, setReview] = useState("");
   const [rating, setRating] = useState("");
   const [errors, setErrors] = useState([]);
@@ -25,9 +24,9 @@ const ReviewForm = ({ sessionUser }) => {
       rating,
     };
 
-    console.log(review, rating)
+    console.log(review, rating);
 
-    dispatch(addUserReview(userId, productId, userReview))
+    dispatch(addUserReview(userId, productId, userReview));
     // .catch(
     //   async (res) => {
     //     const data = await res.json();
@@ -44,13 +43,15 @@ const ReviewForm = ({ sessionUser }) => {
   }, [dispatch]);
 
   if (!sessionUser) return <Redirect to="/" />;
-  
+
   return (
     <div id="review-form-div">
       <h1 id="review-h1">
         Tell Us What You Though About Your {product[0]?.product.name}
       </h1>
-      <img id="review-image" src={`${product[0]?.product.img}`} />
+      <div id="review-image-div">
+        <img id="review-image" src={`${product[0]?.product.img}`} />
+      </div>
       <form id="review-form" onSubmit={handleSubmit}>
         <ul className="form-errors">
           {errors.map((error, idx) => (

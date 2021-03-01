@@ -19,8 +19,8 @@
 }
 
 #product-image {
-    width: 450px;
-    height: 550px;
+    width: 480px;
+    height:  580px;
     border: 1px solid gray;
     box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.5);
     margin-right: 30px;
@@ -76,6 +76,7 @@
     width: 100px;
     height: 50px;
     background-color: #DDEBE3;
+    margin-bottom: 10px;
 }
 
 

@@ -34,6 +34,7 @@
   ". sub1 sub2 sub3 sub4 sub5 sub6 sub7 .";
   width: 100%;
   margin-bottom: 5px;
+  margin-top: 5px;
 }
 
 /* #sub-nav-container {

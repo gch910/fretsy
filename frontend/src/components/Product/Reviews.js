@@ -2,7 +2,7 @@ import { useHistory } from "react-router-dom";
 
 const Reviews = ({ reviews }) => {
   let reviewObj = {};
-  console.log(reviews)
+  console.log(reviews);
   reviews.forEach((review) => {
     let userRating;
     userRating = Number(review.rating);
@@ -19,14 +19,17 @@ const Reviews = ({ reviews }) => {
   });
 
   return (
-    <div id="reviews-div">
-      {reviews.map((review) => (
-        <div id="review-div">
-          <h3>User: {review?.User?.username}</h3>
-          <div>Rating: {reviewObj[review?.userId]}</div>
-          <div id="review-body">{review?.body}</div>
-        </div>
-      ))}
+    <div id="reviews-container">
+      <h1 id="reviews-h1">{reviews?.length ? "User Reviews:" : "This Item Has No Reviews"}</h1>
+      <div id="reviews-div">
+        {reviews.map((review) => (
+          <div id="review-div">
+            <h3>User: {review?.User?.username}</h3>
+            <div>Rating: {reviewObj[review?.userId]}</div>
+            <div id="review-body"><p id="review-text">{review?.body}</p></div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

@@ -42,7 +42,7 @@ const ShoppingCart = () => {
       <div id="cart-h1-div">
         <h1 id="cart-h1">
           {cartArray.length
-            ? "Here is your shopping cart"
+            ? "Your shopping cart"
             : "You have no items in your cart"}
         </h1>
       </div>

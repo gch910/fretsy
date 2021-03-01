@@ -117,7 +117,7 @@ const HomePage = () => {
 
         <div className="banner-2">
           <div id="banner2-h1-container">
-            <h1>Check out some of our {categoryName1?.name}</h1>
+            <h1 id="banner2-text">Check out some of our {categoryName1?.name}</h1>
           </div>
         </div>
 
@@ -140,7 +140,7 @@ const HomePage = () => {
 
       <div className="banner-2">
         <div id="banner2-h1-container">
-          <h1>Check out some of our {categoryName1?.name}</h1>
+          <h1 id="banner2-text">Check out some of our {categoryName1?.name}</h1>
         </div>
       </div>
 

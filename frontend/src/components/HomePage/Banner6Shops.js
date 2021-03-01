@@ -38,7 +38,7 @@ const Banner6Shops = ({ products }) => {
           <div id="banner6-item-div">
             <div id="banner-name-1">
               <Link id="b6-shop-link" to={`/shop-items/${product?.Shop?.id}`}>
-                <h1>{product?.Shop?.name}</h1>
+                <h1 className="banner-name">{product?.Shop?.name}</h1>
               </Link>
             </div>
             <div>
@@ -58,7 +58,7 @@ const Banner6Shops = ({ products }) => {
         {productsArray2?.map((product) => (
           <div id="banner6-item-div">
             <Link id="b6-shop-link" to={`/shop-items/${product?.Shop?.id}`}>
-              <h1 id="banner-name-2">{productsArray2[0]?.Shop?.name}</h1>
+              <h1 className="banner-name">{productsArray2[0]?.Shop?.name}</h1>
             </Link>
             <div>
               <Link to={`/products/${product?.id}`}>
@@ -75,7 +75,7 @@ const Banner6Shops = ({ products }) => {
         {productsArray3?.map((product) => (
           <div id="banner6-item-div">
             <Link id="b6-shop-link" to={`/shop-items/${product?.Shop?.id}`}>
-              <h1 id="banner-name-3">{productsArray3[0]?.Shop?.name}</h1>
+              <h1 className="banner-name">{productsArray3[0]?.Shop?.name}</h1>
             </Link>
             <div>
               <Link to={`/products/${product?.id}`}>

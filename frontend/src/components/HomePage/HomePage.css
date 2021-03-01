@@ -1,7 +1,7 @@
 #home-page-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 360px 80px 360px 80px 360px 550px;
+    grid-template-rows: 360px 90px 360px 90px 360px 600px;
     grid-template-areas: 
     "banner banner banner banner banner"
     "banner2 banner2 banner2 banner2 banner2"
@@ -21,6 +21,10 @@
     "banner-img0 banner-img1 banner-img2 banner-img3 banner-img4";
    
    
+}
+
+.banner-name {
+    color: rgb(63, 62, 62);
 }
 
 /* #banner1-h1 {
@@ -73,11 +77,18 @@
     display: flex;
     align-items: flex-start;
     justify-content: center;
+    color: rgb(63, 62, 62);
    
+}
+
+#banner2-text {
+    color: rgb(63, 62, 62);
+    text-decoration: underline;
 }
 
 #banner4-text {
     align-self: center;
+    text-decoration: underline;
     
 }
 
@@ -86,25 +97,26 @@
     background-color: #FAA077;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 1fr 7fr;
+    grid-template-rows: 100px 1fr;
     grid-template-areas: 
     "h1 . ."
     "shop1 shop2 shop3";
     overflow-y: hidden;
     overflow-x: scroll;
-    /* padding-bottom: 50px; */     
+    /* padding-bottom: 20px;      */
    
 }
 
-/* #banner-name-1 {
+ /* #banner-name-1 {
     grid-area: name1;
-}
-#banner-name-2 {
+  
+} */
+/* #banner-name-2 {
     grid-area: name1;
 }
 #banner-name-3 {
     grid-area: name1;
-} */
+}  */
 
 #banner-shop-1 {
     grid-area: shop1;
@@ -128,19 +140,22 @@
 #banner6-item-div {
    margin-right: 30px;
    
+   
 }
 
-/* #banner6-h1 {
-    
-} */
+#banner6-h1 {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
 
 
 #b6-shop-link {
-    color: black;
+    color: rgb(63, 62, 62);
 }
 
 #b6-product-link {
-    color: black;
+    color: rgb(63, 62, 62);
 }
 
 

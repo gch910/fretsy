@@ -25,7 +25,7 @@ const PurchaseHistory = ({ sessionUser }) => {
       <div id="purchase-history-div">
         {purchasedArray.map((product) => (
           <div id="purchased-item-div">
-            <Link to={`/products/${product.id}`}>
+            <Link className="purchased-link" to={`/products/${product.id}`}>
               <h1>{product.name}</h1>
             </Link>
             <h3>You Paid: ${product.price}</h3>
@@ -33,7 +33,7 @@ const PurchaseHistory = ({ sessionUser }) => {
               <img className="purchased-image" src={product.img}></img>
             </Link>
             <div>
-              <Link to={`/review/${userId}/${product.id}`}>
+              <Link className="purchased-link" to={`/review/${userId}/${product.id}`}>
                 <h1 id="write-review-h1">Write a Review!</h1>
               </Link>
             </div>

@@ -1,6 +1,6 @@
 const ReviewSuccess = () => {
     return (
-        <div>
+        <div id="review-success">
             <h1>Review Submitted!</h1>
         </div>
     )

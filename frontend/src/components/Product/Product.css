@@ -2,7 +2,7 @@
     margin-top: 50px;
     display: grid;
     grid-template-columns: 2fr 5fr 5fr;
-    grid-template-rows: 2fr 2fr;
+    grid-template-rows: 2fr 800px;
     grid-template-areas: 
     "decoration image description"
     "decoration reviews decoration2";
@@ -30,7 +30,11 @@
 #description-div {
     grid-area: description;
     background-color: #FDEBD2;
-   
+      
+}
+
+#h3-description-div {
+    font-size: 20px;
 }
 
 #reviews-div {
@@ -40,13 +44,22 @@
     align-items: center;
     margin-top: 10px;
     text-align: center;
+    /* height: 100vh; */
 }
 
 #review-div {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    
+    align-items: center;  
+    height: 300px; 
+}
+
+#reviews-h1 {
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+    text-decoration: underline;
+    color: rgb(83, 83, 83);
 }
 
 #decoration-div {
@@ -64,9 +77,11 @@
     background-color: #DDEBE3;
 }
 
-#review-body {
-    width: 300px;
-    height: 170px;
-    display: flex;
-    justify-content: center;
+
+
+#review-text {
+    /* height: 200px; */
+    /* width: 100px;
+    word-wrap: break-word; */
+    /* overflow: scroll; */
 }

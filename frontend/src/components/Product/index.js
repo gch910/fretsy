@@ -31,6 +31,8 @@ const Product = () => {
 
   return (
     <div id="product-grid">
+      <div id="decoration-div"></div>
+      <div id="decoration-div2"></div>
       <ProductImage product={product}/>
       <ProductDescription product={product} />
       <Reviews product={product} reviews={reviewsArray} />

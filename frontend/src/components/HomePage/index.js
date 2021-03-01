@@ -26,16 +26,22 @@ const HomePage = () => {
   const shopArray = Object.values(shops);
 
   let categoryValues = Object.values(categoryObject);
-  // let productCategoryValues = Object.values(productsByCategory);
-  let shopNumber = Number(shopArray.length);
-  const randomShop= () => {
-    const number = Math.ceil(Math.random() * 8);
-    return number;
+  
+  const randomGenerator = (min, max) => {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min);
   };
-  let randomShopNumber1 = randomShop();
-  let randomShopNumber2 = randomShop();
-  let randomShopNumber3 = randomShop();
-  console.log("shop number", shopNumber)
+  // let productCategoryValues = Object.values(productsByCategory);
+  // let shopNumber = Number(shopArray.length);
+  // const randomShop= () => {
+  //   const number = Math.ceil(Math.random() * 8);
+  //   return number;
+  // };
+  let randomShopNumber1 = randomGenerator(1, 8);
+  let randomShopNumber2 = randomGenerator(1, 8);
+  let randomShopNumber3 = randomGenerator(1, 8);
+  // console.log("shop number", shopNumber)
 
   const randomCategory1 = productsByCategory?.category1;
   const randomCategory2 = productsByCategory?.category2;
@@ -44,7 +50,7 @@ const HomePage = () => {
 
   const allCategories = categoryValues;
 
-  let random = Math.floor(Math.random() * categoryValues.length);
+  let random = Math.floor(Math.random() * 2);
 
   if (categoryValues.length > 4) {
     if (random >= categoryValues.length - 4) {
@@ -52,9 +58,9 @@ const HomePage = () => {
     }
 
     if (sessionUser) {
-      categoryValues = categoryValues.slice(random, random + 5);
+      categoryValues = categoryValues?.slice(random, random + 5);
     } else {
-      categoryValues = categoryValues.slice(random, random + 4);
+      categoryValues = categoryValues?.slice(random, random + 4);
     }
   }
 
@@ -73,11 +79,7 @@ const HomePage = () => {
     );
   }
 
-  const randomGenerator = (min, max) => {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min) + min);
-  };
+ 
 
   let random2 = randomGenerator(1, 7);
 

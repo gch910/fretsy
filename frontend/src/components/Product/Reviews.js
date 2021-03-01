@@ -1,13 +1,34 @@
+import { useHistory } from "react-router-dom";
+
 const Reviews = ({ reviews }) => {
-    return (
-        <div id="reviews-div">
-           {reviews.map(review => (
-               <p>{review.body}</p>
-           ))}
-          
+  let reviewObj = {};
+  console.log(reviews)
+  reviews.forEach((review) => {
+    let userRating;
+    userRating = Number(review.rating);
+    let stars;
+    if (userRating === 5) stars = "⭐⭐⭐⭐⭐";
+    if (userRating === 4) stars = "⭐⭐⭐⭐";
+    if (userRating === 3) stars = "⭐⭐⭐";
+    if (userRating === 2) stars = "⭐⭐";
+    if (userRating === 1) stars = "⭐";
+    if (!userRating) stars = "";
+    // console.log(userRating)
+    // console.log(stars)
+    reviewObj[review.userId] = stars;
+  });
+
+  return (
+    <div id="reviews-div">
+      {reviews.map((review) => (
+        <div id="review-div">
+          <h3>User: {review?.User?.username}</h3>
+          <div>Rating: {reviewObj[review?.userId]}</div>
+          <div id="review-body">{review?.body}</div>
         </div>
-        
-    )
-}
+      ))}
+    </div>
+  );
+};
 
 export default Reviews;

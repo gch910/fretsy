@@ -20,7 +20,7 @@ const PurchaseHistory = ({ sessionUser }) => {
   return (
     <div>
       <div id="purchase-history-h1-div">
-        <h1>Purchase History</h1>
+        <h1>{purchasedArray.length ? "Purchase History" : "You Have No Purchased Items"}</h1>
       </div>
       <div id="purchase-history-div">
         {purchasedArray.map((product) => (

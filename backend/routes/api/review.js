@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { Review } = require("../../db/models");
+const { Review, User } = require("../../db/models");
 
 const asyncHandler = require("express-async-handler");
 
@@ -24,6 +24,7 @@ router.get("/:productId", asyncHandler(async(req, res) => {
     const productId = parseInt(req.params.productId);
 
     const productReviews = await Review.findAll({
+        include: User,
         where: {
             productId,
         }

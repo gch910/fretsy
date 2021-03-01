@@ -37,7 +37,7 @@ const Navigation = ({ isLoaded, navId }) => {
           Home
         </NavLink>
         <NavLink to={`/shopping-cart/${sessionUser.id}`} id="cart-button">
-          <i class="fas fa-shopping-cart fa-3x"></i>
+          <i id="shopping-cart" class="fas fa-shopping-cart fa-3x"></i>
         </NavLink>
       </>
     );

@@ -11,6 +11,7 @@ body {
   
 }
 
+#shopping-cart:hover,
 button:hover {
   background-color: rgb(252, 233, 230);
 }

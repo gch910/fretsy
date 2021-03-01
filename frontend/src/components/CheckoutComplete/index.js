@@ -1,6 +1,8 @@
+import "./CheckoutComplete.css"
+
 const CheckoutComplete = () => {
     return (
-        <div>
+        <div id="purchase-complete-h1">
             <h1>Purchase Successful!</h1>
         </div>
     )

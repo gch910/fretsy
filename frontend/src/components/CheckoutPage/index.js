@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useParams, Link, useHistory } from "react-router-dom";
 import { getCartItems, deleteCartItem, deleteUserCart, addPurchaseHistory } from "../../store/shoppingCart";
+import "./CheckoutPage.css";
 
 
 const CheckoutPage = () => {
@@ -16,9 +17,6 @@ const CheckoutPage = () => {
     style: 'currency',
     currency: 'USD',
   
-    // These options are needed to round to whole numbers if that's what you want.
-    //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
-    //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
   });
 
   const cartArray = Object.values(sessionCart);
@@ -57,14 +55,14 @@ const CheckoutPage = () => {
   return (
     <>
       <div id="checkout-page-grid">
-        <h1>Checkout</h1>
-        <h1>Your Total: {formatter.format(totalPrice)}</h1>
-        <div>
-          <button onClick={makePurchase}>Complete Purchase</button>
+        <h1 id="checkout-h1">Checkout</h1>
+        <h1 id="checkout-price-h1">Your Total: {formatter.format(totalPrice)}</h1>
+        <div id="complete-checkout-div">
+          <button className="no-outline" id="complete-checkout" onClick={makePurchase}>Complete Purchase</button>
         </div>
 
-        <Link to={`/shopping-cart/${userId}`}>
-          <button>Back To Cart</button>
+        <Link id="checkout-link" to={`/shopping-cart/${userId}`}>
+          <button className="no-outline" id="back-to-cart">Back To Cart</button>
         </Link>
       </div>
       <div id="cart-h1-div">
@@ -74,17 +72,17 @@ const CheckoutPage = () => {
             : "You have no items in your cart"}
         </h1>
       </div>
-      <div id="shopping-cart-grid">
+      <div id="check-out-grid">
         {cartArray?.map((item, idx) => (
           <div className="cart-item" id={`cart-item-${item?.idx}`}>
             <div className="cart-item-name">
-              <h1>{item?.Product?.name}</h1>
+              <h3>{item?.Product?.name}</h3>
             </div>
             <div className="cart-item-image-div">
               <img className="cart-item-image" src={item?.Product?.img}></img>
             </div>
             <div className="cart-item-price">
-              <h3>{item?.Product?.price}</h3>
+              <h1>{item?.Product?.price}</h1>
             </div>
             <div className="delete-button-div">
               <button

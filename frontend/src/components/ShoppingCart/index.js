@@ -10,6 +10,12 @@ const ShoppingCart = () => {
   const sessionCart = useSelector((state) => state.carts);
   const dispatch = useDispatch();
 
+  
+  var formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  
+  });
  
 
   const cartArray = Object.values(sessionCart);
@@ -44,13 +50,13 @@ const ShoppingCart = () => {
         {cartArray?.map((item, idx) => (
           <div className="cart-item" id={`cart-item-${item?.idx}`}>
             <div className="cart-item-name">
-              <h1>{item?.Product?.name}</h1>
+              <h3>{item?.Product?.name}</h3>
             </div>
             <div className="cart-item-image-div">
               <img className="cart-item-image" src={item?.Product?.img}></img>
             </div>
             <div className="cart-item-price">
-              <h3>{item?.Product?.price}</h3>
+              <h1>{formatter.format(item?.Product?.price)}</h1>
             </div>
             <div className="delete-button-div">
               <button
@@ -65,11 +71,9 @@ const ShoppingCart = () => {
         ))}
         <div id="outer-button-div">
           {cartArray.length ? (
-            <div id="checkout-button">
-              <Link to={`/checkout/${userId}`}>
-                <button>Check Out</button>
+              <Link id="checkout-link" to={`/checkout/${userId}`}>
+                <button className="no-outline" id="checkout-button">Check Out</button>
               </Link>
-            </div>
           ) : "" }
         </div>
       </div>

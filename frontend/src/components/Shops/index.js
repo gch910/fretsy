@@ -4,29 +4,31 @@ import { getAllShops } from "../../store/shops";
 import { Link } from "react-router-dom";
 import "./Shops.css";
 
-
 const Shops = () => {
-    const dispatch = useDispatch();
-    const shops = useSelector(state => state.shops);
+  const dispatch = useDispatch();
+  const shops = useSelector((state) => state.shops);
 
-    const shopArray = Object.values(shops);
-    console.log(shopArray)
+  const shopArray = Object.values(shops);
+  console.log(shopArray);
 
-    useEffect(() => {
-        dispatch(getAllShops())
-    }, [dispatch])
-    
-    return (
-        <div id="shops-div">
-            {shopArray?.map(shop => (
-                <div id="shop-div">
-                    <Link to={`/shop-items/${shop.id}`}>
-                       <h1 id="shop-h1">{shop.name}</h1>
-                    </Link>
-                </div>
-            ))}
-        </div>
-    )
-}
+  useEffect(() => {
+    dispatch(getAllShops());
+  }, [dispatch]);
+
+  return (
+    <div id="shops-outer-div">
+      <h1 id="all-shops-h1">All Shops</h1>
+      <div id="shops-div">
+        {shopArray?.map((shop) => (
+          <div id="shop-div">
+            <Link to={`/shop-items/${shop.id}`}>
+              <h1 id="shop-h1">{shop.name}</h1>
+            </Link>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 export default Shops;

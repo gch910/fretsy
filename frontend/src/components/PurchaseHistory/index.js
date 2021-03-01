@@ -18,9 +18,9 @@ const PurchaseHistory = ({ sessionUser }) => {
   if (!sessionUser) return <Redirect to="/" />;
 
   return (
-    <div>
+    <div id="purchase-history-container">
       <div id="purchase-history-h1-div">
-        <h1>{purchasedArray.length ? "Purchase History" : "You Have No Purchased Items"}</h1>
+        <h1 id="purchase-history-h1">{purchasedArray.length ? "Purchase History" : "You Have No Purchased Items"}</h1>
       </div>
       <div id="purchase-history-div">
         {purchasedArray.map((product) => (
@@ -34,7 +34,7 @@ const PurchaseHistory = ({ sessionUser }) => {
             </Link>
             <div>
               <Link to={`/review/${userId}/${product.id}`}>
-                Write a Review!
+                <h1 id="write-review-h1">Write a Review!</h1>
               </Link>
             </div>
           </div>

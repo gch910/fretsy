@@ -61,7 +61,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 This is a description.
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Fretsy][product-screenshot]](https://example.com)
 
 ### Built With
 

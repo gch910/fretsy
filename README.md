@@ -15,7 +15,7 @@
   <h3 align="center">Fretsy</h3>
 
   <p align="center">
-    This is a project description.
+    An application for buying and selling guitars and equipment.  Inspired by Etsy.
     <br />
     <a href="https://github.com/gch910/Fretsy"><strong>Explore the docs »</strong></a>
     <br />
@@ -60,7 +60,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-This is a description.
+Coming Soon.
 [![Fretsy][product-screenshot]](https://example.com)
 
 ### Built With
@@ -106,7 +106,7 @@ Installations
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+Coming Soon.
 
 
 

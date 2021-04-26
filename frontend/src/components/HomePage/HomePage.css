@@ -26,7 +26,7 @@
 
 .banner-name {
    
-    color: rgb(116, 116, 116);
+    color: rgb(105, 105, 105);
 
 }
 
@@ -165,7 +165,7 @@
     width: 100vw;
     display: flex;
     justify-content: center;
-    color: rgb(116, 116, 116);
+    color: rgb(105, 105, 105);
 }
 
 #banner6-h1-div {
@@ -174,11 +174,11 @@
 
 
 #b6-shop-link {
-    color: rgb(116, 116, 116);
+    color: rgb(105, 105, 105);
 }
 
 #b6-product-link {
-    color: rgb(116, 116, 116);
+    color: rgb(105, 105, 105);
 }
 
 
@@ -342,7 +342,7 @@
     margin-top: 0px;
     padding: 0px;
     text-decoration: none;
-    color: black;
+    color: rgb(105, 105, 105);
 }
 
 /* #banner-text-1 {
@@ -365,6 +365,7 @@
     "login-img0 login-img1 credential credential login-img2 login-img3"
     "login-img0 login-img1 password password login-img2 login-img3"
     ". . button button . .";
+
    
 }
 
@@ -428,7 +429,7 @@
     grid-area: h1;
     display: flex;
     justify-content: center;
-    color: rgb(116, 116, 116);
+    color: rgb(105, 105, 105);
 
 }
 
@@ -476,7 +477,7 @@
 
 #login-banner-text {
     text-decoration: none;
-    color: black;
+     color: rgb(105, 105, 105);
 }
 
 .form-errors {

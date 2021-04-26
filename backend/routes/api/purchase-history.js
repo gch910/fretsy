@@ -8,9 +8,15 @@ router.get("/:userId", asyncHandler(async(req, res) => {
 
     const purchasedProducts = await User.findAll({
         include: Product,
+        where: {
+            id: userId
+        }
+        
 
     })
 
+    console.log("user id", userId)
+   
     const productsArray = purchasedProducts[0].Products
     // products.forEach(product => console.log(product.name))
 

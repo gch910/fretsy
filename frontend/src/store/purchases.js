@@ -14,7 +14,10 @@ export const getPurchasedItems = (userId) => async (dispatch) => {
     
     const data = await res.json();
 
+    console.log("this is zee data", data);
+
     dispatch(getPurchases(data.productsArray))
+
 
     return data;
 }

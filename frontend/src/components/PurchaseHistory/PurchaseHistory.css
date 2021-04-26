@@ -13,6 +13,11 @@
     border-right: 5px solid gray;
 }
 
+#purchased-item-h1 {
+    display: flex;
+    justify-content: center;
+}
+
 #purchase-history-div {
     display: flex;
     flex-direction: column;
@@ -41,4 +46,11 @@
 
 .purchased-link {
     color: rgb(63, 62, 62);
+}
+
+#purchased-link-div {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
 }

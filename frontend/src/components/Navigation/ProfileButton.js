@@ -36,13 +36,21 @@ const ProfileButton = ({ user }) => {
         <i className="far fa-user-circle fa-3x"></i>
         {showMenu && (
           <div id="profile-dropdown-div">
-            <ul style={{listStyle: "none"}}>
-              <Link to={`/purchase-history/${user.id}`} className="profile-li">{user.username}</Link>
+            <ul style={{ listStyle: "none" }}>
+              <Link to={`/purchase-history/${user.id}`} className="profile-li">
+                Purchase History
+              </Link>
               <li className="profile-li">{user.email}</li>
               <li>
-                <button id="logout-button" className="no-outline" onClick={userLogout}>
-                  Log Out
-                </button>
+                <div id="logout-button-div">
+                  <button
+                    id="logout-button"
+                    className="no-outline"
+                    onClick={userLogout}
+                  >
+                    Log Out
+                  </button>
+                </div>
               </li>
             </ul>
           </div>

@@ -1,3 +1,5 @@
+import "./ReviewSuccess.css"
+
 const ReviewSuccess = () => {
     return (
         <div id="review-success">

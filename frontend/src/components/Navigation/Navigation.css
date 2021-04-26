@@ -202,7 +202,15 @@
 
 .profile-li {
   display: flex;
-  padding: 5px;
+  padding: 8px;
+  font-size: 25px;
+  justify-self: center;
+  color: #eb885b;
+}
+
+#logout-button-div {
+  display: flex;
+  justify-content: center;
 }
 
 /* .profile-dropdown li:hover {
@@ -240,14 +248,16 @@ i {
   right: 200px;
   top: 10px; */
   /* background-color: blue; */
-  margin-top: 10em;
+  margin-top: 3em;
   width: 1000px;
   height: 300px;
   border: none;
   padding-top: 250px;
   z-index: 2;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   text-align: center;
 
   

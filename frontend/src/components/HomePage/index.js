@@ -1,8 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { categories } from "../../store/categories";
-import { getProductsByCategory, unloadProductsByCategory1 } from "../../store/products";
-import { getProductsByCategory2 } from "../../store/products";
+import { getProductsByCategory, unloadProductsByCategory1, unloadProductsByCategory2 } from "../../store/products";
+// import { getProductsByCategory2 } from "../../store/products";
 import { getProductsByShop } from "../../store/products";
 import { getProductsByShop2 } from "../../store/products";
 import { getProductsByShop3 } from "../../store/products";
@@ -20,7 +20,9 @@ const HomePage = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const categoryObject = useSelector((state) => state.categories);
-  const productsByCategory = useSelector((state) => state.products);
+  const productsByCategory1 = useSelector((state) => state.products.category1);
+  const productsByCategory2 = useSelector((state) => state.products.category2);
+  const productsByCategory =  useSelector((state) => state.products);
   const shops = useSelector(state => state.shops);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -44,8 +46,9 @@ const HomePage = () => {
   let randomShopNumber3 = randomGenerator(1, 8);
   // console.log("shop number", shopNumber)
 
-  const randomCategory1 = productsByCategory?.category1;
-  const randomCategory2 = productsByCategory?.category2;
+  // const randomCategory1 = productsByCategory?.category1;
+  // const randomCategory2 = productsByCategory?.category2;
+
   // const test2 = productsByCategory.category1?.name
   // console.log(randomCategory1, randomCategory2);
 
@@ -98,25 +101,30 @@ const HomePage = () => {
 
   useEffect(()=> {
     
-  if (randomCategory1) {
-    categoryName1 = allCategories.find(
-      (value) => value?.id == randomCategory1[0]?.categoryId
-    );
+  // if (randomCategory1) {
+  //   categoryName1 = allCategories.find(
+  //     (value) => value?.id == randomCategory1[0]?.categoryId
+  //   );
 
-    console.log("CATEGORY NAME", categoryName1)
-  }
+  //   console.log("CATEGORY NAME", categoryName1)
+  // }
 
-  if (randomCategory2) {
-    categoryName2 = allCategories.find(
-      (value) => value?.id == randomCategory2[0]?.categoryId
-    );
-  }
+  // if (randomCategory2) {
+  //   categoryName2 = allCategories.find(
+  //     (value) => value?.id == randomCategory2[0]?.categoryId
+  //   );
+  // }
  
-    dispatch(getProductsByCategory(random2)).then(() => dispatch(unloadProductsByCategory1()))
-    dispatch(getProductsByCategory2(random3));
+    dispatch(getProductsByCategory())
+    // dispatch(getProductsByCategory2(random3));
     dispatch(getProductsByShop(randomShopNumber1));
     dispatch(getProductsByShop2(randomShopNumber2));
     dispatch(getProductsByShop3(randomShopNumber3)).then(()=> setIsLoaded(true))
+
+    return ()=> {
+      dispatch(unloadProductsByCategory1())
+      dispatch(unloadProductsByCategory2())
+    }
     
   },[])
 
@@ -125,8 +133,8 @@ const HomePage = () => {
     return isLoaded && (
       <div id="home-page-grid">
         <LoginHome categoryValues={categoryValues} />
-        <Banner3Categories randomCategory1={randomCategory1} />
-        <Banner5Categories randomCategory2={randomCategory2} />
+        <Banner3Categories randomCategory1={productsByCategory1} />
+        <Banner5Categories randomCategory2={productsByCategory2} />
 
         <div className="banner-2">
           <div id="banner2-h1-container">
@@ -148,8 +156,8 @@ const HomePage = () => {
   return isLoaded && (
     <div id="home-page-grid">
       <Banner1Categories categoryValues={categoryValues} />
-      <Banner3Categories randomCategory1={randomCategory1} />
-      <Banner5Categories randomCategory2={randomCategory2} />
+      <Banner3Categories randomCategory1={productsByCategory1} />
+      <Banner5Categories randomCategory2={productsByCategory2} />
 
       <div className="banner-2">
         <div id="banner2-h1-container">

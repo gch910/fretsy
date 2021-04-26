@@ -68,29 +68,45 @@ export const unloadProductsByCategory1 = (products = []) => {
     payload: products,
   }
 }
+export const unloadProductsByCategory2 = (products = []) => {
+  return {
+    type: PRODUCTS_CATEGORY2,
+    payload: products,
+  }
+}
 
 
 
-export const getProductsByCategory = (categoryId) => async (dispatch) => {
-  const res = await csrfFetch(`/api/products/categories/${categoryId}`)
+// export const getProductsByCategory = (categoryId) => async (dispatch) => {
+//   const res = await csrfFetch(`/api/products/categories/${categoryId}`)
+
+//   const data = await res.json();
+
+//   dispatch(productsByCategory(data.productsByCategory))
+//   return data;
+// }
+export const getProductsByCategory = () => async (dispatch) => {
+  const res = await csrfFetch(`/api/products/random-category`)
 
   const data = await res.json();
 
-  dispatch(productsByCategory(data.productsByCategory))
+  dispatch(productsByCategory(data.productsByCategory1))
+  dispatch(productsByCategory2(data.productsByCategory2))
   return data;
 }
 
 
 
 
-export const getProductsByCategory2 = (categoryId) => async (dispatch) => {
-  const res = await csrfFetch(`/api/products/categories/${categoryId}`)
+// export const getProductsByCategory2 = (categoryId) => async (dispatch) => {
+//   const res = await csrfFetch(`/api/products/random-category`)
 
-  const data = await res.json();
+//   const data = await res.json();
 
-  dispatch(productsByCategory2(data.productsByCategory))
-  return data;
-}
+//   dispatch(productsByCategory2(data.productsByCategory))
+
+//   return data;
+// }
 export const getAllProductsByCategory = (categoryId) => async (dispatch) => {
   const res = await csrfFetch(`/api/products/categories/${categoryId}`)
 
@@ -166,6 +182,7 @@ export const getProductsByShop3 = (shopId) => async (dispatch) => {
 const initialState = {
   category1: [],
   category2: [],
+  products: [],
 }
 
 const productsReducer = (state = initialState, action) => {
@@ -193,7 +210,7 @@ const productsReducer = (state = initialState, action) => {
       return newState
     }
     case ALL_PRODUCTS_CATEGORY: {
-      newState = {};
+      newState = {...state};
       newState.products = [...action.payload.products]
       newState.categoryName = {...action.payload.categoryName}
       return newState;

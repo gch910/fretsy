@@ -24,14 +24,57 @@ router.get(
 );
 
 router.get(
+  "/random-category",
+  asyncHandler(async (req, res) => {
+    const randomGenerator = (min, max) => {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min) + min);
+    };
+    let id = randomGenerator(1, 7)
+
+    let id2 = randomGenerator(1, 7)
+    
+    if(id === id2) {
+      if(id > 1 && id <= 6) {
+        id -= 1 
+      } else {
+        id += 1
+      }
+    }
+
+    console.log(id, id2)
+    
+    const productsByCategory1 = await Product.findAll({
+      where: {
+        categoryId: id,
+      },
+    });
+
+    const productsByCategory2 = await Product.findAll({
+      where: {
+        categoryId: id2,
+      },
+    });
+
+
+
+    const categoryName = await Category.findByPk(id);
+    // console.log(productsByCategory[0]);
+    res.json({ productsByCategory1, productsByCategory2 });
+  })
+);
+router.get(
   "/categories/:categoryId",
   asyncHandler(async (req, res) => {
-    const id = parseInt(req.params.categoryId);
+    const id = parseInt(req.params.categoryId)
+    
     const productsByCategory = await Product.findAll({
       where: {
         categoryId: id,
       },
     });
+
 
     const categoryName = await Category.findByPk(id);
     // console.log(productsByCategory[0]);

@@ -20,7 +20,7 @@ const CategoryItems = () => {
   return (
     <div>
       <div id="category-h1-div">
-        <h1>{products?.categoryName?.name}</h1>
+        <h1 id="category-h1">{products?.categoryName?.name}</h1>
       </div>
       <div id="category-grid">
         {products?.products?.map((product) => (

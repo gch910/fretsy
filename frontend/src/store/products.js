@@ -63,6 +63,7 @@ const productsByShop3 = (products) => {
 }
 
 export const unloadProductsByCategory1 = (products = []) => {
+  console.log("this is action creator", products)
   return {
     type: PRODUCTS_CATEGORY,
     payload: products,

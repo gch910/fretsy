@@ -49,17 +49,17 @@ router.get(
       where: {
         categoryId: id,
       },
+      include: Category,
     });
 
     const productsByCategory2 = await Product.findAll({
       where: {
         categoryId: id2,
       },
+      include: Category,
     });
 
 
-
-    const categoryName = await Category.findByPk(id);
     // console.log(productsByCategory[0]);
     res.json({ productsByCategory1, productsByCategory2 });
   })

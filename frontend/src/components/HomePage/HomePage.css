@@ -1,7 +1,7 @@
 #home-page-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 360px 90px 360px 90px 360px 600px;
+    grid-template-rows: 360px 90px 400px 90px 400px 550px;
     grid-template-areas: 
     "banner banner banner banner banner"
     "banner2 banner2 banner2 banner2 banner2"
@@ -38,11 +38,13 @@
 
 .banner-3 {
     grid-area: banner3;
-    display: grid;
+    display: flex;
+    /* display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-columns: auto;
     grid-template-areas: 
-    "banner3-img0 banner3-img1 banner3-img2 banner3-img3 banner3-img4";
+    "banner3-img0 banner3-img1 banner3-img2 banner3-img3 banner3-img4"; */
+    display: flex;
     overflow-y: hidden;
     overflow-x: scroll;
     /* position: relative; */
@@ -59,11 +61,12 @@
 .banner-5 {
     grid-area: banner5;
     background-color: #DDEBE3;
-    display: grid;
+    /* display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    /* grid-template-rows: 5fr 1fr; */
-    grid-template-areas: 
-    "banner5-img0 banner5-img1 banner5-img2 banner5-img3 banner5-img4";
+    grid-template-rows: 1fr; */
+    /* grid-template-areas: 
+    "banner5-img0 banner5-img1 banner5-img2 banner5-img3 banner5-img4"; */
+    display: flex;
     overflow-y: hidden;
     overflow-x: scroll;
    
@@ -107,15 +110,15 @@
     grid-area: banner6;
     background-color: #FAA077;
     display: grid;
+    
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 100px 1fr;
+    grid-template-rows: 70px 1fr;
     grid-template-areas: 
     "h1 . ."
     "shop1 shop2 shop3";
     overflow-y: hidden;
     overflow-x: scroll;
     /* padding-bottom: 20px;      */
-   
 }
 
  /* #banner-name-1 {
@@ -154,12 +157,17 @@
    flex-direction: column;
    align-items: center;
    width: 300px;
+
 }
 
 #banner6-h1 {
     width: 100vw;
     display: flex;
     justify-content: center;
+}
+
+#banner6-h1-div {
+    width: 50px;
 }
 
 
@@ -233,7 +241,7 @@
     text-align: center;  
 }
 .banner3-img-div {
-     width: 350px;
+     min-width: 350px;
      height: 350px; 
     /* height: 300px; */
     align-self: center;
@@ -248,7 +256,8 @@
     text-align: center;  
 }
 .banner5-img-div {
-     width: 350px;
+     /* width: 350px; */
+     min-width: 350px;
      height: 350px; 
     /* height: 300px; */
     align-self: center;

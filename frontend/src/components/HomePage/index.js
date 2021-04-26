@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { categories } from "../../store/categories";
-import { getProductsByCategory } from "../../store/products";
+import { getProductsByCategory, unloadProductsByCategory1 } from "../../store/products";
 import { getProductsByCategory2 } from "../../store/products";
 import { getProductsByShop } from "../../store/products";
 import { getProductsByShop2 } from "../../store/products";
@@ -67,18 +67,9 @@ const HomePage = () => {
 
   let categoryName1;
 
-  if (randomCategory1) {
-    categoryName1 = allCategories.find(
-      (value) => value?.id == randomCategory1[0]?.categoryId
-    );
-  }
   let categoryName2;
 
-  if (randomCategory2) {
-    categoryName2 = allCategories.find(
-      (value) => value?.id == randomCategory2[0]?.categoryId
-    );
-  }
+
 
  
 
@@ -91,25 +82,43 @@ const HomePage = () => {
   let random3 = randomGenerator(1, 7);
   // console.log(thisShoulNotChange);
   if (random2 === random3) {
-    if (random3 > 1) {
+    if (random3 >= 1) {
       random3 -= 1;
     } else {
       random3 += 1;
     }
   }
-  console.log(productsByCategory)
+
   useEffect(() => {
     dispatch(categories());
     dispatch(getAllShops())
-    dispatch(getProductsByCategory(random2))
+
+  
+  }, [dispatch]);
+
+  useEffect(()=> {
+    
+  if (randomCategory1) {
+    categoryName1 = allCategories.find(
+      (value) => value?.id == randomCategory1[0]?.categoryId
+    );
+
+    console.log("CATEGORY NAME", categoryName1)
+  }
+
+  if (randomCategory2) {
+    categoryName2 = allCategories.find(
+      (value) => value?.id == randomCategory2[0]?.categoryId
+    );
+  }
+ 
+    dispatch(getProductsByCategory(random2)).then(() => dispatch(unloadProductsByCategory1()))
     dispatch(getProductsByCategory2(random3));
     dispatch(getProductsByShop(randomShopNumber1));
     dispatch(getProductsByShop2(randomShopNumber2));
-    dispatch(getProductsByShop3(randomShopNumber3));
-
-    if(categoryValues) setIsLoaded(true);
-  
-  }, [dispatch]);
+    dispatch(getProductsByShop3(randomShopNumber3)).then(()=> setIsLoaded(true))
+    
+  },[])
 
   // if (!sessionUser) return <Redirect to="/login" />;
   if (!sessionUser) {

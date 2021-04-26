@@ -62,6 +62,13 @@ const productsByShop3 = (products) => {
   }
 }
 
+export const unloadProductsByCategory1 = (products = []) => {
+  return {
+    type: PRODUCTS_CATEGORY,
+    payload: products,
+  }
+}
+
 
 
 export const getProductsByCategory = (categoryId) => async (dispatch) => {
@@ -72,6 +79,10 @@ export const getProductsByCategory = (categoryId) => async (dispatch) => {
   dispatch(productsByCategory(data.productsByCategory))
   return data;
 }
+
+
+
+
 export const getProductsByCategory2 = (categoryId) => async (dispatch) => {
   const res = await csrfFetch(`/api/products/categories/${categoryId}`)
 
@@ -151,7 +162,11 @@ export const getProductsByShop3 = (shopId) => async (dispatch) => {
   return data;
 }
 
-const initialState = {}
+
+const initialState = {
+  category1: [],
+  category2: [],
+}
 
 const productsReducer = (state = initialState, action) => {
   let newState;

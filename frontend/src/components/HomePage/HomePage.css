@@ -26,7 +26,7 @@
 
 .banner-name {
    
-    color: white;
+    color: rgb(129, 129, 129);
 
 }
 
@@ -96,14 +96,14 @@
 }
 
 #banner2-text {
-    color: rgb(151, 151, 151);
+    color: rgb(129, 129, 129);
     text-decoration: underline;
 }
 
 #banner4-text {
     align-self: center;
     text-decoration: underline;
-    color: rgb(151, 151, 151);
+    color: rgb(129, 129, 129);
     
 }
 
@@ -165,7 +165,7 @@
     width: 100vw;
     display: flex;
     justify-content: center;
-    color: white;
+    color: rgb(129, 129, 129);
 }
 
 #banner6-h1-div {
@@ -174,11 +174,11 @@
 
 
 #b6-shop-link {
-    color: white;
+    color: rgb(129, 129, 129);
 }
 
 #b6-product-link {
-    color: rgb(99, 95, 95);
+    color: rgb(129, 129, 129);
 }
 
 

@@ -37,9 +37,9 @@ const Banner6Shops = ({ products }) => {
         {productsArray?.map((product, idx) => (
           <div id="banner6-item-div">
             <div id="banner-name-1">
-              <Link id="b6-shop-link" to={`/shop-items/${product?.Shop?.id}`}>
-                <h1 className="banner-name">{product?.Shop?.name}</h1>
-              </Link>
+                <Link id="b6-shop-link" to={`/shop-items/${product?.Shop?.id}`}>
+                  <h1 className="banner-name">{product?.Shop?.name}</h1>
+                </Link>
             </div>
             <div>
               <div>

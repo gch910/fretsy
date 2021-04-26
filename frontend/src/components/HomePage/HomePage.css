@@ -23,8 +23,11 @@
    
 }
 
+
 .banner-name {
+   
     color: rgb(63, 62, 62);
+
 }
 
 /* #banner1-h1 {
@@ -40,9 +43,17 @@
     grid-template-columns: auto;
     grid-template-areas: 
     "banner3-img0 banner3-img1 banner3-img2 banner3-img3 banner3-img4";
-    overflow-y: scroll;
-    overflow-x: hidden;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    /* position: relative; */
+    /* display: flex;
+    overflow: hidden; */
 }
+
+/* ::-webkit-scrollbar {
+    display: none;
+  } */
+  
 
 
 .banner-5 {
@@ -53,8 +64,8 @@
     /* grid-template-rows: 5fr 1fr; */
     grid-template-areas: 
     "banner5-img0 banner5-img1 banner5-img2 banner5-img3 banner5-img4";
-    overflow-y: scroll;
-    overflow-x: hidden;
+    overflow-y: hidden;
+    overflow-x: scroll;
    
 }
 
@@ -73,7 +84,7 @@
 
 .banner-4 {
     grid-area: banner4;
-    background-color: #FDEBD2;
+    background-color: white;
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -139,8 +150,10 @@
 
 #banner6-item-div {
    margin-right: 30px;
-   
-   
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: 300px;
 }
 
 #banner6-h1 {

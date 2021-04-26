@@ -27,6 +27,10 @@
   
 }
 
+#reviews-container {
+    background-color: whitesmoke;
+}
+
 #description-div {
     grid-area: description;
     background-color: #FDEBD2;
@@ -60,7 +64,7 @@
     justify-content: center;
     font-size: 40px;
     text-decoration: underline;
-    color: rgb(83, 83, 83);
+    color: rgb(129, 129, 129);
 }
 
 #decoration-div {

@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { categories } from "../../store/categories";
 import { getProductsByCategory } from "../../store/products";
 import { getProductsByCategory2 } from "../../store/products";
@@ -22,6 +22,7 @@ const HomePage = () => {
   const categoryObject = useSelector((state) => state.categories);
   const productsByCategory = useSelector((state) => state.products);
   const shops = useSelector(state => state.shops);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const shopArray = Object.values(shops);
 
@@ -90,7 +91,7 @@ const HomePage = () => {
   let random3 = randomGenerator(1, 7);
   // console.log(thisShoulNotChange);
   if (random2 === random3) {
-    if (random3 >= 1) {
+    if (random3 > 1) {
       random3 -= 1;
     } else {
       random3 += 1;
@@ -100,16 +101,19 @@ const HomePage = () => {
   useEffect(() => {
     dispatch(categories());
     dispatch(getAllShops())
-    dispatch(getProductsByCategory(random2));
+    dispatch(getProductsByCategory(random2))
     dispatch(getProductsByCategory2(random3));
     dispatch(getProductsByShop(randomShopNumber1));
     dispatch(getProductsByShop2(randomShopNumber2));
     dispatch(getProductsByShop3(randomShopNumber3));
+
+    if(categoryValues) setIsLoaded(true);
+  
   }, [dispatch]);
 
   // if (!sessionUser) return <Redirect to="/login" />;
   if (!sessionUser) {
-    return (
+    return isLoaded && (
       <div id="home-page-grid">
         <LoginHome categoryValues={categoryValues} />
         <Banner3Categories randomCategory1={randomCategory1} />
@@ -132,7 +136,7 @@ const HomePage = () => {
     );
       }
   //category.map lines 13/14
-  return (
+  return isLoaded && (
     <div id="home-page-grid">
       <Banner1Categories categoryValues={categoryValues} />
       <Banner3Categories randomCategory1={randomCategory1} />

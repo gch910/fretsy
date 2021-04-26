@@ -1,4 +1,5 @@
 import { useHistory } from "react-router-dom";
+import "./Product.css";
 
 const Reviews = ({ reviews }) => {
   let reviewObj = {};

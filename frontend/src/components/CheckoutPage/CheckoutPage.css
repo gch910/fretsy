@@ -24,6 +24,7 @@
 
 #cart-h1 {
     grid-area: h1;
+    color: #FAA077;
 }
 
 .cart-item-name {

@@ -242,6 +242,7 @@
 }
 .banner3-img-div {
      min-width: 350px;
+     width: 350px;
      height: 350px; 
     /* height: 300px; */
     align-self: center;
@@ -258,6 +259,7 @@
 .banner5-img-div {
      /* width: 350px; */
      min-width: 350px;
+     width: 350px;
      height: 350px; 
     /* height: 300px; */
     align-self: center;

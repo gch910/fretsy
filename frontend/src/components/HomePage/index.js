@@ -68,7 +68,13 @@ const HomePage = () => {
     }
   }
 
-  // let categoryName1;
+  let categoryName1;
+
+  if(productsByCategory1) categoryName1 = productsByCategory1[0]?.Category?.name
+
+  let categoryName2;
+
+  if(productsByCategory2) categoryName2 = productsByCategory2[0]?.Category?.name
 
   // let categoryName2;
 
@@ -138,12 +144,12 @@ const HomePage = () => {
 
         <div className="banner-2">
           <div id="banner2-h1-container">
-            <h1 id="banner2-text">Check out some of our {productsByCategory1[0]?.Category?.name}</h1>
+            <h1 id="banner2-text">Check out some of our {categoryName1}</h1>
           </div>
         </div>
 
         <div className="banner-4">
-          <h1 id="banner4-text">How about some {productsByCategory2[0]?.Category?.name}</h1>
+          <h1 id="banner4-text">How about some {categoryName2}</h1>
         </div>
         {/* <div className="banner-6">
           <h1>6</h1>
@@ -153,7 +159,7 @@ const HomePage = () => {
     );
       }
   //category.map lines 13/14
-  return isLoaded && productsByCategory1 && productsByCategory2 && (
+  return isLoaded &&  (
     <div id="home-page-grid">
       <Banner1Categories categoryValues={categoryValues} />
       <Banner3Categories randomCategory1={productsByCategory1} />
@@ -161,12 +167,12 @@ const HomePage = () => {
 
       <div className="banner-2">
         <div id="banner2-h1-container">
-          <h1 id="banner2-text">Check out some of our {productsByCategory1[0]?.Category?.name}</h1>
+          <h1 id="banner2-text">Check out some of our {categoryName1}</h1>
         </div>
       </div>
 
       <div className="banner-4">
-        <h1 id="banner4-text">How about some {productsByCategory2[0]?.Category?.name}</h1>
+        <h1 id="banner4-text">How about some {categoryName2}</h1>
       </div>
       {/* <div className="banner-6">
           <h1>6</h1>

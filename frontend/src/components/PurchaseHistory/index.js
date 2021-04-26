@@ -34,7 +34,7 @@ const PurchaseHistory = ({ sessionUser }) => {
                 <h1 id="purchased-item-h1">{product.name}</h1>
               </Link>
             </div>
-            <h3>You Paid: ${product.price}</h3>
+            <h3 className="purchased-price-h3">You Paid: ${product.price}</h3>
             <Link to={`/products/${product.id}`}>
               <img className="purchased-image" src={product.img}></img>
             </Link>

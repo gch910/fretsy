@@ -19,6 +19,7 @@
 #purchased-item-h1 {
     display: flex;
     justify-content: center;
+    color: white;
 }
 
 #purchase-history-div {
@@ -40,8 +41,13 @@
     background-color: #FAA077;
 }
 
+.purchased-price-h3 {
+    color: white;
+}
+
 #purchase-history-h1 {
     font-size: 50px;
+    color: white;
 }
 
 #write-review-h1 {
@@ -49,7 +55,7 @@
 }
 
 .purchased-link {
-    color: rgb(63, 62, 62);
+    color: white;
 }
 
 #purchased-link-div {

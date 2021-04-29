@@ -96,7 +96,7 @@
 .sub-link:hover,
 .nav-link:hover {
   background-color: rgb(252, 233, 230);
-  border-radius: 1.5em;
+  border-radius: 1em 1em 1em 1em;
   /* width: 70px; */
   /* text-align: center; */
  

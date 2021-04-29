@@ -9,14 +9,12 @@ const ShoppingCart = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const sessionCart = useSelector((state) => state.carts);
   const dispatch = useDispatch();
+  const [isLoaded, setIsLoaded] = useState(false);
 
-  
-  var formatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-  
+  var formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
   });
- 
 
   const cartArray = Object.values(sessionCart);
 
@@ -25,59 +23,67 @@ const ShoppingCart = () => {
   const deleteItemClick = (e) => {
     // e.preventDefault();
     console.log("inside delete function", e);
-    
+
     dispatch(deleteCartItem(userId, e.target?.id));
-    
   };
 
   useEffect(() => {
-    dispatch(getCartItems(userId));
-    
+    dispatch(getCartItems(userId)).then(() => setIsLoaded(true));
+
+    return () => {
+      setIsLoaded(false);
+    };
   }, [dispatch, cartArray?.length]);
-  
+
   if (!sessionUser) return <Redirect to="/" />;
 
   return (
-    <>
-      <div id="cart-h1-div">
-        <h1 id="cart-h1">
-          {cartArray.length
-            ? "Your shopping cart"
-            : "You have no items in your cart"}
-        </h1>
-      </div>
-      <div id="shopping-cart-grid">
-        {cartArray?.map((item, idx) => (
-          <div className="cart-item" id={`cart-item-${item?.idx}`}>
-            <div className="cart-item-name">
-              <h3>{item?.Product?.name}</h3>
-            </div>
-            <div className="cart-item-image-div">
-              <img className="cart-item-image" src={item?.Product?.img}></img>
-            </div>
-            <div className="cart-item-price">
-              <h1>{formatter.format(item?.Product?.price)}</h1>
-            </div>
-            <div className="delete-button-div">
-              <button
-                onClick={deleteItemClick}
-                id={item?.Product?.id}
-                className="cart-item-delete"
-              >
-                Delete Item
-              </button>
-            </div>
-          </div>
-        ))}
-        <div id="outer-button-div">
-          {cartArray.length ? (
-              <Link id="checkout-link" to={`/checkout/${userId}`}>
-                <button className="no-outline" id="checkout-button">Check Out</button>
-              </Link>
-          ) : "" }
+    isLoaded && (
+      <>
+        <div id="cart-h1-div">
+          <h1 id="cart-h1">
+            {cartArray.length
+              ? "Your shopping cart"
+              : "You have no items in your cart"}
+          </h1>
         </div>
-      </div>
-    </>
+        <div id="shopping-cart-grid">
+          {cartArray?.map((item, idx) => (
+            <div className="cart-item" id={`cart-item-${item?.idx}`}>
+              <div className="cart-item-name">
+                <h3>{item?.Product?.name}</h3>
+              </div>
+              <div className="cart-item-image-div">
+                <img className="cart-item-image" src={item?.Product?.img}></img>
+              </div>
+              <div className="cart-item-price">
+                <h1>{formatter.format(item?.Product?.price)}</h1>
+              </div>
+              <div className="delete-button-div">
+                <button
+                  onClick={deleteItemClick}
+                  id={item?.Product?.id}
+                  className="cart-item-delete"
+                >
+                  Delete Item
+                </button>
+              </div>
+            </div>
+          ))}
+          <div id="outer-button-div">
+            {cartArray.length ? (
+              <Link id="checkout-link" to={`/checkout/${userId}`}>
+                <button className="no-outline" id="checkout-button">
+                  Check Out
+                </button>
+              </Link>
+            ) : (
+              ""
+            )}
+          </div>
+        </div>
+      </>
+    )
   );
 };
 

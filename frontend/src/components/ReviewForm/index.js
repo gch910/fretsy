@@ -9,7 +9,7 @@ const ReviewForm = ({ sessionUser }) => {
   const { userId, productId } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
-  const product = useSelector((state) => state.products);
+  const product = useSelector((state) => state.products.current_product);
 
   const [review, setReview] = useState("");
   const [rating, setRating] = useState("");
@@ -47,10 +47,11 @@ const ReviewForm = ({ sessionUser }) => {
   return (
     <div id="review-form-div">
       <h1 id="review-h1">
-        Tell Us What You Though About Your {product[0]?.product.name}
+        Tell Us What You Though About Your: 
       </h1>
+      <h2 id="review-h2">{product?.product?.name}</h2>
       <div id="review-image-div">
-        <img id="review-image" src={`${product[0]?.product.img}`} />
+        <img id="review-image" src={`${product?.product?.img}`} />
       </div>
       <form id="review-form" onSubmit={handleSubmit}>
         <ul className="form-errors">

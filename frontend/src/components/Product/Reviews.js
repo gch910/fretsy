@@ -27,7 +27,7 @@ const Reviews = ({ reviews }) => {
           <div id="review-div">
             <h3>User: {review?.User?.username}</h3>
             <div>Rating: {reviewObj[review?.userId]}</div>
-            <div id="review-body"><p id="review-text">{review?.body}</p></div>
+            <div id="review-body"><p id="product-review-text">{review?.body}</p></div>
           </div>
         ))}
       </div>

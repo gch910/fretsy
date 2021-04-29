@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { categories } from "../../store/categories";
+import { categories, getRandomCategories } from "../../store/categories";
 import { getProductsByCategory, unloadProductsByCategory1, unloadProductsByCategory2 } from "../../store/products";
 // import { getProductsByCategory2 } from "../../store/products";
 import { getProductsByShop } from "../../store/products";
@@ -19,16 +19,18 @@ import Banner6Shops from "./Banner6Shops";
 const HomePage = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const categoryObject = useSelector((state) => state.categories);
+  const categoryObject = useSelector((state) => state.categories.allCategories);
   const productsByCategory1 = useSelector((state) => state.products.category1);
   const productsByCategory2 = useSelector((state) => state.products.category2);
+  const randomCat1 = useSelector((state) => state.categories.randomCat1);
+  const randomCat2 = useSelector((state) => state.categories.randomCat2);
   const productsByCategory =  useSelector((state) => state.products);
   const shops = useSelector(state => state.shops);
   const [isLoaded, setIsLoaded] = useState(false);
 
   const shopArray = Object.values(shops);
 
-  let categoryValues = Object.values(categoryObject);
+  let categoryValues;
   
   const randomGenerator = (min, max) => {
     min = Math.ceil(min);
@@ -52,19 +54,19 @@ const HomePage = () => {
   // const test2 = productsByCategory.category1?.name
   // console.log(randomCategory1, randomCategory2);
 
-  const allCategories = categoryValues;
+  // const allCategories = categoryValues;
 
   let random = Math.floor(Math.random() * 2);
 
-  if (categoryValues.length > 4) {
-    if (random >= categoryValues.length - 4) {
+  if (categoryObject.length > 4) {
+    if (random >= categoryObject.length - 4) {
       random -= 4;
     }
 
     if (sessionUser) {
-      categoryValues = categoryValues?.slice(random, random + 5);
+      categoryValues = categoryObject?.slice(random, random + 5);
     } else {
-      categoryValues = categoryValues?.slice(random, random + 4);
+      categoryValues = categoryObject?.slice(random, random + 4);
     }
   }
 
@@ -112,22 +114,23 @@ const HomePage = () => {
   // }
 
   useEffect(() => {
+    dispatch(getRandomCategories());
     dispatch(categories());
     dispatch(getAllShops())
+    dispatch(getProductsByCategory())
 
   
   }, [dispatch]);
 
   useEffect(()=> {
     
-    dispatch(getProductsByCategory())
     // dispatch(getProductsByCategory2(random3));
     dispatch(getProductsByShop(randomShopNumber1));
     dispatch(getProductsByShop2(randomShopNumber2));
     dispatch(getProductsByShop3(randomShopNumber3)).then(()=> setIsLoaded(true))
 
     return ()=> {
-      dispatch(unloadProductsByCategory1())
+ 
       dispatch(unloadProductsByCategory2())
       console.log("=======================")
     }
@@ -138,7 +141,7 @@ const HomePage = () => {
   if (!sessionUser) {
     return isLoaded && (
       <div id="home-page-grid">
-        <LoginHome categoryValues={categoryValues} />
+        <LoginHome categoryValues={randomCat2} />
         <Banner3Categories randomCategory1={productsByCategory1} />
         <Banner5Categories randomCategory2={productsByCategory2} />
 
@@ -161,7 +164,7 @@ const HomePage = () => {
   //category.map lines 13/14
   return isLoaded &&  (
     <div id="home-page-grid">
-      <Banner1Categories categoryValues={categoryValues} />
+      <Banner1Categories categoryValues={randomCat1} />
       <Banner3Categories randomCategory1={productsByCategory1} />
       <Banner5Categories randomCategory2={productsByCategory2} />
 

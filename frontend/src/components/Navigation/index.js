@@ -10,12 +10,12 @@ import './Navigation.css';
 const Navigation = ({ isLoaded, navId }) => {
   const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
-  const allCategories = useSelector((state) => state.categories);
+  const allCategories = useSelector((state) => state.categories.allCategories);
 
-  const categoryArray = Object.values(allCategories);
+  // const categoryArray = Object.values(allCategories);
 
 
-  console.log("all categories", categoryArray);
+  // console.log("all categories", categoryArray);
 
   useEffect(() => {
     dispatch(categories())
@@ -72,7 +72,7 @@ const Navigation = ({ isLoaded, navId }) => {
       {/* <div id="sub-nav-container">
         <nav id="sub-nav">{subLinks}</nav>
       </div> */}
-      <SubNav categories={categoryArray}/>
+      <SubNav categories={allCategories}/>
     </div>
   );
 };

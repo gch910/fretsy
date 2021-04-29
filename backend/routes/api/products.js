@@ -77,6 +77,8 @@ router.get(
 
 
     const categoryName = await Category.findByPk(id);
+
+    
     // console.log(productsByCategory[0]);
     res.json({ productsByCategory, categoryName });
   })

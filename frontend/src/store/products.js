@@ -190,6 +190,7 @@ const initialState = {
   category1: [],
   category2: [],
   products: [],
+  current_product: {},
 }
 
 const productsReducer = (state = initialState, action) => {
@@ -223,7 +224,8 @@ const productsReducer = (state = initialState, action) => {
       return newState;
     }
     case SET_PRODUCT: {
-      newState = [{...action.payload}]
+      newState = {...state};
+      newState.current_product = action.payload
       return newState;
     }
     case PRODUCTS_SHOP: {

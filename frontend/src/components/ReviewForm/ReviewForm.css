@@ -48,6 +48,8 @@
     font-family: 'Assistant', sans-serif;
     font-weight: bold;
     font-size: 20px;
+    border: none;
+    border-radius: 5px 5px 5px 5px;
 }
 
 #review-form {
@@ -61,6 +63,9 @@
 #review-submit-button {
     width: 100px;
     margin-top: 20px;
+    border-radius: 5px 5px 5px 5px;
+    border: 1px solid gray;
+    color: #FAA077;
 }
 
 

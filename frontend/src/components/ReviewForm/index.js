@@ -62,6 +62,7 @@ const ReviewForm = ({ sessionUser }) => {
         <textarea
           value={review}
           onChange={(e) => setReview(e.target.value)}
+          className="no-outline"
           id="review-text"
           placeholder="Write your review!"
         ></textarea>
@@ -122,7 +123,7 @@ const ReviewForm = ({ sessionUser }) => {
             1 star
           </label>
         </div>
-        <button id="review-submit-button" type="submit">
+        <button className="no-outline" id="review-submit-button" type="submit">
           Submit Your Review
         </button>
       </form>

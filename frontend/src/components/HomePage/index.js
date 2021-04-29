@@ -147,12 +147,12 @@ const HomePage = () => {
 
         <div className="banner-2">
           <div id="banner2-h1-container">
-            <h1 id="banner2-text">Check out some of our {categoryName1}</h1>
+            <h1 id="banner2-text">{categoryName1 && "Check Out Some of Our " + categoryName1}</h1>
           </div>
         </div>
 
         <div className="banner-4">
-          <h1 id="banner4-text">How about some {categoryName2}</h1>
+          <h1 id="banner4-text">{categoryName2 && "How About Some " + categoryName2}</h1>
         </div>
         {/* <div className="banner-6">
           <h1>6</h1>
@@ -170,12 +170,12 @@ const HomePage = () => {
 
       <div className="banner-2">
         <div id="banner2-h1-container">
-          <h1 id="banner2-text">Check out some of our {categoryName1}</h1>
+          <h1 id="banner2-text">{categoryName1 && "Check Out Some of Our " + categoryName1}</h1>
         </div>
       </div>
 
       <div className="banner-4">
-        <h1 id="banner4-text">How about some {categoryName2}</h1>
+        <h1 id="banner4-text">{categoryName2 && "How About Some " + categoryName2}</h1>
       </div>
       {/* <div className="banner-6">
           <h1>6</h1>

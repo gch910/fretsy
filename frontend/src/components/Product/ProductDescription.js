@@ -37,16 +37,16 @@ const ProductDescription = ({ product, isLoaded }) => {
         <p id="product-description-div">
           <h3>About This Product:</h3> {product?.product?.description}
         </p>
-        <h3>In Stock? {product?.product?.available ? "Yes" : "No"}</h3>
-        <h3>Price: ${product?.product?.price}</h3>
-      </div>
-      {sessionUser ? (
+        {sessionUser ? (
         <button id="product-add-button" disabled={clicked} onClick={updateCart}>
           {!clicked ? "Add To Cart" : "Added!"}
         </button>
       ) : (
         "Sign in to add this to you cart"
       )}
+        <h3>In Stock? {product?.product?.available ? "Yes" : "No"}</h3>
+        <h3>Price: ${product?.product?.price}</h3>
+      </div>
     </div>
   );
 };

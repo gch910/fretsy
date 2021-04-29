@@ -1,7 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getAllProductsByCategory } from "../../store/products";
+import {
+  getAllProductsByCategory,
+  unloadAllProductsByCategory,
+} from "../../store/products";
 import "./CategoryItems.css";
 
 const CategoryItems = () => {
@@ -15,6 +18,10 @@ const CategoryItems = () => {
 
   useEffect(() => {
     dispatch(getAllProductsByCategory(categoryId));
+
+    return () => {
+      dispatch(unloadAllProductsByCategory());
+    };
   }, [dispatch, categoryId]);
 
   return (
@@ -30,7 +37,7 @@ const CategoryItems = () => {
                 <img id="category-image" src={product?.img}></img>
               </Link>
             </div>
-             <Link id="category-h3" to={`/products/${product?.id}`}>
+            <Link id="category-h3" to={`/products/${product?.id}`}>
               <h3>{product?.name}</h3>
             </Link>
           </div>

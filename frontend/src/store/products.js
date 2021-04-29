@@ -75,6 +75,12 @@ export const unloadProductsByCategory2 = (products = []) => {
     payload: products,
   }
 }
+export const unloadAllProductsByCategory = (products = []) => {
+  return {
+    type: ALL_PRODUCTS_CATEGORY,
+    payload: products,
+  }
+}
 
 
 
@@ -212,8 +218,8 @@ const productsReducer = (state = initialState, action) => {
     }
     case ALL_PRODUCTS_CATEGORY: {
       newState = {...state};
-      newState.products = [...action.payload.products]
-      newState.categoryName = {...action.payload.categoryName}
+      newState.products = action.payload.products;
+      newState.categoryName = action.payload.categoryName;
       return newState;
     }
     case SET_PRODUCT: {

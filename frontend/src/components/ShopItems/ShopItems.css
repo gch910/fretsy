@@ -26,6 +26,11 @@
     margin-right: 20px;
 }
 
+#shop-items-h1 {
+    color: #FAA077;
+    font-size: 40px;
+}
+
 #shop-h3 {
     display: flex;
     justify-content: center;

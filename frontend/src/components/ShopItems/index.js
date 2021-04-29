@@ -22,7 +22,7 @@ const ShopItems = () => {
     isLoaded && (
       <div>
         <div id="shop-h1-div">
-          <h1>{products?.productsByShop[0]?.Shop?.name}</h1>
+          <h1 id="shop-items-h1">{products?.productsByShop[0]?.Shop?.name}</h1>
         </div>
         <div id="shop-grid">
           {products?.productsByShop?.map((product) => (

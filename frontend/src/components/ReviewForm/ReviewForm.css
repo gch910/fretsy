@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300&family=Poppins:ital,wght@1,300&display=swap');
+
 #review-form-div {
     display: flex;
     flex-direction: column;
@@ -41,8 +43,11 @@
     width: 700px;
     height: 300px;
     margin-bottom: 30px;
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: 'Assistant', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
 }
 
 #review-form {

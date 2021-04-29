@@ -2,7 +2,7 @@
     margin-top: 50px;
     display: grid;
     grid-template-columns: 2fr 5fr 5fr;
-    grid-template-rows: 2fr 800px;
+    grid-template-rows: 690px auto;
     grid-template-areas: 
     "decoration image description"
     "decoration reviews decoration2";
@@ -16,6 +16,10 @@
     padding-top: 30px;
     background-color: #FDEBD2;
  
+}
+
+#product-image-div {
+    max-height: 700px;
 }
 
 #product-image {
@@ -34,8 +38,12 @@
 #description-div {
     grid-area: description;
     background-color: #FDEBD2;
-      
+    overflow: scroll;  
 }
+
+#description-div::-webkit-scrollbar {
+    display: none;
+  }
 
 #h3-description-div {
     font-size: 20px;
@@ -48,6 +56,7 @@
     align-items: center;
     margin-top: 10px;
     text-align: center;
+    min-height: 300px;
     /* height: 100vh; */
 }
 
@@ -84,12 +93,20 @@
     margin-bottom: 10px;
 }
 
-
+#product-description-div {
+    margin-right: 15px;
+}
 
 #product-review-text {
-    height: 200px;
-    width: 500px;
+    height: 120px;
+    width: 550px;
+    margin-bottom: 0px;
+    overflow: scroll;
      /*
     word-wrap: break-word; */
     /* overflow: scroll; */
 }
+
+#product-review-text::-webkit-scrollbar {
+    display: none;
+  }

@@ -34,7 +34,7 @@ const ProductDescription = ({ product, isLoaded }) => {
         <h3>Year: {product?.product?.year}</h3>
         <h3>Model: {product?.product?.model}</h3>
         <h3>Color: {product?.product?.color}</h3>
-        <p>
+        <p id="product-description-div">
           <h3>About This Product:</h3> {product?.product?.description}
         </p>
         <h3>In Stock? {product?.product?.available ? "Yes" : "No"}</h3>

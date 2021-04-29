@@ -1,21 +1,23 @@
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { getProductsByCategory } from "../../store/products";
+import { unloadProductsByCategory2} from "../../store/products";
+import { useEffect, useState } from "react";
 
-const Banner5Categories = ({ randomCategory2 }) => {
+
+const Banner5Categories = ({ randomCategory2}) => {
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.products);
-  let something = Object.values(products);
 
-  const randomCategory = () => {
-    const number = Math.floor(Math.random() * 4);
-    return number
-  } 
-  const random = randomCategory();
+  // const randomCategory = () => {
+  //   const number = Math.floor(Math.random() * 4);
+  //   return number
+  // } 
+  // const random = randomCategory();
 
   useEffect(() => {
-    dispatch(getProductsByCategory(random));
+    return () => {
+      dispatch(unloadProductsByCategory2());
+     
+    };
   }, [dispatch]);
 
   return (

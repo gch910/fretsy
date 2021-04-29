@@ -5,19 +5,24 @@ import { useDispatch, useSelector } from "react-redux";
 
 const Banner3Categories = ({ randomCategory1 }) => {
   const dispatch = useDispatch();
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
+    if(randomCategory1) setIsLoaded(true);
     return () => {
       dispatch(unloadProductsByCategory1());
+     
     };
   }, [dispatch]);
 
+
   return (
+    isLoaded && (
       <div className="banner-3">
-        {randomCategory1?.map((product, idx) => (
+        {randomCategory1.map((product, idx) => (
           <div className="banner3-img-div" id={`banner3-img${idx}`}>
-            <Link to={`/products/${product?.id}`}>
-              <img className="banner3-img" src={product?.img}></img>
+            <Link to={`/products/${product.id}`}>
+              <img className="banner3-img" src={product.img}></img>
             </Link>
             <Link
               className="banner-img-text"
@@ -29,6 +34,7 @@ const Banner3Categories = ({ randomCategory1 }) => {
           </div>
         ))}
       </div>
+    )
   );
 };
 

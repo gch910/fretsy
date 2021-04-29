@@ -63,7 +63,7 @@ const productsByShop3 = (products) => {
 }
 
 export const unloadProductsByCategory1 = (products = []) => {
-  console.log("this is action creator", products)
+  // console.log("this is action creator", products)
   return {
     type: PRODUCTS_CATEGORY,
     payload: products,
@@ -199,7 +199,7 @@ const productsReducer = (state = initialState, action) => {
     // }
     case PRODUCTS_CATEGORY: {
       newState = {...state}
-      newState.category1 = [...action.payload];
+      newState.category1 = action.payload;
     //   action.payload.forEach(product => {
     //     newState.category1[product.id] = product
     // })

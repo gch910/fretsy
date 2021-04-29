@@ -30,7 +30,7 @@ const HomePage = () => {
 
   const shopArray = Object.values(shops);
 
-  let categoryValues;
+  // let categoryValues;
   
   const randomGenerator = (min, max) => {
     min = Math.ceil(min);
@@ -56,19 +56,19 @@ const HomePage = () => {
 
   // const allCategories = categoryValues;
 
-  let random = Math.floor(Math.random() * 2);
+  // let random = Math.floor(Math.random() * 2);
 
-  if (categoryObject.length > 4) {
-    if (random >= categoryObject.length - 4) {
-      random -= 4;
-    }
+  // if (categoryObject.length > 4) {
+  //   if (random >= categoryObject.length - 4) {
+  //     random -= 4;
+  //   }
 
-    if (sessionUser) {
-      categoryValues = categoryObject?.slice(random, random + 5);
-    } else {
-      categoryValues = categoryObject?.slice(random, random + 4);
-    }
-  }
+  //   if (sessionUser) {
+  //     categoryValues = categoryObject?.slice(random, random + 5);
+  //   } else {
+  //     categoryValues = categoryObject?.slice(random, random + 4);
+  //   }
+  // }
 
   let categoryName1;
 
@@ -114,7 +114,7 @@ const HomePage = () => {
   // }
 
   useEffect(() => {
-    dispatch(getRandomCategories());
+    dispatch(getRandomCategories()).then(() => setIsLoaded(true))
     dispatch(categories());
     dispatch(getAllShops())
     dispatch(getProductsByCategory())
@@ -127,7 +127,7 @@ const HomePage = () => {
     // dispatch(getProductsByCategory2(random3));
     dispatch(getProductsByShop(randomShopNumber1));
     dispatch(getProductsByShop2(randomShopNumber2));
-    dispatch(getProductsByShop3(randomShopNumber3)).then(()=> setIsLoaded(true))
+    dispatch(getProductsByShop3(randomShopNumber3));
 
     return ()=> {
  

@@ -1,25 +1,41 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import SubNav from "./SubNav";
-import SignupFormModal from '../SignupFormModal'; //modal
+import SignupFormModal from "../SignupFormModal"; //modal
 import { categories } from "../../store/categories";
-import './Navigation.css';
+import { getSearchResults } from "../../store/products";
+import "./Navigation.css";
 
 const Navigation = ({ isLoaded, navId }) => {
   const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const allCategories = useSelector((state) => state.categories.allCategories);
+  const [search, setSearch] = useState("");
+
+  const history = useHistory();
 
   // const categoryArray = Object.values(allCategories);
 
-
   // console.log("all categories", categoryArray);
+  const onSearchSubmit = async (e) => {
+    e.preventDefault();
+
+    await dispatch(getSearchResults(search)).then((res) => {
+      if (res?.length) {
+        setSearch("");
+        return history.push("/search-results");
+      } else {
+        setSearch("");
+        return history.push("/no-results");
+      }
+    });
+  };
 
   useEffect(() => {
-    dispatch(categories())
-  }, [dispatch])
+    dispatch(categories());
+  }, [dispatch]);
 
   let sessionLinks;
 
@@ -27,12 +43,16 @@ const Navigation = ({ isLoaded, navId }) => {
     sessionLinks = (
       <>
         <ProfileButton user={sessionUser} />
-        <input
-          id="searchbar"
-          className="no-outline"
-          type="text"
-          placeholder="Search..."
-        />
+        <form id="searchbar-form" onSubmit={onSearchSubmit}>
+          <input
+            onChange={(e) => setSearch(e.target.value)}
+            value={search}
+            id="searchbar"
+            className="no-outline"
+            type="text"
+            placeholder="Search..."
+          />
+        </form>
         <NavLink className="nav-link" id="home-link" exact to="/">
           Home
         </NavLink>
@@ -41,7 +61,6 @@ const Navigation = ({ isLoaded, navId }) => {
         </NavLink>
       </>
     );
-   
   } else {
     sessionLinks = (
       <>
@@ -72,7 +91,7 @@ const Navigation = ({ isLoaded, navId }) => {
       {/* <div id="sub-nav-container">
         <nav id="sub-nav">{subLinks}</nav>
       </div> */}
-      <SubNav categories={allCategories}/>
+      <SubNav categories={allCategories} />
     </div>
   );
 };

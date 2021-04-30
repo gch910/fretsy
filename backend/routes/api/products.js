@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const { Op } = require("sequelize");
 
 const { Category } = require("../../db/models");
 const { Product } = require("../../db/models");
@@ -120,6 +121,22 @@ router.get(
     res.json({ product, shop });
   })
 );
+
+router.post("/search", asyncHandler(async(req, res) => {
+  const { search } = req.body;
+  console.log("===========================", search)
+  const matchingProducts = await Product.findAll({
+    where: {
+      name: {
+        [Op.iLike]: "%" + search,
+      }
+    }
+  })
+
+  console.log(matchingProducts)
+
+  return res.json({ products: matchingProducts })
+}))
 
 
 

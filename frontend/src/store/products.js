@@ -9,6 +9,7 @@ const SET_PRODUCT = "/products/setProduct"
 const PRODUCTS_SHOP = "/products/productsShop"
 const PRODUCTS_SHOP2 = "/products/productsShop2"
 const PRODUCTS_SHOP3 = "/products/productsShop3"
+const SEARCH_RESULTS = "/products/searchResults"
 
 const setProducts = (products) => {
   return {
@@ -61,6 +62,13 @@ const productsByShop3 = (products) => {
     payload: products,
   }
 }
+
+const searchResults = (products) => {
+  return {
+    type: SEARCH_RESULTS,
+    payload: products,
+  };
+};
 
 export const unloadProductsByCategory1 = (products = []) => {
   // console.log("this is action creator", products)
@@ -185,6 +193,23 @@ export const getProductsByShop3 = (shopId) => async (dispatch) => {
   return data;
 }
 
+export const getSearchResults = (search) => async (dispatch) => {
+  const res = await csrfFetch(`/api/products/search`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      search,
+    }),
+  });
+  const data = await res.json();
+  console.log("this is zee data", data);
+  dispatch(searchResults(data.products));
+
+  return data.products;
+};
+
 
 const initialState = {
   category1: [],
@@ -241,6 +266,12 @@ const productsReducer = (state = initialState, action) => {
     case PRODUCTS_SHOP3: {
       newState = {...state};
       newState.productsByShop3 = [...action.payload]
+      return newState;
+    }
+    case SEARCH_RESULTS: {
+      newState = { ...state };
+      const products = action.payload;
+      newState.search_results = products;
       return newState;
     }
     default:

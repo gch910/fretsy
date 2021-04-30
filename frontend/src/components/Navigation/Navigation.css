@@ -159,6 +159,11 @@
 
 }
 
+#searchbar-form {
+  grid-area: search;
+  align-self: center;
+}
+
 .no-outline:focus {
   outline: none;
 }

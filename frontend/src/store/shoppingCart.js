@@ -91,25 +91,31 @@ export const addPurchaseHistory = async (userId, productIdArray) => {
   const data = res.json()
 }
 
-const initialState = {};
+const initialState = {
+  shopping_cart: [],
+};
 
 const cartsReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {
     case CART_ADD:
-      newState = {...action.payload}
+      newState = {...state}
+      newState.shopping_cart = action.payload;
     //   action.payload.forEach((item) => {
     //     newState[item.id] = item;
     //   });
       return newState;
     case GET_CART:
-        newState = {...action.payload }
+        newState = {...state}
+        newState.shopping_cart = action.payload;
         return newState;
     case DELETE_ITEM:
-      newState = {...action.payload}
+      newState = {...state};
+      newState.shopping_cart = action.payload;
       return newState;
     case DELETE_CART: 
-      newState = {};
+      newState = {...state};
+      newState.shopping_cart = [];
       return newState;
     default:
       return state;

@@ -8,7 +8,7 @@ import "./CheckoutPage.css";
 const CheckoutPage = () => {
   const { userId } = useParams();
   const sessionUser = useSelector((state) => state.session.user);
-  const sessionCart = useSelector((state) => state.carts);
+  const sessionCart = useSelector((state) => state.carts.shopping_cart);
   const dispatch = useDispatch();
 
   const history = useHistory();
@@ -19,7 +19,7 @@ const CheckoutPage = () => {
   
   });
 
-  const cartArray = Object.values(sessionCart);
+  // const cartArray = Object.values(sessionCart);
 
   let totalPrice = 0;
 
@@ -31,7 +31,7 @@ const CheckoutPage = () => {
     
   };
 
-  const itemIdArray = cartArray?.map(item => item?.Product?.id);
+  const itemIdArray = sessionCart?.map(item => item?.Product?.id);
 
   const makePurchase = (e) => {
     dispatch(deleteUserCart(userId));
@@ -39,7 +39,7 @@ const CheckoutPage = () => {
     history.push("/complete")
   };
 
-  cartArray?.forEach((item) => {
+  sessionCart?.forEach((item) => {
     const number = parseInt(item.Product?.price);
     totalPrice += number;
   });
@@ -50,13 +50,13 @@ const CheckoutPage = () => {
 
   useEffect(() => {
     dispatch(getCartItems(userId));
-  }, [dispatch, cartArray?.length]);
+  }, [dispatch, sessionCart?.length]);
 
   return (
     <>
       <div id="checkout-page-grid">
         <h1 id="checkout-h1">Checkout</h1>
-        <h1 id="checkout-price-h1">Your Total: {formatter.format(totalPrice)}</h1>
+        <h1 id="checkout-price-h1">Your Total: {formatter.format(totalPrice) ? formatter.format(totalPrice) : ""}</h1>
         <div id="complete-checkout-div">
           <button className="no-outline" id="complete-checkout" onClick={makePurchase}>Complete Purchase</button>
         </div>
@@ -67,14 +67,14 @@ const CheckoutPage = () => {
       </div>
       <div id="cart-h1-div">
         <h1 id="cart-h1">
-          {cartArray.length
+          {sessionCart?.length
             ? "Your shopping cart"
             : "You have no items in your cart"}
         </h1>
       </div>
       <div id="check-out-grid">
-        {cartArray?.map((item, idx) => (
-          <div className="cart-item" id={`cart-item-${item?.idx}`}>
+        {sessionCart?.map((item, idx) => (
+          <div key={idx} className="cart-item" id={`cart-item-${item?.idx}`}>
             <div className="cart-item-name">
               <h3>{item?.Product?.name}</h3>
             </div>
@@ -82,7 +82,7 @@ const CheckoutPage = () => {
               <img className="cart-item-image" src={item?.Product?.img}></img>
             </div>
             <div className="cart-item-price">
-              <h1>{item?.Product?.price}</h1>
+              <h1>{formatter.format(item?.Product?.price)}</h1>
             </div>
             <div className="delete-button-div">
               <button

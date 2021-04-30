@@ -7,7 +7,7 @@ import "./ShoppingCart.css";
 const ShoppingCart = () => {
   const { userId } = useParams();
   const sessionUser = useSelector((state) => state.session.user);
-  const sessionCart = useSelector((state) => state.carts);
+  const sessionCart = useSelector((state) => state.carts?.shopping_cart);
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -16,7 +16,7 @@ const ShoppingCart = () => {
     currency: "USD",
   });
 
-  const cartArray = Object.values(sessionCart);
+  // const cartArray = Object.values(sessionCart);
 
   // console.log("session cart", cartArray[0]?.Product);
 
@@ -27,29 +27,29 @@ const ShoppingCart = () => {
     dispatch(deleteCartItem(userId, e.target?.id));
   };
 
-  useEffect(() => {
-    dispatch(getCartItems(userId)).then(() => setIsLoaded(true));
+  useEffect(async () => {
+    await dispatch(getCartItems(userId)).then(()=> setIsLoaded(true))
 
     return () => {
       setIsLoaded(false);
     };
-  }, [dispatch, cartArray?.length]);
+  }, [dispatch, sessionCart?.length]);
 
   if (!sessionUser) return <Redirect to="/" />;
 
   return (
     isLoaded && (
-      <>
+      <div>
         <div id="cart-h1-div">
           <h1 id="cart-h1">
-            {cartArray.length
+            {sessionCart?.length
               ? "Your shopping cart"
               : "You have no items in your cart"}
           </h1>
         </div>
         <div id="shopping-cart-grid">
-          {cartArray?.map((item, idx) => (
-            <div className="cart-item" id={`cart-item-${item?.idx}`}>
+          {sessionCart?.map((item, idx) => (
+            <div key={idx} className="cart-item" id={`cart-item-${item?.idx}`}>
               <div className="cart-item-name">
                 <h3>{item?.Product?.name}</h3>
               </div>
@@ -71,7 +71,7 @@ const ShoppingCart = () => {
             </div>
           ))}
           <div id="outer-button-div">
-            {cartArray.length ? (
+            {sessionCart?.length ? (
               <Link id="checkout-link" to={`/checkout/${userId}`}>
                 <button className="no-outline" id="checkout-button">
                   Check Out
@@ -82,7 +82,7 @@ const ShoppingCart = () => {
             )}
           </div>
         </div>
-      </>
+      </div>
     )
   );
 };

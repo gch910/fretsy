@@ -128,7 +128,7 @@ router.post("/search", asyncHandler(async(req, res) => {
   const matchingProducts = await Product.findAll({
     where: {
       name: {
-        [Op.iLike]: "%" + search,
+        [Op.iLike]: "%" + search + "%",
       }
     }
   })

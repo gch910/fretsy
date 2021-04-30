@@ -216,6 +216,7 @@ const initialState = {
   category2: [],
   products: [],
   current_product: {},
+  search_results: [],
 }
 
 const productsReducer = (state = initialState, action) => {

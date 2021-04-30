@@ -14,7 +14,8 @@ import PurchaseHistory from "./components/PurchaseHistory";
 import ReviewForm from "./components/ReviewForm";
 import ReviewSuccess from "./components/ReviewSuccess"
 import Shops from "./components/Shops";
-import ShopItems from "./components/ShopItems"
+import ShopItems from "./components/ShopItems";
+import SearchResults from "./components/Navigation/SearchResults";
 import ScrollToTop from "./components/ScrollToTop";
 
 import * as sessionActions from "./store/session";
@@ -83,6 +84,9 @@ const App = () => {
               </Route>
               <Route exact path="/shop-items/:shopId">
                 <ShopItems sessionUser={sessionUser}/>
+              </Route>
+              <Route path="/search-results">
+                <SearchResults />
               </Route>
             </Switch>
           {/* </div> */}

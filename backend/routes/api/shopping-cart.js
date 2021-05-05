@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { ShoppingCart, CartItem, Product, Purchase } = require("../../db/models");
+const { ShoppingCart, CartItem, Product, Purchase, User } = require("../../db/models");
 
 
 const asyncHandler = require("express-async-handler");
@@ -89,9 +89,10 @@ console.log(itemToDelete)
  
 
   const deleteItem = await CartItem.destroy({ where: {
-    cartId: itemToDelete.cartId,
+    // cartId: itemToDelete.cartId,
     productId: itemToDelete.productId
-  }})
+  },
+})
 
 
   const cartItems = await CartItem.findAll({
@@ -143,6 +144,16 @@ router.post("/add-purchase-history/:userId", asyncHandler(async(req, res) => {
 
    console.log("product ids", productIds)
 
+}))
+
+router.get("/cart/test/:userId/:productId", asyncHandler(async(req, res) => {
+  const productId = parseInt(req.params.productId);
+  const userId = parseInt(req.params.userId);
+
+  //can get cart Id here
+  const itemToDelete = await CartItem.findAll()
+
+  res.json({itemToDelete})
 }))
 
 module.exports = router;

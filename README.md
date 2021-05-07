@@ -169,33 +169,33 @@ Installations
 
 
 #### Sign-up Modal
-Coming Soon
+Signing up for an account is implemented using a modal that renders instantly on clicking the sing-up button thanks to React's virtual DOM.  If credentials are appropriately entered on submitting the form, a new user column will be created in the database.  The app uses jsonwebtoken session authentication to confirm/validate a user.
 
 ![signup]
 
 
 #### Home Page
-Coming Soon 
+The Home Page offers a great deal of variety by utilizing algorithms that randomly generate categories and shops.  Products are queried based on category generation and displayed within a clean horizontal scrollbar.  The page layout is implemented with CSS Grid as well as Flexbox for easy organization of banners/items. Every time a user navigates to the homepage, different options will be populated within a banner, allowing for increased browsing diversity.  All images/links are active, allowing a user to easily navigate between products they are interested in.  Additionally, the login form is built right into the top banner to create a seamless sign in process.
 
 ![homepage]
 
 #### Product Page
-Coming Soon
+On the product page, if a user is logged in, they can add the item to their shopping cart.  Details about each product, including the image, are dynamically rendered based on data returned from backend queries that utilize a product's primary key.  If a product has recieved reviews, they will appear right below the product image, with whatever rating they have given the item.  
 
 ![productpage]
 
 #### Purchase History
-Coming Soon
+Purchase history is implemented using a join table, which links a user ID to a product ID.  These products are rendered on the purchase history page for the logged in user with active links and an option to review the item. A back to top button that incorporates React's "useLocation" hook is placed at the bottom of purchase history results to enhance the user experience. 
 
 ![purchasehistory]
 
 #### Category Page
-Coming Soon
+A list of categories are available via the homepage both via random generation as well as a navbar at the top of the page.  When clicked, a page is rendered with a list of items from that category.  React's "useEffect" hook in combination with the "useDispatch" hook, ensure that product information is retrieved and available on initial render.  A CSS Grid layout is used to cleanly display product photos/titles.  
 
 ![category]
 
 #### Shopping Cart
-Coming Soon
+The shopping cart utilizes join tables to associate a product with a user.  Each association belongs to a shopping cart with a unique ID that is created if there is none present for the logged in user when they add an item to their cart.  When the shopping cart button is clicked, a list of cart items is rendered with a list of product prices as well as the option to delete an item from the cart.  If the user wishes to continue with the purchase, they may click the "checkout" button, where their total will be displayed before the final purchase. Shopping carts persist through logout to allow the user to continue their shopping later if they wish.  However, if a user completes a purchase, their shopping cart will be deleted and a new one will be generated next time they "add to cart".
 
 ![shoppingcart]
 

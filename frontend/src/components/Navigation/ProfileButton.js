@@ -40,7 +40,7 @@ const ProfileButton = ({ user }) => {
               <Link to={`/purchase-history/${user.id}`} className="profile-li">
                 Purchase History
               </Link>
-              <li className="profile-li">{user.email}</li>
+              {/* <li className="profile-li">{user.email}</li> */}
               <li>
                 <div id="logout-button-div">
                   <button

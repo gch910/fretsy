@@ -35,7 +35,7 @@ const SignupForm = () => {
         });
       }
       return setErrors([
-        "Confirm Password field must be the same as the Password field",
+        "Passwords Must Match",
       ]);
     };
   

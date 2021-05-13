@@ -35,3 +35,9 @@
     color: rgb(80, 80, 80);
     width: 90%;
 }
+
+#no-results-h1 {
+    display: flex;
+    justify-content: center;
+    color: #FAA077;
+}

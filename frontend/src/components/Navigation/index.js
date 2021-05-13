@@ -23,13 +23,13 @@ const Navigation = ({ isLoaded, navId }) => {
     e.preventDefault();
 
     await dispatch(getSearchResults(search)).then((res) => {
-      if (res?.length) {
+      // if (res?.length) {
         setSearch("");
         return history.push("/search-results");
-      } else {
-        setSearch("");
-        return history.push("/no-results");
-      }
+      // } else {
+      //   setSearch("");
+      //   return history.push("/no-results");
+      // }
     });
   };
 
@@ -67,12 +67,16 @@ const Navigation = ({ isLoaded, navId }) => {
         <NavLink className="nav-link" id="home-link" exact to="/">
           Home
         </NavLink>
-        <input
-          id="searchbar"
-          className="no-outline"
-          type="text"
-          placeholder="Search..."
-        />
+        <form id="searchbar-form" onSubmit={onSearchSubmit}>
+          <input
+            onChange={(e) => setSearch(e.target.value)}
+            value={search}
+            id="searchbar"
+            className="no-outline"
+            type="text"
+            placeholder="Search..."
+          />
+        </form>
         {/* <NavLink className="nav-link" id="login-button" to="/login">
           Log In
         </NavLink> */}

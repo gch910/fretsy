@@ -65,7 +65,7 @@ const LoginFormPage = () => {
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          placeholder="Username or Email"
+          placeholder="Password"
           required
         />
         <div className="form-button-div">

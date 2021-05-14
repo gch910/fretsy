@@ -61,7 +61,7 @@ const ShoppingCart = () => {
               </div>
               <div className="delete-button-div">
                 <button
-                  onClick={deleteItemClick}
+                  onClick={(e) => deleteItemClick(e)}
                   id={item?.Product?.id}
                   className="cart-item-delete"
                 >

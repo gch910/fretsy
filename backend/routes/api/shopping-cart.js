@@ -1,23 +1,25 @@
 const express = require("express");
 const router = express.Router();
-const { ShoppingCart, CartItem, Product, Purchase, User } = require("../../db/models");
-
+const {
+  ShoppingCart,
+  CartItem,
+  Product,
+  Purchase,
+  User,
+} = require("../../db/models");
 
 const asyncHandler = require("express-async-handler");
-
 
 router.get(
   "/:userId",
   asyncHandler(async (req, res) => {
     const userId = parseInt(req.params.userId);
 
-
     const userCart = await ShoppingCart.findOne({
       where: {
         userId,
       },
     });
-
 
     const cartItems = await CartItem.findAll({
       include: Product,
@@ -60,100 +62,123 @@ router.post(
       },
     });
 
-   
     res.json({ cart, cartItems });
   })
 );
 
-router.delete("/delete/:userId/:productId", asyncHandler(async(req, res) => {
-  const productId = parseInt(req.params.productId);
-  const userId = parseInt(req.params.userId);
- 
-  const shoppingCart = await ShoppingCart.findOne({where: {
-    userId,
-  }})
+router.delete(
+  "/delete/:userId/:productId",
+  asyncHandler(async (req, res) => {
+    const productId = parseInt(req.params.productId);
+    const userId = parseInt(req.params.userId);
 
-  
+    const shoppingCart = await ShoppingCart.findOne({
+      where: {
+        userId,
+      },
+    });
 
-  // console.log(shoppingCart)
+    // const test = await CartItem.findAll({
+    //   where: {
+    //     cartId: shoppingCart.id,
+    //   },
+    // });
 
-  const itemId = shoppingCart.id;
-  
+    // console.log(shoppingCart)
 
-  const itemToDelete = await CartItem.findOne({ where: {
-    cartId: itemId
-  }})
+    const itemId = shoppingCart.id;
 
-
-console.log(itemToDelete)
- 
-
-  const deleteItem = await CartItem.destroy({ where: {
-    // cartId: itemToDelete.cartId,
-    productId: itemToDelete.productId
-  },
-})
+    const itemToDelete = await CartItem.findOne({
+      where: {
+        productId: productId,
+      },
+    });
 
 
-  const cartItems = await CartItem.findAll({
-    where: {
-      cartId: shoppingCart.id,
-    },
-  });
 
-  res.json({ cartItems })
-  
-}))
+    const deleteItem = await CartItem.destroy({
+      where: {
+        cartId: itemToDelete.cartId,
+        productId: itemToDelete.productId,
+      },
+      distinct: true,
+    });
 
-router.delete("/checkout/:userId", asyncHandler(async(req, res) => {
-  const userId = parseInt(req.params.userId);
- 
-  const shoppingCart = await ShoppingCart.findOne({where: {
-    userId,
-  }})
+    // const beforeDelete = await CartItem.destroy(
+    //   deleteItem);
+    
+    
 
-  const itemId = shoppingCart.id;
-  
-  const itemToDelete = await CartItem.destroy({ where: {
-    cartId: itemId
-  }})
-  
-    await ShoppingCart.destroy({where: {
-    userId,
-  }})
+    const cartItems = await CartItem.findAll({
+      where: {
+        cartId: shoppingCart.id,
+      },
+    });
 
-  // const cartItems = await CartItem.findAll({
-  //   where: {
-  //     cartId: shoppingCart.id,
-  //   },
-  // });
+    res.json({ cartItems });
+  })
+);
 
-  res.json({ shoppingCart })
+router.delete(
+  "/checkout/:userId",
+  asyncHandler(async (req, res) => {
+    const userId = parseInt(req.params.userId);
 
-}))
+    const shoppingCart = await ShoppingCart.findOne({
+      where: {
+        userId,
+      },
+    });
 
-router.post("/add-purchase-history/:userId", asyncHandler(async(req, res) => {
-   const { productIds } = req.body;
-   const userId = parseInt(req.params.userId);
-   
-   
+    const itemId = shoppingCart.id;
 
-   productIds.forEach(async (id) => {
-     await Purchase.create({ userId, productId: id })
-   })
+    const itemToDelete = await CartItem.destroy({
+      where: {
+        cartId: itemId,
+      },
+    });
 
-   console.log("product ids", productIds)
+    await ShoppingCart.destroy({
+      where: {
+        userId,
+      },
+    });
 
-}))
+    // const cartItems = await CartItem.findAll({
+    //   where: {
+    //     cartId: shoppingCart.id,
+    //   },
+    // });
 
-router.get("/cart/test/:userId/:productId", asyncHandler(async(req, res) => {
-  const productId = parseInt(req.params.productId);
-  const userId = parseInt(req.params.userId);
+    res.json({ shoppingCart });
+  })
+);
 
-  //can get cart Id here
-  const itemToDelete = await CartItem.findAll()
+router.post(
+  "/add-purchase-history/:userId",
+  asyncHandler(async (req, res) => {
+    const { productIds } = req.body;
+    const userId = parseInt(req.params.userId);
 
-  res.json({itemToDelete})
-}))
+    productIds.forEach(async (id) => {
+      await Purchase.create({ userId, productId: id });
+    });
+
+    console.log("product ids", productIds);
+  })
+);
+
+router.get(
+  "/cart/test/:userId/:productId",
+  asyncHandler(async (req, res) => {
+    const productId = parseInt(req.params.productId);
+    const userId = parseInt(req.params.userId);
+
+    //can get cart Id here
+    const itemToDelete = await CartItem.findAll();
+
+    res.json({ itemToDelete });
+  })
+);
 
 module.exports = router;

@@ -9,7 +9,7 @@
 <br />
 <p align="center">
   <a href="https://etsy-clone-aa.herokuapp.com/">
-    <img src="favicon.png" alt="Logo" width="80" height="80">
+    <img src="fretsy_logo.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Fretsy</h3>
@@ -20,7 +20,7 @@
     <a href="https://github.com/gch910/fretsy"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/gch910/fretsy">View Demo</a>
+    <a href="https://etsy-clone-aa.herokuapp.com/">View Demo</a>
     ·
     <a href="https://github.com/gch910/fretsy/issues">Report a Bug</a>
     ·

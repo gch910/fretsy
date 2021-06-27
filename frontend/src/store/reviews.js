@@ -44,7 +44,10 @@ export const getProductReviews = (productId) => async (dispatch) => {
   return data;
 };
 
-const reviewsReducer = (state = {}, action) => {
+const initialState = {
+  itemReviews: [],
+}
+const reviewsReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {
     case ADD_REVIEW: {
@@ -54,7 +57,8 @@ const reviewsReducer = (state = {}, action) => {
       return newState;
     }
     case GET_REVIEWS: {
-      newState = [...action.payload]
+      newState = {...state}
+      newState.itemReviews = action.payload
       return newState;
     }
     default:

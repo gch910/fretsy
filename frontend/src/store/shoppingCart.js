@@ -101,9 +101,6 @@ const cartsReducer = (state = initialState, action) => {
     case CART_ADD:
       newState = {...state}
       newState.shopping_cart = action.payload;
-    //   action.payload.forEach((item) => {
-    //     newState[item.id] = item;
-    //   });
       return newState;
     case GET_CART:
         newState = {...state}

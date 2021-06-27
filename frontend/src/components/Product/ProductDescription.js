@@ -19,7 +19,7 @@ const ProductDescription = ({ product, isLoaded }) => {
   const updateCart = () => {
     dispatch(addToCart(userId, productId));
     setClicked(true);
-    // console.log(sessionCart)
+    console.log("this is the cart now", sessionCart)
   };
 
   // useEffect(() => {

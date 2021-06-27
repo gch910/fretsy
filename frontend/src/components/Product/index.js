@@ -13,16 +13,18 @@ const Product = () => {
 
   const dispatch = useDispatch();
   const product = useSelector((state) => state.products.current_product);
-  const reviews = useSelector((state) => state.reviews);
+  const reviews = useSelector((state) => state.reviews.itemReviews);
 
   const [isLoaded, setIsLoaded] = useState(false);
 
-  const reviewsArray = Object.values(reviews);
+  const reviewsArray = reviews
 
   useEffect(() => {
     dispatch(getProduct(productId)).then(() => setIsLoaded(true));
     dispatch(getProductReviews(productId)).then(() => setIsLoaded(true));
   }, [dispatch]);
+
+  console.log("these are the reviews", reviews)
 
   return (
     isLoaded && (

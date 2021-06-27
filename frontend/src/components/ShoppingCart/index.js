@@ -16,25 +16,21 @@ const ShoppingCart = () => {
     currency: "USD",
   });
 
-  // const cartArray = Object.values(sessionCart);
-
-  // console.log("session cart", cartArray[0]?.Product);
-
   const deleteItemClick = (e) => {
-    // e.preventDefault();
-    console.log("inside delete function", e);
+  
 
     dispatch(deleteCartItem(userId, e.target?.id));
   };
 
   useEffect(async () => {
-    await dispatch(getCartItems(userId)).then(()=> setIsLoaded(true))
+    await dispatch(getCartItems(userId)).then(()=> setIsLoaded(true));
 
     return () => {
       setIsLoaded(false);
     };
   }, [dispatch, sessionCart?.length]);
 
+  
   if (!sessionUser) return <Redirect to="/" />;
 
   return (

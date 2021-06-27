@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom"; 
-// import "./HomePage.css"
 
-//banner1
 const Banner1Categories = ({ categoryValues }) => {
   return (
     <div className="banner-1">

@@ -8,17 +8,12 @@ const { Shop } = require("../../db/models");
 
 
 const asyncHandler = require("express-async-handler");
-// const { productsCategory } = require('../../../frontend/src/store/products');
 
 router.get(
   "/",
   asyncHandler(async (req, res) => {
-    // const parsedId = parseInt(req.params.categoryId);
-    // const category = await Category.findByPk(parsedId);
 
     const products = await Product.findAll();
-
-    //    console.log(products)
 
     res.json({ products });
   })
@@ -44,7 +39,6 @@ router.get(
       }
     }
 
-    console.log(id, id2)
     
     const productsByCategory1 = await Product.findAll({
       where: {
@@ -60,8 +54,6 @@ router.get(
       include: Category,
     });
 
-
-    // console.log(productsByCategory[0]);
     res.json({ productsByCategory1, productsByCategory2 });
   })
 );
@@ -79,11 +71,10 @@ router.get(
 
     const categoryName = await Category.findByPk(id);
 
-    
-    // console.log(productsByCategory[0]);
     res.json({ productsByCategory, categoryName });
   })
 );
+
 router.get(
   "/shops/:shopId",
   asyncHandler(async (req, res) => {
@@ -94,9 +85,6 @@ router.get(
         shopId: id,
       },
     });
-
-    // const shop = productsByShop[0].Shop;
-    // const shop = await Shop.findByPk(id);
     
     res.json({ productsByShop });
   })

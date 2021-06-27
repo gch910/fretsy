@@ -7,16 +7,10 @@ import { useEffect, useState } from "react";
 const Banner5Categories = ({ randomCategory2}) => {
   const dispatch = useDispatch();
 
-  // const randomCategory = () => {
-  //   const number = Math.floor(Math.random() * 4);
-  //   return number
-  // } 
-  // const random = randomCategory();
 
   useEffect(() => {
     return () => {
       dispatch(unloadProductsByCategory2());
-     
     };
   }, [dispatch]);
 

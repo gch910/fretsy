@@ -112,7 +112,7 @@ router.get(
 
 router.post("/search", asyncHandler(async(req, res) => {
   const { search } = req.body;
-  console.log("===========================", search)
+
   const matchingProducts = await Product.findAll({
     where: {
       name: {
@@ -120,8 +120,6 @@ router.post("/search", asyncHandler(async(req, res) => {
       }
     }
   })
-
-  console.log(matchingProducts)
 
   return res.json({ products: matchingProducts })
 }))

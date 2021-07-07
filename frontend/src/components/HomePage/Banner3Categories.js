@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { unloadProductsByCategory1 } from "../../store/products";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const Banner3Categories = ({ randomCategory1 }) => {
   const dispatch = useDispatch();

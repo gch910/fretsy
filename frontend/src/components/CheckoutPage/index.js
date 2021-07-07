@@ -44,9 +44,6 @@ const CheckoutPage = () => {
     totalPrice += number;
   });
 
-  // console.log(parseInt(cartArray[0]?.Product.price) + 1000)
-  //   console.log(cartArray[0].Product?.price)
-  console.log(totalPrice);
 
   useEffect(() => {
     dispatch(getCartItems(userId));

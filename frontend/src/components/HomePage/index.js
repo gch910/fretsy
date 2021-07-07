@@ -17,16 +17,13 @@ import Banner6Shops from "./Banner6Shops";
 const HomePage = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const categoryObject = useSelector((state) => state.categories.allCategories);
   const productsByCategory1 = useSelector((state) => state.products.category1);
   const productsByCategory2 = useSelector((state) => state.products.category2);
   const randomCat1 = useSelector((state) => state.categories.randomCat1);
   const randomCat2 = useSelector((state) => state.categories.randomCat2);
-  const productsByCategory =  useSelector((state) => state.products);
-  const shops = useSelector(state => state.shops);
+  //this is very general - we are grabbing all of the state from the products reducer
+  const products =  useSelector((state) => state.products);
   const [isLoaded, setIsLoaded] = useState(false);
-
-  const shopArray = Object.values(shops);
 
   
   const randomGenerator = (min, max) => {
@@ -48,16 +45,19 @@ const HomePage = () => {
   if(productsByCategory2) categoryName2 = productsByCategory2[0]?.Category?.name
 
   useEffect(() => {
+    //this gets the random categories for banner1 - randomCat1 and login banner - randomCat2
     dispatch(getRandomCategories()).then(() => setIsLoaded(true))
     dispatch(categories());
     dispatch(getAllShops())
+    //this is what gets the products from randomly generated categories and sets it on state.products
+    //productsByCategory1 and productsByCategory2 are then passed as props to banners 3 and 5
     dispatch(getProductsByCategory())
 
   
   }, [dispatch]);
 
   useEffect(()=> {
-    
+    //these are used in banner6 to grab shops from state.products
     dispatch(getProductsByShop(randomShopNumber1));
     dispatch(getProductsByShop2(randomShopNumber2));
     dispatch(getProductsByShop3(randomShopNumber3));
@@ -81,7 +81,7 @@ const HomePage = () => {
         <div className="banner-4">
           <h1 id="banner4-text">{categoryName2 && "How About Some " + categoryName2}</h1>
         </div>
-        <Banner6Shops products={productsByCategory}/>
+        <Banner6Shops products={products}/>
       </div>
     );
       }
@@ -101,7 +101,7 @@ const HomePage = () => {
       <div className="banner-4">
         <h1 id="banner4-text">{categoryName2 && "How About Some " + categoryName2}</h1>
       </div>
-      <Banner6Shops products={productsByCategory}/>
+      <Banner6Shops products={products}/>
     </div>
   );
 };
